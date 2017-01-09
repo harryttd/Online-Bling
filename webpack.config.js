@@ -13,8 +13,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      products: './db/models/products.js',
-      db: './db/index.js'
+      product: 'APP/db/models/product.js',
+      db: 'APP/db'
     }
   },
   module: {
