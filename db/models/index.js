@@ -5,6 +5,7 @@
 // to get access to the User model.
 
 const User = require('./user');
-const Products = require('products');
+// const Product = require('product');
+const Product = require('APP/db/models/product');
 
-module.exports = {User}
+module.exports = { User, Product };
