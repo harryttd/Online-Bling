@@ -32,12 +32,22 @@ describe('Product Model', function() {
 
     it('should have: name, sku, description, price, quantity, image', function() {
       expect(product.name).to.equal('Ring');
+      expect(product.name)
       expect(product.sku).to.equal('SKURING');
       expect(product.description).to.deep.equal({ main: 'Really Pretty', size: 'baby' });
       expect(product.price).to.equal(1000);
       expect(product.quantity).to.equal(10);
       expect(product.image).to.equal('APP/public/default-photo.png');
+      product.name = null;
+      product.sku = null;
+      product.price = null;
+      return product.validate()
+        .then(err => {
+          expect(err).to.be.an('object');
+          expect(err.errors[0].type).to.be.equal('notNull Violation');
+          expect(err.errors[1].type).to.be.equal('notNull Violation');
+          expect(err.errors[2].type).to.be.equal('notNull Violation');
+        });
     });
   });
-
 });
