@@ -28,14 +28,11 @@ describe('Category Model', function() {
             expect(category.name).to.equal('Gold Ring');
             expect(category.parentCategory).to.equal(1);
             category.name = null;
-            category.parentCategory = null;
 
             return category.validate()
                 .then(err => {
                     expect(err).to.be.an('object');
-                    console.log(err.errors);
                     expect(err.errors[0].type).to.be.equal('notNull Violation');
-                     expect(err.errors[1].type).to.be.equal('notNull Violation');
                 });
         });
     });

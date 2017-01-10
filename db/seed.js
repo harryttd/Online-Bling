@@ -17,7 +17,7 @@ const seedUsers = () => db.Promise.map([
 
 const seedProducts = () => db.Promise.map([
  {name: 'Diamond Ring', sku: 'GR1', description: {metal: '14K Yellow Gold', design: 'Butterfly', stone: 'diamond', age: 'Teens'}, price: 99.99, quantity: 10},
- {name: 'Gold Dude Necklace', sku: 'GDN1', description: {metal: '24K Yellow Gold', design: 'chain', stone: 'nonde', age: 'Adults'}, price: 1000, quantity: 20},
+ {name: 'Gold Dude Necklace', sku: 'GDN1', description: {metal: '24K Yellow Gold', design: 'chain', stone: 'none', age: 'Adults'}, price: 1000, quantity: 20},
  {name: 'Drake Bling Stud Diamond Earrings', sku: 'DSD1', description: {metal: '14K White Gold', design: 'Diamond Stud', stone: 'diamond', backing: 'Covered Screw Backs', age: 'Adults'}, price: 3000, quantity: 50},
  {name: 'Baby Emerald Earrings', sku: 'BE1', description: {metal: '14K White Gold', design: 'Diamond Stud', stone: 'diamond', backing: 'Covered Screw Backs', age: 'Baby'}, price: 200, quantity: 50},
  {name: 'Drake Exclusive Bracelet', sku: 'DEB1', description: {metal: '14K Gold', design: 'Plain', stone: 'none', age: 'Teens'}, price: 99.99, quantity: 10},
@@ -25,16 +25,26 @@ const seedProducts = () => db.Promise.map([
 
 const seedCategories = () => db.Promise.map([
     {name: 'Rings'},
-    {name: 'Baby Rings', parentCategory: 1},
+    {name: 'Adult Rings', parentCategory: 1},
+    {name: 'Diamond Rings', parentCategory: 1},
     {name: 'Bracelets'},
-    {name: 'Baby Bracelets', parentCategory: 3},
-    {name: 'Lady Bracelets', parentCategory: 3}
+    {name: 'Baby Bracelets', parentCategory: 4},
+    {name: 'Lady Bracelets', parentCategory: 4},
+    {name: 'Necklaces'},
+    {name: 'Guy Necklace', parentCategory: 7},
+    {name: 'Earrings'},
+    {name: 'Baby Earrings', parentCategory: 7}
 ], category => db.model('category').create(category));
 
-// cosnt seedProductCategories = () => db.Promise.map([
-//   {product_id:1 , category_id:1},
-//   {product_id:1 , category_id:2},
-// ])
+const seedProductCategories = () => db.Promise.map([
+  {product_id: 1, category_id: 1},
+  {product_id: 1, category_id: 2},
+  {product_id: 1, category_id: 3},
+  {product_id: 4, category_id: 9},
+  {product_id: 4, category_id: 10},
+  {product_id: 2, category_id: 7},
+  {product_id: 2, category_id: 8},
+], productCategory => db.model('product_category').create(productCategory));
 
 const seedProductReviews = () => db.Promise.map([
   {body: 'super dope product!!!', stars: '5', product_id: 2, user_id: 2},
@@ -58,6 +68,8 @@ db.didSync
   .then(products => console.log(`Seeded ${products.length} products OK`))
   .then(seedCategories)
   .then(categories => console.log(`Seeded ${categories.length} categories OK`))
+  .then(seedProductCategories)
+  .then(productCategories => console.log(`Seeded ${productCategories.length} productCategory OK`))
   .then(seedProductReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
   .then(seedAddresses)
