@@ -5,14 +5,20 @@ const Address = require('APP/db/models/address');
 const User = require('APP/db/models/user');
 const expect = require('chai').expect;
 
+
+
+
+
 describe('Address Model', () => {
 
     before('wait for the db', () => db.didSync)
 
-    let address;
+    // before('wait for the db', () => {
+    // 	User.create({name: 'so many', email: 'god@example.com', password: '1234'})								
+    // })
 
-	  beforeEach(function(){
-	    address = Address.build({
+    let address;
+    let addressData = {
 	      address1: '22-17 19th street',
         address2: null,
         city: 'New York',
@@ -20,11 +26,26 @@ describe('Address Model', () => {
         country: 'United States',
         zipcode: '11105',
         user_id: 1
-	    });
+	    }
+
+	  beforeEach(function(){
+	    address = Address.build(addressData);
 	  });
+
 
     describe('Validation data fields', () => {
     		
+    		it('Data placed appropriate column in table', ()=>{
+  				expect(address.address1).to.be.equal(addressData.address1);
+  				expect(address.address2).to.be.equal(addressData.address2);
+  				expect(address.city).to.be.equal(addressData.city);
+  				expect(address.state).to.be.equal(addressData.state);
+  				expect(address.country).to.be.equal(addressData.country);
+  				expect(address.zipcode).to.be.equal(addressData.zipcode);
+  				expect(address.user_id).to.be.equal(addressData.user_id);
+
+  			})
+    	
         describe('Address1 field', () => {
            
             it('should not be null', () => {
@@ -144,24 +165,23 @@ describe('Address Model', () => {
 		describe('Associate table', () => {
 				describe('Address belongs', () => {
 
-						let user;
+						let users;
+				    
+				    let userData = {name: 'so many', email: 'god@example.com', password: '1234'}
+						it('User', () => {
 
-						beforeEach(()=>{
-					     User.findAll()
-					     	.then(users=>{
-					     		console.log('USER', users)
-					     		user = users
-					     	});
-				    })
-
-
-
-						it('User', () => {                
-								console.log(users)
-                return address.save()
-                    .then(res => {
-                        console.log(res)
-                    }).catch(console.error);
+							return User.create(userData)
+						     	.then(res=>(User.findAll()))
+						     	.then(res=>(address.save()))
+						     	.then(res=>(User.findById(res.user_id)))
+					     		.then(res=>{
+					     			expect(res.name).to.be.equal(userData.name)
+					     		});
+								
+                // return address.create(addressData)	
+                //     .then(res => {
+                //         console.log(res)
+                //     }).catch(console.error);
             })
 				})
 		})

@@ -10,7 +10,7 @@ const Address = require('APP/db/models/address');
 const Order = require('APP/db/models/order');
 
 
-User.hasMany(Address)
+// User.hasMany(Address)
 Address.belongsTo(User)
 // User.hasMany(Address)
 Order.belongsTo(User)
