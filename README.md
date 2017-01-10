@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/harryttd/online-bling.png?label=ready&title=Ready)](https://waffle.io/harryttd/online-bling)
 # Hi, I'm bones
 
 I'm a happy little skeleton. You can clone me to use as a starter on your projects!
