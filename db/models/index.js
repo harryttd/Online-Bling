@@ -7,6 +7,16 @@
 const User = require('APP/db/models/user');
 const Product = require('APP/db/models/product');
 const Address = require('APP/db/models/address');
+// const Order = require('APP/db/models/order');
+
+
 
 Address.belongsTo(User)
+
+
+// Uncomment lines below and import/export const Order when order model is ready
+// Order.belongsTo(User)
+// Order.belongsTo(Address, {as: 'shipping_address'})
+// Order.belongsTo(Address, {as: 'billing_address'})
+
 module.exports = { User, Product, Address };
