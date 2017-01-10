@@ -7,7 +7,6 @@ const Category = db.define('category', {
        allowNull: false,
        validate: { notEmpty: true }
     },
-
     parentCategory: {
         type: Sequelize.INTEGER,
         allowNull: true
