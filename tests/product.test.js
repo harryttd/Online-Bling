@@ -32,7 +32,6 @@ describe('Product Model', function() {
 
     it('should have: name, sku, description, price, quantity, image', function() {
       expect(product.name).to.equal('Ring');
-      expect(product.name)
       expect(product.sku).to.equal('SKURING');
       expect(product.description).to.deep.equal({ main: 'Really Pretty', size: 'baby' });
       expect(product.price).to.equal(1000);
