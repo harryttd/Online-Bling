@@ -23,11 +23,39 @@ const seedProducts = () => db.Promise.map([
   {name: 'Drake Exclusive Bracelet', sku: 'DEB1', description: {metal: '14K Gold', design: 'Plain', stone: 'none', age: 'Teens'}, price: 99.99, quantity: 10},
 ], product => db.model('product').create(product));
 
+// const seedCategories = () => db.Promise.map([
+//     {name: 'Rings'},
+//     {name: 'Baby Rings', parentCategory: 1},
+//     {name: 'Bracelets'},
+//     {name: 'Baby Bracelets', parentCategory: 3},
+//     {name: 'Lady Bracelets', parentCategory: 3}
+// ], category => db.model('category').create(category));
+
+const seedProductReviews = () => db.Promise.map([
+  {body: 'super dope product!!!', stars: '5', product_id: 2, user_id: 2},
+  {body: 'Beautiful Ring!!', stars: '4', product_id: 4, user_id: 4},
+  {body: 'aweful', stars: '1', product_id: 3, user_id: 12},
+  {body: 'Amazing!', stars: '5', product_id: 5, user_id: 8}
+], reviews => db.model('product_review').create(reviews));
+
+const seedAddresses = () => db.Promise.map([
+  {address1: '150 main street', city: 'Buffalo', state: 'NY', country: 'USA', zipcode: '12345', user_id: 1},
+  {address1: '150 main street', address2: '45 grove lane', city: 'Pittsburgh', state: 'PA', country: 'USA', zipcode: '12345', user_id: 2},
+  {address1: '10 Hello World ave.', city: 'Los Angeles', state: 'CA', country: 'USA', zipcode: '12345', user_id: 3},
+  {address1: '7 My Street Is Cool', city: 'Wayne', state: 'NJ', country: 'USA', zipcode: '12345', user_id: 4},
+], addresses => db.model('address').create(addresses));
+
 db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
-  .catch(error => console.error(error))    
-  .finally(() => db.close())
+  // .then(seedCategories)
+  // .then(categories => console.log(`Seeded ${categories.length} categories OK`))
+  .then(seedProductReviews)
+  .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+  .then(seedAddresses)
+  .then(addresses => console.log(`Seeded ${addresses.length} addresses OK`))
+  .catch(error => console.error(error))
+  .finally(() => db.close());
