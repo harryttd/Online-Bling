@@ -6,5 +6,7 @@
 
 const User = require('APP/db/models/user');
 const Product = require('APP/db/models/product');
+const Address = require('APP/db/models/address');
 
-module.exports = { User, Product };
+Address.belongsTo(User)
+module.exports = { User, Product, Address };
