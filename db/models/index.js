@@ -15,8 +15,8 @@ Address.belongsTo(User)
 
 
 // Uncomment lines below and import/export const Order when order model is ready
-// Order.belongsTo(User)
-// Order.belongsTo(Address, {as: 'shipping_address'})
-// Order.belongsTo(Address, {as: 'billing_address'})
+Order.belongsTo(User)
+Order.belongsTo(Address, {as: 'shipping_address'})
+Order.belongsTo(Address, {as: 'billing_address'})
 
 module.exports = { User, Product, Address };
