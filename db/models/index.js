@@ -12,4 +12,4 @@ const Product_Review = require('APP/db/models/product_review')
 Address.belongsTo(User)
 Product_Review.belongsTo(User)
 Product_Review.belongsTo(Product)
-module.exports = { User, Product, Address };
+module.exports = { User, Product, Address, Product_Review };

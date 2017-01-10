@@ -10,11 +10,10 @@ const Product_Review = db.define('product_review', {
     }
   },
   stars: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.ENUM('0','1','2','3','4','5'),
     allowNull: false,
-    defaultValue: 0,
+    defaultValue: '0',
     validate: {
-      is: '/\d(?![0-5]\S)/g',
       notEmpty: true
     }
   }
