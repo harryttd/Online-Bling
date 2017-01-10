@@ -11,7 +11,9 @@ const expect = require('chai').expect;
 
 describe('Address Model', () => {
 
-    before('wait for the db', () => db.didSync)
+    before('wait for the db', () => db.didSync
+        .then(() => db.sync({force: true}))
+    )
 
     // before('wait for the db', () => {
     // 	User.create({name: 'so many', email: 'god@example.com', password: '1234'})								

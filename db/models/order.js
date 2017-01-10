@@ -7,11 +7,7 @@ const db = require('APP/db');
  */
 
 const Order = db.define('order', {
-	order_total: {
-		type: Sequelize.FLOAT,
-		defaultValue: 0
-	},
-	shipping_cost: {
+	total: {
 		type: Sequelize.FLOAT,
 		defaultValue: 0
 	}
