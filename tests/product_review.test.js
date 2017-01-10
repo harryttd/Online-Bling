@@ -10,7 +10,7 @@ describe('Product Model', () => {
 
     describe('Validation data fields', () => {
 
-      let product_review//, product, user;
+      let product_review //, product, user;
 			  beforeEach(function(){
 
           // product = Product.create({
@@ -25,10 +25,11 @@ describe('Product Model', () => {
           //   name: 'Ring',
           // });
 
-          product_review = Product_Review.build({
+            product_review = Product_Review.build({
             body: 'This bling is fresh to death!',
             stars: 5
           });
+
         });
 
         describe('body', () => {
@@ -38,7 +39,7 @@ describe('Product Model', () => {
                 return product_review.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
-                        expect(err.errors[0].path).to.be.equal('product_review');
+                        expect(err.errors[0].path).to.be.equal('body');
                         expect(err.errors[0].type).to.be.equal('notNull Violation');
                     });
             })
@@ -48,7 +49,7 @@ describe('Product Model', () => {
                 return product_review.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
-                        expect(err.errors[0].path).to.be.equal('product_review');
+                        expect(err.errors[0].path).to.be.equal('body');
                         expect(err.errors[0].type).to.be.equal('Validation error');
                     });
             })
@@ -62,7 +63,7 @@ describe('Product Model', () => {
                 return product_review.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
-                        expect(err.errors[0].path).to.be.equal('product_review');
+                        expect(err.errors[0].path).to.be.equal('stars');
                         expect(err.errors[0].type).to.be.equal('notNull Violation');
                     });
             })
@@ -72,7 +73,7 @@ describe('Product Model', () => {
                 return product_review.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
-                        expect(err.errors[0].path).to.be.equal('product_review');
+                        expect(err.errors[0].path).to.be.equal('stars');
                         expect(err.errors[0].type).to.be.equal('Validation error');
                     });
             })
@@ -82,17 +83,17 @@ describe('Product Model', () => {
                 return product_review.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
-                        expect(err.errors[0].path).to.be.equal('product_review');
+                        expect(err.errors[0].path).to.be.equal('stars');
                         expect(err.errors[0].type).to.be.equal('Validation error');
                     });
             })
 
-            it('should not contain a number', () => {
+            it('should not contain a letter', () => {
                 product_review.stars = 'a'
                 return product_review.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
-                        expect(err.errors[0].path).to.be.equal('product_review');
+                        expect(err.errors[0].path).to.be.equal('stars');
                         expect(err.errors[0].type).to.be.equal('Validation error');
                     });
             })
