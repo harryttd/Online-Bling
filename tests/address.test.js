@@ -10,20 +10,22 @@ describe('Address Model', () => {
 
     describe('Validation data fields', () => {
 
+    		let address;
+			  beforeEach(function(){
+			    address = Address.build({
+			      address1: '22-17 19th street',
+            address2: null,
+            city: 'New York',
+            state: 'NY',
+            country: 'United States',
+            zipcode: '11105'
+			    });
+			  });
+
         describe('Address1 field', () => {
-
-            const data = {
-                address1: '22-17 19th street',
-                address2: null,
-                city: 'New York',
-                state: 'NY',
-                country: 'United States',
-                zipcode: '11105'
-            }
+           
             it('should not be null', () => {
-                data.address1 = null
-
-                const address = Address.build(data);
+                address.address1 = null
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -33,9 +35,7 @@ describe('Address Model', () => {
             })
 
             it('should not be an empty string', () => {
-                data.address1 = ''
-
-                const address = Address.build(data);
+                address.address1 = ''
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -48,18 +48,8 @@ describe('Address Model', () => {
 
         describe('city field', () => {
 
-            const data = {
-                address1: '22-17 19th street',
-                address2: null,
-                city: 'New York',
-                state: 'NY',
-                country: 'United States',
-                zipcode: '11105'
-            }
             it('should not be null', () => {
-                data.city = null
-
-                const address = Address.build(data);
+                address.city = null
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -69,9 +59,7 @@ describe('Address Model', () => {
             })
 
             it('should not be an empty string', () => {
-                data.city = ''
-
-                const address = Address.build(data);
+                address.city = ''
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -83,18 +71,8 @@ describe('Address Model', () => {
 
         describe('state field', () => {
 
-            const data = {
-                address1: '22-17 19th street',
-                address2: null,
-                city: 'New York',
-                state: 'NY',
-                country: 'United States',
-                zipcode: '11105'
-            }
             it('should not be null', () => {
-                data.state = null
-
-                const address = Address.build(data);
+                address.state = null
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -104,9 +82,7 @@ describe('Address Model', () => {
             })
 
             it('should not be an empty string', () => {
-                data.state = ''
-
-                const address = Address.build(data);
+                address.state = ''
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -118,18 +94,8 @@ describe('Address Model', () => {
 
         describe('country field', () => {
 
-            const data = {
-                address1: '22-17 19th street',
-                address2: null,
-                city: 'New York',
-                state: 'NY',
-                country: 'United States',
-                zipcode: '11105'
-            }
             it('should not be null', () => {
-                data.country = null
-
-                const address = Address.build(data);
+                address.country = null
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -139,9 +105,7 @@ describe('Address Model', () => {
             })
 
             it('should not be an empty string', () => {
-                data.country = ''
-
-                const address = Address.build(data);
+                address.country = ''
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -152,19 +116,8 @@ describe('Address Model', () => {
         })
 
         describe('zipcode field', () => {
-
-            const data = {
-                address1: '22-17 19th street',
-                address2: null,
-                city: 'New York',
-                state: 'NY',
-                country: 'United States',
-                zipcode: '11105'
-            }
             it('should not be null', () => {
-                data.zipcode = null
-
-                const address = Address.build(data);
+                address.zipcode = null
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');
@@ -174,9 +127,7 @@ describe('Address Model', () => {
             })
 
             it('should not be an empty string', () => {
-                data.zipcode = ''
-
-                const address = Address.build(data);
+                address.zipcode = ''
                 return address.validate()
                     .then(err => {
                         expect(err).to.be.an('object');

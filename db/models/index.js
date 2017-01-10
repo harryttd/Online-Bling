@@ -9,4 +9,5 @@ const User = require('./user');
 const Product = require('APP/db/models/product');
 const Address = require('APP/db/models/address');
 
+Address.belongsTo(User)
 module.exports = { User, Product, Address };
