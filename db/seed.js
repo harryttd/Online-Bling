@@ -23,13 +23,18 @@ const seedProducts = () => db.Promise.map([
   {name: 'Drake Exclusive Bracelet', sku: 'DEB1', description: {metal: '14K Gold', design: 'Plain', stone: 'none', age: 'Teens'}, price: 99.99, quantity: 10},
 ], product => db.model('product').create(product));
 
-// const seedCategories = () => db.Promise.map([
-//     {name: 'Rings'},
-//     {name: 'Baby Rings', parentCategory: 1},
-//     {name: 'Bracelets'},
-//     {name: 'Baby Bracelets', parentCategory: 3},
-//     {name: 'Lady Bracelets', parentCategory: 3}
-// ], category => db.model('category').create(category));
+const seedCategories = () => db.Promise.map([
+    {name: 'Rings'},
+    {name: 'Baby Rings', parentCategory: 1},
+    {name: 'Bracelets'},
+    {name: 'Baby Bracelets', parentCategory: 3},
+    {name: 'Lady Bracelets', parentCategory: 3}
+], category => db.model('category').create(category));
+
+// cosnt seedProductCategories = () => db.Promise.map([
+//   {product_id:1 , category_id:1},
+//   {product_id:1 , category_id:2},
+// ])
 
 const seedProductReviews = () => db.Promise.map([
   {body: 'super dope product!!!', stars: '5', product_id: 2, user_id: 2},
