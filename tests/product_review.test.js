@@ -10,16 +10,29 @@ describe('Product Model', () => {
 
     describe('Validation data fields', () => {
 
-    		let product_review;
+      let product_review//, product, user;
 			  beforeEach(function(){
-			    product_review = Product_Review.build({
-			      body: 'This bling is fresh to death!',
+
+          // product = Product.create({
+          //   name: 'Ring',
+          //   sku: 'SKURING',
+          //   description: { main: 'Really Pretty', size: 'baby' },
+          //   price: 1000,
+          //   quantity: 10
+          // });
+          //
+          // user = User.create({
+          //   name: 'Ring',
+          // });
+
+          product_review = Product_Review.build({
+            body: 'This bling is fresh to death!',
             stars: 5
-			    });
-			  });
+          });
+        });
 
         describe('body', () => {
-           
+
             it('should not be null', () => {
                 product_review.body = null
                 return product_review.validate()
