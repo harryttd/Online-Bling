@@ -7,6 +7,11 @@
 const User = require('APP/db/models/user');
 const Product = require('APP/db/models/product');
 const Address = require('APP/db/models/address');
+const Category = require('APP/db/models/category');
 
-Address.belongsTo(User)
-module.exports = { User, Product, Address };
+Address.belongsTo(User);
+//hasMany / belongsToMany
+Product.belongsToMany(Category, {through: 'product_category'});
+Category.belongsToMany(Product, {through: 'product_category'});
+
+module.exports = { User, Product, Address, Category };
