@@ -2,26 +2,29 @@
 
 const db = require('APP/db');
 const Address = require('APP/db/models/address');
+const User = require('APP/db/models/user');
 const expect = require('chai').expect;
 
 describe('Address Model', () => {
 
     before('wait for the db', () => db.didSync)
 
+    let address;
+
+	  beforeEach(function(){
+	    address = Address.build({
+	      address1: '22-17 19th street',
+        address2: null,
+        city: 'New York',
+        state: 'NY',
+        country: 'United States',
+        zipcode: '11105',
+        user_id: 1
+	    });
+	  });
+
     describe('Validation data fields', () => {
-
-    		let address;
-			  beforeEach(function(){
-			    address = Address.build({
-			      address1: '22-17 19th street',
-            address2: null,
-            city: 'New York',
-            state: 'NY',
-            country: 'United States',
-            zipcode: '11105'
-			    });
-			  });
-
+    		
         describe('Address1 field', () => {
            
             it('should not be null', () => {
@@ -44,7 +47,6 @@ describe('Address Model', () => {
                     });
             })
         })
-
 
         describe('city field', () => {
 
@@ -138,4 +140,29 @@ describe('Address Model', () => {
         })
     })
 
+
+		describe('Associate table', () => {
+				describe('Address belongs', () => {
+
+						let user;
+
+						beforeEach(()=>{
+					     User.findAll()
+					     	.then(users=>{
+					     		console.log('USER', users)
+					     		user = users
+					     	});
+				    })
+
+
+
+						it('User', () => {                
+								console.log(users)
+                return address.save()
+                    .then(res => {
+                        console.log(res)
+                    }).catch(console.error);
+            })
+				})
+		})
 });

@@ -8,6 +8,14 @@ const User = require('./user');
 // const Product = require('product');
 const Product = require('APP/db/models/product');
 const Address = require('APP/db/models/address');
+const Order = require('APP/db/models/order');
 
+
+User.hasMany(Address)
 Address.belongsTo(User)
-module.exports = { User, Product, Address };
+// User.hasMany(Address)
+Order.belongsTo(User)
+Order.belongsTo(Address, {as: 'shipping_address'})
+Order.belongsTo(Address, {as: 'billing_address'})
+
+module.exports = { User, Product, Address, Order };
