@@ -4,10 +4,9 @@ const router = module.exports = express.Router();
 const Order = require('APP/db/models/order');
 
 router.get('/', function(req, res, next) {
-	Order.findAll({})
+	Order.findAll()
 		.then(function(orders) {
-			//res.render(orders)
-			res.json(orders)
+			res.status(200)	.json(orders)
 		})
 		.catch(next)
 });
@@ -45,15 +44,14 @@ router.post('/', function(req, res, next) {
 //     .catch(next))
 
 router.put('/:id', function(req, res, next) {
-	Order.update({
-		products: req.body.products
-	}, {
-		where: {
-			id: req.params.id
+	Order.update(req.body, 
+		{
+			where: {
+				id: req.params.id
 		}
 	})
-	.then(function(count, updated) {
-		res.status(201).json(updated[0])
+	.then(function(count) {
+		res.status(201).json(updated)
 	})
 	.catch(next)
 })
@@ -73,13 +71,13 @@ router.put('/:id', function(req, res, next) {
 //     .catch(next))
 
 router.delete('/:id', function(req, res, next) {
-	Order.destory({
+	Order.destroy({
 		where: {
 			id: req.params.id
 		}
 	})
 	.then(function(deleted) {
-		res.sendStatus(204).end();
+		res.status(204).end();
 	})
 	.catch(next);
 })
