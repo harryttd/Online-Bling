@@ -15,6 +15,14 @@ const seedUsers = () => db.Promise.map([
  {name: 'Iva Carson', email: 'nikok@ejrib.gov', password: '1234'}
 ], user => db.model('users').create(user));
 
+const seedOrders = () => db.Promise.map([
+  {total: 10, user_id: 1, shipping_address_id: 1, billing_address_id: 1},
+  {total: 20, user_id: 2, shipping_address_id: 2, billing_address_id: 2},
+  {total: 30, user_id: 3, shipping_address_id: 3, billing_address_id: 3},
+  {total: 40, user_id: 4, shipping_address_id: 4, billing_address_id: 1},
+  {total: 50, user_id: 5, shipping_address_id: 4, billing_address_id: 2}
+], order => db.model('order').create(order));
+
 const seedProducts = () => db.Promise.map([
  {name: 'Diamond Ring', sku: 'GR1', description: {metal: '14K Yellow Gold', design: 'Butterfly', stone: 'diamond', age: 'Teens'}, price: 99.99, quantity: 10},
  {name: 'Gold Dude Necklace', sku: 'GDN1', description: {metal: '24K Yellow Gold', design: 'chain', stone: 'none', age: 'Adults'}, price: 1000, quantity: 20},
@@ -74,5 +82,7 @@ db.didSync
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
   .then(seedAddresses)
   .then(addresses => console.log(`Seeded ${addresses.length} addresses OK`))
+  .then(seedOrders)
+  .then(orders => console.log(`Seeded ${orders.length} orders OK`))
   .catch(error => console.error(error))
   .finally(() => db.close());
