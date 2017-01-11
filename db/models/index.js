@@ -29,7 +29,6 @@ Order.belongsTo(User)
 Order.belongsTo(Address, {as: 'shipping_address'})
 Order.belongsTo(Address, {as: 'billing_address'})
 
-
 OrderProduct.belongsTo(Order)
 OrderProduct.belongsTo(Product)
 

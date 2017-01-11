@@ -31,7 +31,6 @@ describe('order route', () => {
   				.then(res => {
   					return expect(res.body.products.length).to.equal(3)
   				})
-  			
   		})
   	})
 })
