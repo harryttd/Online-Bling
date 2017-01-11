@@ -4,7 +4,7 @@ const db = require('APP/db');
 const { Product } = require('APP/db/models');
 const app = require('APP/server/start');
 
-describe.only('Testing for /api/product', () => {
+describe('Testing for /api/product', () => {
 
   before('wait for the db', () => db.didSync);
 
