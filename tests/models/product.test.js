@@ -4,9 +4,11 @@ const db = require('APP/db');
 
 describe('Product Model', function() {
 
-  before(function () {
-    return db.didSync;
-  });
+  before('wait for the db', () => db.didSync)
+
+  after('clear db', () => 
+    Product.truncate({ cascade: true })
+  )
 
   let product;
   beforeEach(function(){
@@ -20,7 +22,7 @@ describe('Product Model', function() {
   });
 
   //  We empty the tables after each spec
-  afterEach(function () {
+  after(function () {
     return Product.truncate({ cascade: true });
   });
 

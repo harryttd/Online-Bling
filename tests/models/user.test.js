@@ -1,11 +1,15 @@
 'use strict'
 
 const db = require('APP/db')
-const User = require('APP/db/models/user')
-const {expect} = require('chai')
+const { User } = require('APP/db/models')
+const { expect } = require('chai')
 
-describe('User', () => {
+describe('User Model', () => {
   before('wait for the db', () => db.didSync)
+
+  after('clear db', () => 
+    User.truncate({ cascade: true })
+  )
 
   describe('authenticate(plaintext: String) ~> Boolean', () => {
     it('resolves true if the password matches', () =>

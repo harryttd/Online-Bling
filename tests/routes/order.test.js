@@ -6,7 +6,7 @@ const app = require('APP/server/start');
 const User = require('APP/db/models/user');
 const Address = require('APP/db/models/address');
 
-describe.only('order route', () => {
+describe('order route', () => {
 	before('wait for the db', () => db.didSync);
 
   let data = {
