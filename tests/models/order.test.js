@@ -37,6 +37,10 @@ describe('Order Model', () => {
             expect(order.billing_address_id).to.equal(2);
         })
     })
+
+    after('wait for the db', () => db.didSync
+    	.then(() => db.sync({force: true}))
+  	)
     
     describe('Associate table', () => {
 
