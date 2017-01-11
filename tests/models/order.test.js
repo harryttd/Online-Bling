@@ -37,7 +37,7 @@ describe('Order Model', () => {
             expect(order.billing_address_id).to.equal(2);
         })
     })
-    
+
     describe('Associate table', () => {
 
     	let user = { name: 'Cookie Monster', email: 'cookie@monster.com', password: '1234' };
@@ -90,16 +90,16 @@ describe('Order Model', () => {
 	        	return Address.create(billingAddress)
 	        })
 	        .then(res => {
-	        	billingAssociation = res;	   
-	        	return order.save()     	
+	        	billingAssociation = res;
+	        	return order.save()
 	        })
 	        .then(res => User.findById(res.user_id))
 	        .then(res => expect(res.name).to.be.equal(userAssociation.name))
-    		
+
     	})
 
     	it('Order belongs to Address as shipping address', () => {
-    		
+
     		let shippingAssociation,
     				billingAssociation,
     				userAssociation;
@@ -114,8 +114,8 @@ describe('Order Model', () => {
 	        	return Address.create(billingAddress)
 	        })
 	        .then(res => {
-	        	billingAssociation = res;	   
-	        	return order.save()     	
+	        	billingAssociation = res;
+	        	return order.save()
 	        })
 	        .then(res => Address.findById(res.shipping_address_id))
 	        .then(res => expect(res.address1).to.be.equal(shippingAssociation.address1))
@@ -137,8 +137,8 @@ describe('Order Model', () => {
 	        	return Address.create(billingAddress)
 	        })
 	        .then(res => {
-	        	billingAssociation = res;	   
-	        	return order.save()     	
+	        	billingAssociation = res;
+	        	return order.save()
 	        })
 	        .then(res => Address.findById(res.billing_address_id))
 	        .then(res => expect(res.address1).to.be.equal(billingAssociation.address1))

@@ -16,7 +16,7 @@ describe('Address Model', () => {
     )
 
     // before('wait for the db', () => {
-    // 	User.create({name: 'so many', email: 'god@example.com', password: '1234'})								
+    // 	User.create({name: 'so many', email: 'god@example.com', password: '1234'})
     // })
 
     let address;
@@ -36,7 +36,7 @@ describe('Address Model', () => {
 
 
     describe('Validation data fields', () => {
-    		
+
     		it('Data placed appropriate column in table', ()=>{
   				expect(address.address1).to.be.equal(addressData.address1);
   				expect(address.address2).to.be.equal(addressData.address2);
@@ -47,9 +47,9 @@ describe('Address Model', () => {
   				expect(address.user_id).to.be.equal(addressData.user_id);
 
   			})
-    	
+
         describe('Address1 field', () => {
-           
+
             it('should not be null', () => {
                 address.address1 = null
                 return address.validate()
@@ -168,7 +168,7 @@ describe('Address Model', () => {
 				describe('Address belongs', () => {
 
 						let users;
-				    
+
 				    let userData = {name: 'so many', email: 'god@example.com', password: '1234'}
 						it('User', () => {
 
@@ -179,8 +179,8 @@ describe('Address Model', () => {
 					     		.then(res=>{
 					     			expect(res.name).to.be.equal(userData.name)
 					     		});
-								
-                // return address.create(addressData)	
+
+                // return address.create(addressData)
                 //     .then(res => {
                 //         console.log(res)
                 //     }).catch(console.error);

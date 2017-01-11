@@ -6,7 +6,7 @@ const app = require('APP/server/start');
 const User = require('APP/db/models/user');
 const Address = require('APP/db/models/address');
 
-describe.only('order route', () => {
+describe('order route', () => {
 	before('wait for the db', () => db.didSync);
 
   let data = {
@@ -30,16 +30,16 @@ describe.only('order route', () => {
 	before( () =>
       User.bulkCreate(data.users)
       .then(res=>Address.bulkCreate(data.addresses))
-      .then(res=>Order.bulkCreate(data.orders))      
+      .then(res=>Order.bulkCreate(data.orders))
   );
 
-  after(() => 
+  after(() =>
       Order.truncate({ cascade: true })
   );
 
   	describe('routings', () => {
 
-  		it('GET / should return all orders', () => 
+  		it('GET / should return all orders', () =>
   			request(app)
   				.get(`/api/order`)
   				.expect(200)
@@ -48,7 +48,7 @@ describe.only('order route', () => {
           })
   		)
 
-      it('GET /:id should return one order with corresponding id', () => 
+      it('GET /:id should return one order with corresponding id', () =>
         request(app)
           .get(`/api/order/1`)
           .expect(200)
@@ -58,7 +58,7 @@ describe.only('order route', () => {
           })
       )
 
-      it('POST / creates an order', () => 
+      it('POST / creates an order', () =>
         request(app)
           .post(`/api/order/`)
           .send({
@@ -70,7 +70,7 @@ describe.only('order route', () => {
           })
       )
 
-      it('PUT /:id update an order with corresponding id', () => 
+      it('PUT /:id update an order with corresponding id', () =>
         request(app)
           .put(`/api/order/1`)
           .send({
