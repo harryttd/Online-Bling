@@ -28,12 +28,12 @@ Order.belongsTo(User)
 Order.belongsTo(Address, {as: 'shipping_address'})
 Order.belongsTo(Address, {as: 'billing_address'})
 
-module.exports = { 
-	User, 
-	Product, 
-	Address, 
+module.exports = {
+	User,
+	Product,
+	Address,
 	Category,
 	Product_Review,
 	Cart_Line_Item,
-	Order 
+	Order
 };
