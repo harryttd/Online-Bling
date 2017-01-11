@@ -38,6 +38,11 @@ describe('Order Model', () => {
         })
     })
 
+
+    after('wait for the db', () => db.didSync
+    	.then(() => db.sync({force: true}))
+  	)
+
     describe('Associate table', () => {
 
     	let user = { name: 'Cookie Monster', email: 'cookie@monster.com', password: '1234' };
