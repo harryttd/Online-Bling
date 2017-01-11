@@ -31,12 +31,8 @@ describe('Testing for /api/product', () => {
       categoryName = 'Rings';
 
     before('Build Product instance', () =>
-      Product.create(productData)
-      .then(Category.create(categoryData))
-      .then(db.model('product_category').create(productCategorie))
-      // Promise.all([Product.create(productData), Category.create(categoryData)])
-      // .then(res => console.log(res))
-      // .catch(err => console.log('ERR', err))
+      Promise.all([Product.create(productData), Category.create(categoryData), db.model('product_category').create(productCategorie)])
+      .catch(console.error)
     );
 
     it('GET /product gets all products', () =>
@@ -44,8 +40,6 @@ describe('Testing for /api/product', () => {
         .get(`/api/product`)
         .expect(200)
         .then(res => {
-          // console.log('res response');
-          // console.log(res.body);
           expect(res.body).to.be.an('array');
         })
     );
@@ -55,7 +49,6 @@ describe('Testing for /api/product', () => {
         .get(`/api/product/1`)
         .expect(200)
         .then(res => {
-          // console.log(res.data);
           expect(res.body).to.be.an('object');
           expect(res.body.sku).to.be.equal(productData.sku);
           expect(res.body.quantity).to.be.equal(productData.quantity);

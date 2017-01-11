@@ -10,7 +10,7 @@ const Address = require('APP/db/models/address')
 
 const { expect } = require('chai');
 
-describe.only('Order Product Model', () => {
+describe('Order Product Model', () => {
 
 
     let data = {
