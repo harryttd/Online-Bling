@@ -7,7 +7,7 @@ const app = require('APP/server/start');
 describe('Testing for /api/product', () => {
 
   before('wait for the db', () => db.didSync);
-  // after('Synchronize and clear database', () => db.sync({force: true}));
+  after('Synchronize and clear database', () => db.sync({force: true}));
 
     let productData = {
       name: 'TEST PRODUCT',
@@ -31,10 +31,10 @@ describe('Testing for /api/product', () => {
       categoryName = 'Rings';
 
     before('Build Product instance', () =>
-      // Product.create(productData)
-      // .then(Category.create(categoryData))
-      // .then(db.model('product_category').create(productCategories))
-      Promise.all([Product.create(productData), Category.create(categoryData)])
+      Product.create(productData)
+      .then(Category.create(categoryData))
+      .then(db.model('product_category').create(productCategorie))
+      // Promise.all([Product.create(productData), Category.create(categoryData)])
       // .then(res => console.log(res))
       // .catch(err => console.log('ERR', err))
     );
