@@ -30,7 +30,7 @@ describe('Route Testing: test for /api/address/', () => {
                         user_id: 1
                       };
 
-    before('Build ADDRESS instance', () =>
+    before('Build USER and ADDRESS instance', () =>
       User.create(userData)
       .then( () => Address.create(addressData) )
 
