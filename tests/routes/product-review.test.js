@@ -9,16 +9,16 @@ describe.only('product review route', () => {
 
 	let productReviewData = {
 		body: 'Good product',
-		star: '4'
+		stars: '4'
 	}
 
 	before('Build Product instance', () => 
 		productReview.create(productReviewData)
 	);
 
-	// after(() => 
-	// 	productReview.truncate({cascade: true})
-	// );
+	after(() => 
+		productReview.truncate({cascade: true})
+	);
 
 	describe('routings', () => {
 		it('Get / should return all product reviews', () => 
@@ -27,7 +27,7 @@ describe.only('product review route', () => {
 			.expect(200)
 			.then(res => {
 				expect(res.body[0].body).to.equal('Good product');
-				// expect(res.body[0].star).to.equal('4');
+				expect(res.body[0].stars).to.equal('4');
 			})
 
 		)
@@ -38,7 +38,7 @@ describe.only('product review route', () => {
  				.expect(200)
  				.then(res => {
  					expect(res.body.body).to.equal('Good product')
- 					// expect(res.body.star).to.equal('4');
+ 					expect(res.body.stars).to.equal('4');
  				})
  		)
 
@@ -46,7 +46,7 @@ describe.only('product review route', () => {
  			request(app)
  				.post(`/api/productReview/`)
  				.send({
- 					body: 'Awesome', star: '3'
+ 					body: 'Awesome', stars: '3'
  				})
  				.expect(201)
  				.then(res => {
@@ -58,13 +58,14 @@ describe.only('product review route', () => {
  			request(app)
  				.put(`/api/productReview/1`)
  				.send({
- 					body: 'Great', star: 3
+ 					body: 'Great', 
+ 					stars: '3'
  				})
  				.then(updateProductReview => {
  					return productReview.findById(1)
  					.then (productReview => {
  						expect(productReview.body).to.equal('Great');
- 						// expect(productReview.star).to.equal('3');
+ 						expect(productReview.stars).to.equal('3');
  					})
  				})
  		)
