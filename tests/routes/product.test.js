@@ -27,11 +27,11 @@ describe('Testing for /api/product', () => {
 
     // For the /category/:categoryName spec at the end
     const categoryData = { name: 'Rings' },
-      productCategorie = { product_id: 1, category_id: 1 },
+      productCategory = { product_id: 1, category_id: 1 },
       categoryName = 'Rings';
 
     before('Build Product instance', () =>
-      Promise.all([Product.create(productData), Category.create(categoryData), db.model('product_category').create(productCategorie)])
+      Promise.all([Product.create(productData), Category.create(categoryData), db.model('product_category').create(productCategory)])
       .catch(console.error)
     );
 

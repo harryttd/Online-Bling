@@ -4,7 +4,7 @@ const db = require('APP/db');
 const Category = require('APP/db/models/category');
 const app = require('APP/server/start');
 
-describe.only('category route', () => {
+describe('category route', () => {
 	before('wait for the db', () => db.didSync);
 
 	let categoryData = {
@@ -21,7 +21,7 @@ describe.only('category route', () => {
 	);
 
 	describe('routings', () => {
-		it('GET / should return all categories', () => 
+		it('GET / should return all categories', () =>
 			request(app)
 			.get(`/api/category`)
 			.expect(200)
@@ -31,7 +31,7 @@ describe.only('category route', () => {
 			})
 		)
 
-		it('GET /:id should return one category with corresponding id', () => 
+		it('GET /:id should return one category with corresponding id', () =>
 			request(app)
 				.get(`/api/category/1`)
 				.expect(200)
@@ -41,7 +41,7 @@ describe.only('category route', () => {
 				})
 		)
 
-		it('POST / creates a category', () => 
+		it('POST / creates a category', () =>
 			request(app)
 				.post(`/api/category/`)
 				.send({
@@ -53,7 +53,7 @@ describe.only('category route', () => {
 				})
 		)
 
-		it('PUT /:id update a category with corresponding id', () => 
+		it('PUT /:id update a category with corresponding id', () =>
 			request(app)
 				.put(`/api/category/1`)
 				.send({
@@ -68,7 +68,7 @@ describe.only('category route', () => {
 				})
 		)
 
-		it('DELETE /:id removes a category with corresponding id', () => 
+		it('DELETE /:id removes a category with corresponding id', () =>
 			request(app)
 				.delete(`/api/category/1`)
 				.expect(204)
