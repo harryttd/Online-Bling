@@ -40,6 +40,7 @@ describe('!----- Backend API Route - /api/user -----!', () => {
         .then(res => expect(res.body).to.contain({
           email: 'eve@interloper.com'
         }))
+        .catch(err => console.error(err))
     )
   })
 })

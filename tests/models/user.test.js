@@ -17,11 +17,13 @@ describe('!----- Backend Database Model - User -----!', () => {
     it('resolves true if the password matches', () =>
       User.create({ password: 'ok' })
         .then(user => user.authenticate('ok'))
-        .then(result => expect(result).to.be.true))
+        .then(result => expect(result).to.be.true)
+        .catch(err => console.error(err)));
 
     it("resolves false if the password doesn't match", () =>
       User.create({ password: 'ok' })
         .then(user => user.authenticate('not ok'))
-        .then(result => expect(result).to.be.false))
-  })
-})
+        .then(result => expect(result).to.be.false)
+        .catch(err => console.error(err)));
+  });
+});

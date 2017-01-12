@@ -6,14 +6,14 @@ const Order = require('APP/db/models/order');
 router.get('/', function(req, res, next) {
 	Order.findAll()
 		.then(function(orders) {
-			res.status(200)	.json(orders)
+			res.status(200).json(orders)
 		})
 		.catch(next)
 });
 
 // router.get('/', (req, res, next) =>
 //     Order.findAll()
-//     .then(orders => res.json(orders))
+//     .then(orders => res.status(200).json(orders))
 //     .catch(next))
 
 router.get('/:id', function(req, res, next) {
@@ -50,17 +50,16 @@ router.put('/:id', function(req, res, next) {
 				id: req.params.id
 		}
 	})
-	.then(function(count) {
-		res.status(201).json(updated)
+	.then(function(count, updated) {
+		res.status(201).json(updated[0])
 	})
 	.catch(next)
 })
 
 
 // router.put('/:id', (req, res, next) =>
-//     Order.update({
-//       books: req.body.books
-//     }, {
+//     Order.update( req.body, 
+//     {
 //       where: {
 //         id: req.params.id
 //       }
@@ -88,7 +87,8 @@ router.delete('/:id', function(req, res, next) {
 //         id: req.params.id
 //       }
 //     })
-//     .then( deleted => res.sendStatus(204)).end()
+//     .then( deleted => res.sendStatus(204).end())
 //     .catch(next));
+
 
 module.exports = router

@@ -126,6 +126,7 @@ describe('!----- Backend Database Model - OrderProduct -----!', () => {
           return Product.findById(orderProduct.product_id)
         }).then(res => {
           expect(res.name).to.be.equal('Diamond Ring')
+
         })
     })
   })
