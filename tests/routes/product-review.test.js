@@ -4,7 +4,7 @@ const db = require('APP/db');
 const productReview = require('APP/db/models/product_review');
 const app = require('APP/server/start');
 
-describe.only('product review route', () => {
+describe('product review route', () => {
 	before('wait for the db', () => db.didSync);
 
 	let productReviewData = {

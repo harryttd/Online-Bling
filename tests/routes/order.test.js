@@ -6,8 +6,10 @@ const app = require('APP/server/start');
 const User = require('APP/db/models/user');
 const Address = require('APP/db/models/address');
 
-describe('order route', () => {
-	before('wait for the db', () => db.didSync);
+describe('!----- Backend API Route - /api/order -----!', () => {
+	before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true }))
+  )
 
   let data = {
           users: [
@@ -35,6 +37,8 @@ describe('order route', () => {
 
   after(() =>
       Order.truncate({ cascade: true })
+        .then(()=>Address.truncate({cascade:true}))
+        .then(()=>User.truncate({cascade:true}))
   );
 
   	describe('routings', () => {

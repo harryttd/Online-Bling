@@ -4,18 +4,20 @@ const db = require('APP/db');
 const { Product, Category } = require('APP/db/models');
 const app = require('APP/server/start');
 
-describe('Testing for /api/product', () => {
+describe('!----- Backend API Route - /api/product -----!', () => {
 
   before('wait for the db', () => db.didSync);
   after('Synchronize and clear database', () => db.sync({force: true}));
 
-    let productData = {
-      name: 'TEST PRODUCT',
-      sku: 'SKURING',
-      description: { main: 'Really Pretty', size: 'baby' },
-      price: 1000,
-      quantity: 10
-    };
+  after('clear db', () => Product.truncate({ cascade: true }));
+
+  let productData = {
+    name: 'TEST PRODUCT',
+    sku: 'SKURING',
+    description: { main: 'Really Pretty', size: 'baby' },
+    price: 1000,
+    quantity: 10
+  };
 
     let productToPost = {
       name: 'Some dope piece of jewelry',

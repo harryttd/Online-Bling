@@ -4,9 +4,11 @@ const db = require('APP/db');
 const { Address, User } = require('APP/db/models');
 const app = require('APP/server/start');
 
-describe('Route Testing: test for /api/address/', () => {
+describe('!----- Backend API Route - /api/address -----!', () => {
 
-  before('wait for the db', () => db.didSync);
+  before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true }))
+  )
 
   after(() =>
       User.truncate({ cascade: true })

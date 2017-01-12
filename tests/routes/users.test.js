@@ -4,7 +4,14 @@ const db = require('APP/db')
 const User = require('APP/db/models/user')
 const app = require('APP/server/start')
 
-describe('/api/users', () => {
+describe('!----- Backend API Route - /api/user -----!', () => {
+
+  before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true }))
+  )
+
+  after('clear db', () => User.truncate({ cascade:true }));
+
   describe('when not logged in', () => {
     it('GET /:id fails 401 (Unauthorized)', () =>
       request(app)
