@@ -1,14 +1,17 @@
-const expect = require('chai').expect;
-const Product = require('APP/db/models/product');
+'use strict';
 const db = require('APP/db');
+const { Product } = require('APP/db/models');
+const { expect } = require('chai');
 
-describe('Product Model', function() {
+describe('!----- Backend Database Model - Product -----!', () => {
 
-  before('wait for the db', () => db.didSync)
-
-  after('clear db', () => 
-    Product.truncate({ cascade: true })
+  before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true }))
   )
+
+  // after('clear db', () => 
+  //   Product.truncate({ cascade: true })
+  // )
 
   let product;
   beforeEach(function(){
@@ -19,11 +22,6 @@ describe('Product Model', function() {
       price: 1000,
       quantity: 10
     });
-  });
-
-  //  We empty the tables after each spec
-  after(function () {
-    return Product.truncate({ cascade: true });
   });
 
   describe('model attributes', function() {

@@ -4,14 +4,11 @@ const db = require('APP/db');
 const { Address, User } = require('APP/db/models')
 const expect = require('chai').expect;
 
-describe('Address Model', () => {
+describe('!----- Backend Database Model - Address -----!', () => {
 
-  before('wait for the db', () => db.didSync)
-
-  after('clear db', () => {
-    return User.truncate({ cascade: true })
-      .then(()=>Address.truncate({ cascade: true }));
-  })
+  before('wait for the db', () => db.didSync
+    .then(()=>db.sync({force:true}))
+    )
 
   let data = {
     user: { name: 'so many', email: 'god@example.com', password: '1234' },
@@ -113,7 +110,6 @@ describe('Address Model', () => {
     })
 
     describe('country field', () => {
-
       it('should not be null', () => {
         address.country = null
         return address.validate()

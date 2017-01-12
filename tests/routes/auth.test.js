@@ -9,9 +9,10 @@ const alice = {
   password: '12345'
 }
 
-describe('/api/auth', () => {
+describe('!----- Backend API Route - /api/auth -----!', () => {
   before('create a user', () =>
     db.didSync
+      .then(() => db.sync({force:true}))
       .then(() =>
         User.create(
           {email: alice.username,
@@ -19,6 +20,8 @@ describe('/api/auth', () => {
         })
       )
   )
+
+  after('clear db', () => User.truncate({cascade:true}))
 
   describe('POST /local/login (username, password)', () => {
     it('succeeds with a valid username and password', () =>

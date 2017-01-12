@@ -4,14 +4,13 @@ const db = require('APP/db');
 const { Category } = require('APP/db/models');
 const expect = require('chai').expect;
 
-describe('Category Model', function() {
+describe('!----- Backend Database Model - Category -----!', () => {
 
-  before('wait for the db', () => db.didSync)
+  before('wait for the db', () => db.didSync
+    .then(()=>db.sync({force:true}))
+    )
 
-  after('clear db', () => 
-    User.truncate({ cascade: true })
-  )
-
+  
   let category;
   beforeEach(function() {
     category = Category.build({
@@ -23,6 +22,9 @@ describe('Category Model', function() {
   afterEach(function() {
     return Category.truncate({ cascade: true });
   })
+
+  // after('clear db', () => Category.truncate({ cascade: true }))
+
 
   describe('model attributes', function() {
     it('should exist', function() {

@@ -4,9 +4,11 @@ const db = require('APP/db');
 const { Product_Review } = require('APP/db/models');
 const { expect } = require('chai');
 
-describe('Product Model', () => {
+describe('!----- Backend Database Model - Product Review -----!', () => {
 
-  before('wait for the db', () => db.didSync)
+  before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true }))
+  )
 
   after('clear db', () =>
     Product_Review.truncate({ cascade: true })

@@ -4,43 +4,47 @@ const db = require('APP/db');
 const { Product } = require('APP/db/models');
 const app = require('APP/server/start');
 
-describe('Testing for /api/product', () => {
+describe('!----- Backend API Route - /api/product -----!', () => {
 
-  before('wait for the db', () => db.didSync);
+  before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true }))
+  )
 
-    let productData = {
-      name: 'TEST PRODUCT',
-      sku: 'SKURING',
-      description: { main: 'Really Pretty', size: 'baby' },
-      price: 1000,
-      quantity: 10
-    };
+  after('clear db', () => Product.truncate({ cascade: true }));
 
-    before('Build Product instance', () =>
-      Product.create(productData)
-      // .then(res => console.log(res))
-      // .catch(err => console.log('ERR', err))
-    );
+  let productData = {
+    name: 'TEST PRODUCT',
+    sku: 'SKURING',
+    description: { main: 'Really Pretty', size: 'baby' },
+    price: 1000,
+    quantity: 10
+  };
 
-    it('GET /product gets all products', () =>
-      request(app)
-        .get(`/api/product`)
-        .expect(200)
-        .then(res => {
-          // console.log('res response');
-          // console.log(res.body);
-          expect(res.body).to.be.an('array');
-        })
-    );
+  before('Build Product instance', () =>
+    Product.create(productData)
+    // .then(res => console.log(res))
+    // .catch(err => console.log('ERR', err))
+  );
 
-    it('GET /product/:id gets target product by id', () =>
-      request(app)
-        .get(`/api/product/1`)
-        .expect(200)
-        .then(res => {
-          // console.log(res.data);
-          expect(res.body).to.be.an('object');
-          expect(res.body.sku).to.be.equal(productData.sku);
-        })
-    );
+  it('GET /product gets all products', () =>
+    request(app)
+    .get(`/api/product`)
+    .expect(200)
+    .then(res => {
+      // console.log('res response');
+      // console.log(res.body);
+      expect(res.body).to.be.an('array');
+    })
+  );
+
+  it('GET /product/:id gets target product by id', () =>
+    request(app)
+    .get(`/api/product/1`)
+    .expect(200)
+    .then(res => {
+      // console.log(res.data);
+      expect(res.body).to.be.an('object');
+      expect(res.body.sku).to.be.equal(productData.sku);
+    })
+  );
 });

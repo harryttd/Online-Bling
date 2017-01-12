@@ -4,8 +4,10 @@ const db = require('APP/db')
 const { User } = require('APP/db/models')
 const { expect } = require('chai')
 
-describe('User Model', () => {
-  before('wait for the db', () => db.didSync)
+describe('!----- Backend Database Model - User -----!', () => {
+  before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true }))
+  )
 
   after('clear db', () => 
     User.truncate({ cascade: true })
