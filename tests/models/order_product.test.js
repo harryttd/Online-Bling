@@ -10,7 +10,7 @@ const Address = require('APP/db/models/address')
 
 const { expect } = require('chai');
 
-describe.only('Order Product Model', () => {
+describe('Order Product Model', () => {
 
 
     let data = {
@@ -86,10 +86,10 @@ describe.only('Order Product Model', () => {
     })
 
     describe('create rows in database', () => {
-    	
+
         it('Order product belongs to Product', () => {
             OrderProduct.findAll()
-                .then(res => {                    
+                .then(res => {
                     expect(res.length).to.be.equal(5)
                 })
         })
@@ -100,18 +100,18 @@ describe.only('Order Product Model', () => {
     		let orderProduct;
     		beforeEach('belongs to', ()=>{
     				OrderProduct.findById(1)
-    					.then(res=>{orderProduct = res})	
+    					.then(res=>{orderProduct = res})
     		})
-    		
+
 
         it('Order', () => {
         		OrderProduct.findById(1)
     					.then(res=>{
     						orderProduct = res
     						return Order.findById(orderProduct.order_id)
-    					}).then(res => {                   
+    					}).then(res => {
                   expect(res.total).to.be.equal(24)
-              })               
+              })
         })
 
         it('Product', () => {
@@ -119,9 +119,9 @@ describe.only('Order Product Model', () => {
     					.then(res=>{
     						orderProduct = res
     						return Product.findById(orderProduct.product_id)
-    					}).then(res => {                   
+    					}).then(res => {
                   expect(res.name).to.be.equal('Diamond Ring')
-              })               
+              })
         })
     })
 
