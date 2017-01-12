@@ -4,7 +4,7 @@ const db = require('APP/db');
 const Category = require('APP/db/models/category');
 const app = require('APP/server/start');
 
-describe('category route', () => {
+describe.only('category route', () => {
 	before('wait for the db', () => db.didSync);
 
 	let categoryData = {
@@ -21,7 +21,7 @@ describe('category route', () => {
 	);
 
 	describe('routings', () => {
-		it('GET / should return all orders', () => 
+		it('GET / should return all categories', () => 
 			request(app)
 			.get(`/api/category`)
 			.expect(200)

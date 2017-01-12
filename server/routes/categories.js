@@ -17,21 +17,8 @@ router.get('/:id', (req, res, next) =>
 
 router.post('/', (req, res, next) => 
 	Category.create(req.body)
-	.then(order => res.status(201).json(order))
+	.then(category => res.status(201).json(category))
 	.catch(next))
-
-
-router.put('/:id', (req, res, next) => 
-	Category.update(req.body,
-		{
-			where: {
-				id: req.params.id
-			}
-		})
-		.then(count => 
-			res.status(201).json(updated)
-		)
-		.catch(next))
 
 
 router.put('/:id', (req, res, next) =>
