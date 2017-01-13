@@ -1,14 +1,10 @@
 import axios from 'axios';
+import {SET, REMOVE} from '../action-types';
 
-/* -----------------    ACTIONS     ------------------ */
+/* ------------       ACTION-CREATORS    ------------------ */
 
-const SET    = 'SET_CURRENT_USER'
-const REMOVE = 'REMOVE_CURRENT_USER'
-
-/* ------------   ACTION CREATORS     ------------------ */
-
-const set     = user => ({ type: SET, user })
-const remove  = () => ({ type: REMOVE })
+export const set     = user => ({ type: SET, user });
+export const remove  = () => ({ type: REMOVE });
 
 /* ------------       REDUCER     ------------------ */
 
