@@ -10,7 +10,7 @@ import Homepage from './components/Homepage';
 export default () => (
   <Provider store={store}>
     <Router history={browserHistory}>
-    <Route path="/" component={Homepage} />
+      <Route path="/" component={Homepage} />
     </Router>
   </Provider>
 );
