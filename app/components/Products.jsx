@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 export default ({ products }) => (
     <div>
       <h3>PRODUCTS</h3>
+      {console.log("PRODUCTS", products)}
       <div className="row">
         {
           products && products.map(product => (

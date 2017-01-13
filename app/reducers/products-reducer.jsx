@@ -6,6 +6,7 @@ const initialProductsState = {
 };
 
 export default (state = initialProductsState, action) => {
+  console.log("REDUCER HERE");
 
   const newState = Object.assign({}, state);
 

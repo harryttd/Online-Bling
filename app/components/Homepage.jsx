@@ -3,8 +3,8 @@ import { Link } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-export default () => {
-	console.log('test time');
+export default (props) => {
+	console.log('test time', props);
 	return (
 		<div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <h1>Online Bling</h1>
