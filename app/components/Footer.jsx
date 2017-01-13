@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Router, Route, Link } from 'react-router'
+import { Link } from 'react-router';
 
 export default class Footer extends Component {
-	onFormSubmit: function(e) {
-		e.preventDefault();
+	onFormSubmit(event) {
+		event.preventDefault();
 
 		var subscription = this.refs.subscription.value;
 		if(subscription.length > 0) {
@@ -11,10 +11,10 @@ export default class Footer extends Component {
 			//Need to create onSubscribe function in Homepage.jsx
 			this.props.onSubscribe(subscription);
 		}
-	},
+	}
 
 	render() {
-		console.log('test time')
+		console.log('test time');
 		return (
 			<div className="footer" role="footer">
 				<div className="container">
@@ -63,28 +63,28 @@ export default class Footer extends Component {
 							<h4>New releases, exclusive promotions + more</h4>
 							<h4><i>Welcome to the MACHO!</i></h4>
 							<form onSubmit={this.onFormSubmit}>
-								<input type="submit" ref="subscription" placeholder="Your Email"/>
+								<input type="submit" ref="subscription" placeholder="Your Email" />
 								<button type="button">Submit</button>
 							</form>
 							<ul className="social-icon">
 								<li id="facebook-icon">
 									<a href="www.facebook.com">
-										<img src="facebook-icon.png" alt="Facebook Icon"/>
+										<img src="facebook-icon.png" alt="Facebook Icon" />
 									</a>
 								</li>
 								<li id="twitter-icon">
 									<a href="www.twitter.com">
-										<img src="twitter-icon.png" alt="Twitter Icon"/>
+										<img src="twitter-icon.png" alt="Twitter Icon" />
 									</a>
 								</li>
 								<li id="instagram-icon">
 									<a href="www.instagram.com">
-										<img src="instagram-icon.png" alt="Instagram Icon"/>
+										<img src="instagram-icon.png" alt="Instagram Icon" />
 									</a>
 								</li>
 								<li id="pinterest-icon">
 									<a href="www.pinterest.com">
-										<img src="pinterest-icon.png" alt="Pinterest Icon"/>
+										<img src="pinterest-icon.png" alt="Pinterest Icon" />
 									</a>
 								</li>
 							</ul>
@@ -92,6 +92,6 @@ export default class Footer extends Component {
 					</div>
 				</div>
 			</div>
-		)
+		);
 	}
 }
