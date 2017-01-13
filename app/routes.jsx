@@ -3,14 +3,30 @@ import React from 'react';
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
 import {render} from 'react-dom';
 import {connect, Provider} from 'react-redux';
+import axios from 'axios';
 import store from './store';
 
 import Homepage from './components/Homepage';
+import Products from './containers/ProductsContainer';
+
+import { receiveProducts } from './action-creators/products';
+
+// const onAppEnter = () => {
+//   const products = axios.get('/api/product');
+//   return Promise
+//     .all([products])
+//     .then(responses => responses.map(r => r.data))
+//     .then(([products]) => {
+//       store.dispatch(receiveProducts(products));
+//     });
+// };
+
+// <Route path="/products" component={Products} onEnter={onAppEnter} />
 
 export default () => (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Homepage} />
+        <Route path="/" component={Homepage}  />
     </Router>
   </Provider>
 );
