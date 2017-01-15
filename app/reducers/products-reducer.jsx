@@ -10,9 +10,9 @@ export default (products = [], action) => {
       return action.products;
 
     case RECEIVE_PRODUCT:
-      return products.filter(product => (
-        action.product.id === product.id
-      ))[0];
+      return products.map(product => (
+        action.product.id === product.id ? action.product : product
+      ));
 
     default:
       return products;
