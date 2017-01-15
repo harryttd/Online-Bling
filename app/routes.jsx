@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
 import Root from './components/Root';
 
 import Homepage from './components/Homepage';
@@ -12,11 +12,12 @@ import Signup from './components/Signup';
 export default ({ onAppEnter, onProductEnter }) => (
   <Router history={browserHistory}>
     <Route path="/" component={Root} onEnter={onAppEnter}>
-    {/*<IndexRoute component={Homepage} />*/}
+    <IndexRoute component={Homepage} />
       <Route path="/products" component={ProductsContainer} />
       <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="*" component={Homepage} />
     </Route>
   </Router>
 );
