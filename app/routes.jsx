@@ -12,7 +12,7 @@ import Signup from './components/Signup';
 export default ({ onAppEnter, onProductEnter }) => (
   <Router history={browserHistory}>
     <Route path="/" component={Root} onEnter={onAppEnter}>
-    {/*<Route path="/home" component={Homepage} />*/}
+    {/*<IndexRoute component={Homepage} />*/}
       <Route path="/products" component={ProductsContainer} />
       <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
       <Route path="/login" component={Login} />
