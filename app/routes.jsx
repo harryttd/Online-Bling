@@ -6,6 +6,7 @@ import Root from './components/Root';
 import Homepage from './components/Homepage';
 import ProductsContainer from './containers/ProductsContainer';
 import ProductContainer from './containers/SingleProductContainer';
+import Login from './components/Login';
 
 export default ({ onAppEnter, onProductEnter }) => (
   <Router history={browserHistory}>
@@ -13,6 +14,7 @@ export default ({ onAppEnter, onProductEnter }) => (
     {/*<Route path="/home" component={Homepage} />*/}
       <Route path="/products" component={ProductsContainer} />
       <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
+      <Route path="/login" component={Login} />
     </Route>
   </Router>
 );
