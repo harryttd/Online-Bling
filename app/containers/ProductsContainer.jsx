@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Products from '../components/Products';
 
-const mapState = state => ({ products: state.products });
+const mapState = ({ products }) => ({ products: products.list });
 
 const mapDispatch = null;
 

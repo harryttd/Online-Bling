@@ -1,23 +1,28 @@
 import {RECEIVE_PRODUCTS, RECEIVE_PRODUCT} from '../action-types';
 
-export default (products = [], action) => {
+const initialState = {
+  list: [],
+  selectedProduct: {}
+};
 
-  // const newState = Object.assign({}, products);
+export default (state = initialState, action) => {
+
+  const newState = Object.assign({}, state);
 
   switch (action.type) {
 
     case RECEIVE_PRODUCTS:
-      return action.products;
+      newState.list = action.products;
+      break;
 
     case RECEIVE_PRODUCT:
-      return products.map(product => (
-        action.product.id === product.id ? action.product : product
-      ));
+      newState.selectedProduct = action.product;
+      break;
 
     default:
-      return products;
+      return state;
 
   }
 
-  // return newState;
+  return newState;
 };
