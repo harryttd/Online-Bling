@@ -3,14 +3,14 @@ import { Link } from 'react-router';
 
 export default ({ products }) => (
     <div>
-      <h3>PRODUCTS</h3>
       {console.log("PRODUCTS", products)}
+      <h3>PRODUCTS</h3>
       <div className="row">
         {
           products && products.map(product => (
             <div className="col-xs-4" key={ product.id }>
               <Link className="thumbnail" to={`/product/${product.id}`}>
-                <img src={ product.imageUrl }/>
+                <img src={ product.image } />
                 <div className="caption">
                   <h5>
                     <span>{ product.name }</span>

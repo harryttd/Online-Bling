@@ -1,12 +1,6 @@
 import {RECEIVE_PRODUCTS, RECEIVE_PRODUCT} from '../action-types';
 
-const initialProductsState = {
-  selected: {},
-  list: []
-};
-
-export default (state = initialProductsState, action) => {
-  console.log("REDUCER HERE");
+export default (state = [], action) => {
 
   const newState = Object.assign({}, state);
 
@@ -17,7 +11,7 @@ export default (state = initialProductsState, action) => {
       break;
 
     case RECEIVE_PRODUCT:
-      newState.selected = action.product;
+      // newState.selected = action.product;
       break;
 
     default:

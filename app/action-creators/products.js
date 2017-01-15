@@ -1,5 +1,4 @@
 import { RECEIVE_PRODUCTS, RECEIVE_PRODUCT } from '../action-types';
-import axios from 'axios';
 
 export const receiveProducts = products => ({
     type: RECEIVE_PRODUCTS,
@@ -10,12 +9,3 @@ export const receiveProduct = product => ({
     type: RECEIVE_PRODUCT,
     product
 });
-
-export const getProductById = productId => {
-  return dispatch => {
-    axios.get(`/api/products/${productId}`)
-      .then(response => {
-        dispatch(receiveProduct(response.data));
-      });
-  };
-};
