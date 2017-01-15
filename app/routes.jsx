@@ -5,12 +5,14 @@ import Root from './components/Root';
 
 import Homepage from './components/Homepage';
 import ProductsContainer from './containers/ProductsContainer';
+import ProductContainer from './containers/SingleProductContainer';
 
-export default ({ onAppEnter }) => (
+export default ({ onAppEnter, onProductEnter }) => (
   <Router history={browserHistory}>
     <Route path="/" component={Root} onEnter={onAppEnter}>
     {/*<Route path="/home" component={Homepage} />*/}
       <Route path="/products" component={ProductsContainer} />
+      <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
     </Route>
   </Router>
 );

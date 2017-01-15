@@ -9,9 +9,8 @@ const mapDispatch = dispatch => ({
     // dispatch(retrieveLoggedInUser());
     dispatch(getProducts());
   },
-  onProductEnter: (nextRouterState) => {
-    dispatch(getProductById(nextRouterState.params.id));
-  }
+  onProductEnter: (nextRouterState) =>
+  dispatch(getProductById(nextRouterState.params.productId))
 });
 
 export default connect(mapState, mapDispatch)(Routes);
