@@ -1,0 +1,12 @@
+// import common global scope css and sass variable
+@import './layout.scss';
+
+// common component stylesheets
+@import './Navbar.scss';
+@import './Footer.scss';
+
+// page component stylesheets
+@import './Home.scss';
+@import './Products.scss';
+@import './Cart.scss';
+@import './Users.scss';

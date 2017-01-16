@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 const Root = ({ children }) => (
-  <div id="main" className="container-fluid">
+  <div>
     <Navbar />
     { children }
     <Footer />

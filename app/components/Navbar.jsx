@@ -15,27 +15,49 @@ class Navbar extends React.Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-default">
-        <div className="container">
-          <div className="navbar-header">
-            <Link className="navbar-brand" to="/"><img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/11/09/16/Drake-Hotline-Bling.jpg" height='40' width ='40' /></Link>
-          </div>
-          <div className="collapse navbar-collapse">
-            <ul className="nav navbar-nav">
-              <li>
-                <Link to="/shop" activeClassName="active">SHOP</Link>
-              </li>
-              <li>
-                <Link to="/about" activeClassName="active">ABOUT</Link>
-              </li>
-							<li>
-                <Link to="/press" activeClassName="active">PRESS</Link>
-              </li>
-            </ul>
-            { this.props.currentUser ? this.renderLogout() : this.renderLoginSignup() }
-          </div>
+      <div className="navbar main">
+        <div className="menu-wrapper">
+          <ul className="left-align">
+            <li>
+              <Link to="/products">SHOP</Link>
+              <div className="submenu-wrapper">
+                <ul>
+                  <li><Link>Category 1</Link></li>
+                  <li><Link>Category 2</Link></li>
+                  <li><Link>Category 3</Link></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <Link>ABOUT</Link>
+            </li>
+            <li>
+              <Link>PRESS</Link>
+            </li>
+          </ul>         
         </div>
-      </nav>
+        <div className="logo">Online Bling</div>
+        <div className="iconmenu-wrapper">
+          <ul className="right-align">          
+            <li>
+              <Link><i className="fa fa-user" aria-hidden="true"></i></Link>             
+            </li>           
+            <li>
+              <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>             
+            </li>           
+            <li className="search-wrapper">             
+              <div className="form-wrapper">
+                <form action="/api/search" method="get" role="search">                
+                  <input name="search" type="text" placeholder="SEARCH..." className="search-box-form hint text" />
+                  <button type="submit" className="fa fa-search"></button>
+                </form>               
+              </div>
+              <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>        
+              <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>                    
+            </li>           
+          </ul>                 
+        </div>
+      </div>      
     );
   }
 

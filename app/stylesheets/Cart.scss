@@ -1,0 +1,29 @@
+.cart-list{
+	.cart-table{
+		.thumbnail {
+			margin: 0;
+
+		}
+
+		tbody tr td {
+			vertical-align: middle;
+		}
+		
+	}
+	button {
+		overflow: hidden;
+    background-color: #fff;
+    width: 105px;
+    height: 34px;
+    color: #FD3F7B;
+    border: 2px solid #FD3F7B;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: capitalize;
+	}
+}
+
+
+
