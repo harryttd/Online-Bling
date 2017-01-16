@@ -29,62 +29,66 @@ export default class Footer extends Component {
 	render() {
 		console.log('test time');
 		return (
-			<div className="row">
-				<div className="column">
-					<h6><strong>SHOP</strong></h6>
-                    <Link to="/rings">Rings</Link>
-                    <Link to="/necklaces">Necklaces</Link>
-                    <Link to="/bracelets">Bracelets</Link>
-                    <Link to="/earrings">Earrings</Link>
-                    <Link to="/sunglasses">Sunglasses</Link>
-				</div>
+      <div className="footer container-fluid">
+        <div className="row">
+          <div className="col-xs-6 col-lg-4">
+            <h4><strong>SHOP</strong></h4>
+            <ul>
+              <li>
+                <Link><span>CATEGORY 1</span></Link>
+              </li>
+              <li>
+                <Link><span>CATEGORY 2</span></Link>
+              </li>
+              <li>
+                <Link><span>CATEGORY 3</span></Link>
+              </li>
+              <li>
+                <Link><span>CATEGORY 4</span></Link>
+              </li>
+            </ul>
+          </div>
+          <div className="col-xs-6 col-lg-4">
+            <h4><strong>NEED HELP?</strong></h4>
+            <ul>
+              <li>
+                <Link><span>FAQ</span></Link>
+              </li>
+              <li>
+                <Link><span>CONTACT</span></Link>
+              </li>
+              <li>
+                <Link><span>SHIPPING + RETURN</span></Link>
+              </li>
+              <li>
+                <Link><span>TERMS + CONDITION</span></Link>
+              </li>
+            </ul>
+          </div>
+          <div className="col-xs-12 col-lg-4">
+            <h4><strong>GET LASTED FROM ONLINE BLING</strong></h4>            
 
-				<div className="column">
-            <h6><strong>NEED HELP?</strong></h6>
-            <h6>FAQ</h6>
-            <h6>CONTACT</h6>
-            <h6>SHIPPING + RETURN</h6>
-            <h6>TERMS + CONDITIONS</h6>
-        </div>
-        
-        <div className="column">
-            <h6><strong>GET LASTED FROM ONLINE BLING</strong></h6>
-            <h6>New releases, exclusive promotions + more</h6>
+            <form className="subscription-form" onSubmit={(e)=>(this.onFormSubmit(e))}>
+              <div>
+                <label>New releases, exclusive promotions + more</label>
+                <input type="email" className="form-control" name="email" placeholder="Email" />
+              </div>              
+              <button type="submit" className="btn btn-default">Submit</button>
+            </form>
 
-            <div>
-            	<form onSubmit={(e)=>(this.onFormSubmit(e))}>
-            		<input type="text" name="subscriptionEmail" placeholder="Your Email" />
-            		<button type="submit">Submit</button>
-            	</form>
-       			<ul className="social-icon">
-       				<li>
-       					<a href="www.facebook.com">
-       						<img src="facebook-icon.png" alt="Facebook Icon" />
-       					</a>
-       				</li>
-       				<li>
-       					<a href="www.twitter.com">
-       						<img src="twitter-icon.png" alt="Twitter Icon" />
-       					</a>
-       				</li>
-       				<li>
-       					<a href="www.instagram.com">
-       						<img src="instagram-icon.png" alt="Instagram Icon" />
-       					</a>
-       				</li>
-       				<li>
-       					<a href="www.pinterest.com">
-       						<img src="pinterest-icon.png" alt="Pinterest Icon" />
-       					</a>
-       				</li>
-       			</ul>
+            <div className="social-icons">
+              <Link><i className="fa fa-facebook" aria-hidden="true"></i></Link>
+              <Link><i className="fa fa-twitter" aria-hidden="true"></i></Link>
+              <Link><i className="fa fa-instagram" aria-hidden="true"></i></Link>
+              <Link><i className="fa fa-pinterest-p" aria-hidden="true"></i></Link>
             </div>
-
-            <div className="row">
-        		<div className="column">ONLINE BLING® is registered trademarks of , Drake Shits Gold LLC</div>
-      		</div>
+            
+          </div>          
         </div>
-			</div>	
+        <div className="row">
+          <div className="col-xs-12 text-center">ONLINE BLING® is registered trademarks of , Drake Shits Gold LLC</div>
+        </div>
+      </div>
 		);
 	}
 }
