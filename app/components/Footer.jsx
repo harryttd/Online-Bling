@@ -63,7 +63,7 @@ export default class Footer extends Component {
 							<h4>New releases, exclusive promotions + more</h4>
 							<h4><i>Welcome to the MACHO!</i></h4>
 							<form onSubmit={this.onFormSubmit}>
-								<input type="submit" ref="subscription" placeholder="Your Email" />
+								<input type="text" ref="subscription" placeholder="Your Email" />
 								<button type="button">Submit</button>
 							</form>
 							<ul className="social-icon">
