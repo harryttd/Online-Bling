@@ -6,6 +6,9 @@ import {render} from 'react-dom';
 import store from './store';
 import Routes from './containers/RoutesContainer';
 
+
+require('./stylesheets/style.scss');
+
 render(
   <Provider store={store}>
     <Routes />

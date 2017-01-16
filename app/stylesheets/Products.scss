@@ -1,0 +1,76 @@
+.product-grid{
+	.image-wrapper {
+		img {
+			width: 100%
+		}
+	}	
+	.product-info {
+		text-align: center;
+
+		span {
+			font-size: 1.1em
+		}		
+	}
+}
+
+.product-detail{
+	
+	.product-info {
+		.row {
+			margin: 10px 0;
+		}
+		.name {
+			font-size: 3em;
+		}
+		.price {
+			font-size: 2.5em;
+		}
+
+		.tab-content {
+			ul {
+				padding: 20px 0 20px 20px;
+    		list-style-type: circle;
+			}
+			p {
+		    padding: 20px 0;
+			}
+		}
+	}
+	.product-image {
+		.image-slide {
+			height: 100vh;
+			background-image: url('/images/products/StLouis-Audubon-Blue-Website-Quarters_1024x1024.png');		
+			background-position: center; 
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+		}
+	}
+}
+
+.add-cart {
+	input {
+		width: 100%;
+		color: #FD3F7B;
+		border: 2px solid #FD3F7B;
+		border-radius: 15px;
+		text-align: center;
+		padding: 5px 10px;
+		/* transition:  all 0.5s ease;   */
+	}
+	button {
+    overflow: hidden;
+    background-color: #fff;
+		width: 105px;
+		height: 34px;		
+    color: #FD3F7B;
+    border: 2px solid #FD3F7B;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: capitalize;
+    /* transition: all 0.8s ease; */
+
+	}
+}
+
