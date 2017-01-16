@@ -25,7 +25,7 @@ const testUtilities = {
 };
 const products = testUtilities.createProducts();
 
-describe.only('Products Component', () => {
+describe('Products Component', () => {
   // console.log(products);
   let component;
   beforeEach('make component', () => {
