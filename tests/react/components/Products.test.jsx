@@ -25,7 +25,7 @@ const testUtilities = {
 };
 const products = testUtilities.createProducts();
 
-describe.only('Prouducts', () => {
+describe.only('Products Component', () => {
   // console.log(products);
   let component;
   beforeEach('make component', () => {
@@ -33,9 +33,7 @@ describe.only('Prouducts', () => {
   });
 
   it('has three products', () => {
-    const el = component.find('.row');
-    // const el = component.find(Products);
-    console.log(el);
-    // expect(el.props.products).to.be.equal(3);
+    expect(component.is('div')).to.be.equal(true);
+    expect(component.find(".col-xs-4").length).to.be.equal(3);
   });
 });
