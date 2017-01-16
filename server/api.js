@@ -12,7 +12,7 @@ api
   .use('/category', require('./routes/categories'))
   .use('/order', require('./routes/order'))
   .use('/product', require('./routes/product'))
-  .use('/productReview', require('./routes/product-review'))
+  // .use('/productReview', require('./routes/product-review'))
   .use('/orderProduct', require('./routes/order-product'))
 // Send along any errors
 api.use((err, req, res, next) => {

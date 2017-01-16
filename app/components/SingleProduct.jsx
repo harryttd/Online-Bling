@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductDescription from './ProductDescription';
+import SingleReview from './SingleReview';
 
 export default ({ product }) => (
   <div className="product">
@@ -10,5 +11,6 @@ export default ({ product }) => (
 
     <h5>SKU: {product.sku}</h5>
     <h4>${product.price}</h4>
+    
   </div>
 );
