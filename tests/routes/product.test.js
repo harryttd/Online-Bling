@@ -6,10 +6,8 @@ const app = require('APP/server/start');
 
 describe('!----- Backend API Route - /api/product -----!', () => {
 
-  before('wait for the db', () => db.didSync);
-  after('Synchronize and clear database', () => db.sync({force: true}));
-
-  after('clear db', () => Product.truncate({ cascade: true }));
+  before('wait for the db', () => db.didSync
+    .then(() => db.sync({ force: true })));
 
   let productData = {
     name: 'TEST PRODUCT',
