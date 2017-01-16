@@ -28,23 +28,23 @@ export const login = credentials => dispatch => {
   axios.post('/auth/login', credentials)
        .then(res => dispatch(set(res.data)))
        .catch(err => console.error('Login unsuccesful', err));
-}
+};
 
 export const signup = credentials => dispatch => {
   axios.post('/auth/signup', credentials)
        .then(res => dispatch(set(res.data)))
        .catch(err => console.error('Signup unsuccesful', err));
-}
+};
 
 export const retrieveLoggedInUser = () => dispatch => {
   axios.get('/auth/me')
       .then(res => dispatch(set(res.data)))
       .catch(err => console.error('retrieveLoggedInUser unsuccesful', err));
-}
+};
 
 // optimistic
 export const logout = () => dispatch => {
-  dispatch(remove())
+  dispatch(remove());
   axios.get('/auth/logout')
        .catch(err => console.error('logout unsuccesful', err));
-}
+};

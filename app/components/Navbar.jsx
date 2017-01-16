@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
-import { logout } from '../action-creators/auth';
+// import { logout } from '../action-creators/auth';
+import { logout } from '../reducers/auth';
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -10,8 +11,8 @@ class Navbar extends React.Component {
     super(props);
     this.renderLoginSignup = this.renderLoginSignup.bind(this);
     this.renderLogout = this.renderLogout.bind(this);
+    console.log("PROPS", this.props);
   }
-
   render() {
     return (
       <nav className="navbar navbar-default">
@@ -66,7 +67,7 @@ class Navbar extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapProps = ({ currentUser }) => ({ currentUser });
+const mapProps = ({ auth }) => ({ currentUser: auth });
 
 const mapDispatch = dispatch => ({
   logout: () => {

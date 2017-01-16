@@ -3,7 +3,7 @@ import chai, {expect} from 'chai'
 chai.use(require('chai-enzyme')())
 import {shallow} from 'enzyme'
 
-import Jokes from './Jokes'
+import Jokes from 'APP/app/components/Jokes'
 
 describe('<Jokes />', () => {
   const joke = {
