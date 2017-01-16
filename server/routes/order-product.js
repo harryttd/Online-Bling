@@ -13,16 +13,19 @@ module.exports = express.Router()
 	.get('/:id', (req, res, next) => {
     OrderProduct.findById(req.params.id)
     .then(orderProduct => res.json(orderProduct))
+		.catch(next)
 	})
 
   .get('/order/:orderId', (req, res, next) => {
-    OrderProduct.findAll({
-      where:{
-        order_id: req.params.orderId
+		OrderProduct.findAll({
+			where: {
+				order_id: req.params.orderId
       }
     })
     .then(orderProduct => res.json(orderProduct))
+		.catch(next)
 	})
+
 
 	.post('/', (req, res, next)=>{
 		OrderProduct.create(req.body)
@@ -45,4 +48,5 @@ module.exports = express.Router()
     OrderProduct.findById(req.params.id)
     .then(orderProduct => orderProduct.destroy())
 		.then( () => res.status(204).end())
+		.catch(next)
 	})
