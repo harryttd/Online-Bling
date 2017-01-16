@@ -1,45 +1,31 @@
-'use strict'
+'use strict';
 import React from 'react';
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
-import {render} from 'react-dom';
-import {connect, Provider} from 'react-redux';
-import store from './store';
+import {Router, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
+import Root from './components/Root';
 
 import Homepage from './components/Homepage';
-import About from './components/About';
-import Checkout from './components/Checkout';
+import ProductsContainer from './containers/ProductsContainer';
+import ProductContainer from './containers/SingleProductContainer';
 import Login from './components/Login';
-
-
+import Signup from './components/Signup';
 import ReviewList from './components/ReviewList';
 import SingleReview from './components/SingleReview';
+import About from './components/About';
+import Checkout from './components/Checkout';
 
-export default () => (
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={Homepage} />
+export default ({ onAppEnter, onProductEnter }) => (
+  <Router history={browserHistory}>
+    <Route path="/" component={Root} onEnter={onAppEnter}>
+    <IndexRoute component={Homepage} />
       <Route path="/about" component={About} />
       <Route path="/checkout" component={Checkout} />
+      <Route path="/products" component={ProductsContainer} />
+      <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
       <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path="*" component={Homepage} />
       <Route path="/reviews" component={ReviewList} />
       <Route path="/reviews/:reviewId" component={SingleReview} />
-    </Router>
-  </Provider>
+    </Route>
+  </Router>
 );
-
-
-// import Jokes from './components/Jokes';
-// import Login from './components/Login';
-// import WhoAmI from './components/WhoAmI';
-
-// const ExampleApp = connect(
-//   ({ auth }) => ({ user: auth })
-// ) (
-//   ({ user, children }) =>
-//     <div>
-//       <nav>
-//         {user ? <WhoAmI/> : <Login/>}
-//       </nav>
-//       {children}
-//     </div>
-// )

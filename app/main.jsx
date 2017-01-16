@@ -1,12 +1,14 @@
 'use strict';
 import React from 'react';
-import {render} from 'react-dom';
 import { Provider } from 'react-redux';
-import Routes from './routes';
+import {render} from 'react-dom';
+
 import store from './store';
+import Routes from './containers/RoutesContainer';
 
-const main = document.getElementById('main');
-
-render(<Provider store={store}>
-  <Routes />
-  </Provider>, main);
+render(
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
+  document.getElementById('main')
+);

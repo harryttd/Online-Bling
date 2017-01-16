@@ -46,7 +46,7 @@ export default class Footer extends Component {
             <h6>SHIPPING + RETURN</h6>
             <h6>TERMS + CONDITIONS</h6>
         </div>
-
+        
         <div className="column">
             <h6><strong>GET LASTED FROM ONLINE BLING</strong></h6>
             <h6>New releases, exclusive promotions + more</h6>
