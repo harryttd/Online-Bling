@@ -43,6 +43,8 @@
     "cookie-session": "^2.0.0-alpha.1",
     "enzyme": "^2.5.1",
     "express": "^4.14.0",
+    "faker": "^3.1.0",
+    "lodash": "^4.17.4",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
@@ -64,11 +66,11 @@
     "webpack": "^1.13.3",
     "redux-devtools-extension": "^1.0.0"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.1.2",
     "supertest": "^2.0.1",
     "supertest-as-promised": "^4.0.1",
-    "volleyball": "^1.4.1"    
+    "volleyball": "^1.4.1"
   }
 }

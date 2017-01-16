@@ -1,12 +1,8 @@
 import { connect } from 'react-redux';
-import { Products } from '../components/Products';
+import Products from '../components/Products';
 
-const mapState = state => {
+const mapState = ({ products }) => ({ products: products.list });
 
-};
-
-const mapDispatch = dispatch => {
-
-};
+const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(Products);
