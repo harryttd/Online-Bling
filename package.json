@@ -60,12 +60,12 @@
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "redux-devtools-extension": "^1.0.0"
   },
   "devDependencies": {    
     "chai": "^3.5.0",
     "mocha": "^3.1.2",
-    "redux-devtools-extension": "^1.0.0",
     "supertest": "^2.0.1",
     "supertest-as-promised": "^4.0.1",
     "volleyball": "^1.4.1"    
