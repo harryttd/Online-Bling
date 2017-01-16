@@ -13,7 +13,7 @@ describe('Review Reducers', () => {
 	it('has initial state', () => {
 		expect(testStore.getState()).to.deep.equal({
 			selectedReview: '',
-			allReviews: []
+			list: []
 		})
 	})
 
@@ -28,7 +28,7 @@ describe('Review Reducers', () => {
 
 		const newState = testStore.getState();
 
-		expect(newState.allReviews).to.deep.equal(multipleReviews)
+		expect(newState.list).to.deep.equal(multipleReviews)
 		expect(newState.selectedReview).to.equal('')
 	})
 
@@ -38,7 +38,7 @@ describe('Review Reducers', () => {
 
 		const newState = testStore.getState();
 
-		expect(newState.allReviews).to.deep.equal([]);
+		expect(newState.list).to.deep.equal([]);
 		expect(newState.selectedReview).to.equal(singleReview)
 	})
 })

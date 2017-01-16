@@ -2,14 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SingleReview from 'APP/app/components/SingleReview';
 
-const mapState = (state, getState) => {
-	return {
-		selectedReview: state.reviews.selectedReview;
-	}
-}
+const mapState = ({ reviews }) => ({ selectedReview: reviews.selectedReview });
 
-const dispatchState = (dispatch, getState) => {
-	return {}
-}
+const mapDispatch = null;
 
-export default connect(mapState, dispatchState)(SingleReview);
+export default connect(mapState, mapDispatch)(SingleReview);

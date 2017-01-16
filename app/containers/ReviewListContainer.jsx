@@ -2,14 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReviewList from 'APP/app/components/ReviewList';
 
-const mapState = (state, getState) => {
-	return (
-		reviews: state.reviews.allReviews
-	)
-}
+const mapState = ({ reviews }) => ({ reviews: reviews.list });
 
-const dispatchState = (dispatch, getState) => {
-	return {}
-}
+const mapDispatch = null;
 
-export default connect(mapState, dispatchState)(ReviewList);
+export default connect(mapState, mapDispatch)(ReviewList);

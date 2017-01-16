@@ -2,7 +2,7 @@ import { RECEIVE_REVIEWS, RECEIVE_REVIEW, receiveReviews, receiveReview} from 'A
 
 const reviewsInitialState = {
 	selectedReview: '',
-	allReviews: []
+	list: []
 }
 
 export default (state = reviewsInitialState, action) => {
@@ -13,7 +13,7 @@ export default (state = reviewsInitialState, action) => {
 			newState.selectedReview = action.review;
 			break;
 		case RECEIVE_REVIEWS:
-			newState.allReviews = action.reviews;
+			newState.list = action.reviews;
 			break;
 		default:
 			return state;
