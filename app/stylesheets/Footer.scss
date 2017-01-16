@@ -1,0 +1,32 @@
+.footer {
+	background-color: $lightgrey;
+
+	.row > div {
+		margin-top: 15px;
+	}
+
+
+	h4 {
+		margin-bottom: 10px;		
+	}
+	
+	ul {		
+		li {
+			margin-top: 10px;
+		}
+	}
+	
+
+	.subscription-form {
+		> div {
+			display: inline-block;
+		}
+	}
+
+	.social-icons {
+		margin-top: 10px;
+		display: inline-block;
+		font-size: 24px
+
+	}
+}

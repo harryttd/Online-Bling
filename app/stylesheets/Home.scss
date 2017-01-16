@@ -1,0 +1,46 @@
+.home {
+	width: 100;
+
+	> section {
+		margin-bottom: 50px;
+	}
+
+	.image-slide {
+		height: 100vh;
+
+		background-image: url('/images/WDF_790401.jpg');			
+		background-color: #1E3E4E;
+		background-position: center; 
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.promo-wrapper {
+
+
+		.row>div {
+			height: 350px;
+			background-position: center; 
+			background-size: 100%;
+			display: flex;
+			justify-content: center;
+			align-items:center;
+			color: white;
+
+			&.our-story{
+				background-image: url('/images/ourstory.jpg');			
+			},
+			&.new-arrival{
+				background-image: url('/images/newarrival.jpg');				
+			}
+
+			span {
+				padding: 15px;
+				font-size: 2em;
+				border: 3px solid white;				
+			}
+		}		
+	}
+}
+
+
