@@ -41,6 +41,18 @@ const Address = db.define('address', {
 			notEmpty: true
 		}
 	}
+},{
+	classMethods:{
+		reassignUser(prevUserId, nextUserId){
+			return Address.update({
+					user_id: nextUserId
+				},{
+					where: {
+						user_id: prevUserId
+					}
+				}).then(console.log)
+		}
+	}
 });
 
 /* potential improvements

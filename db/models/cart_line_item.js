@@ -8,6 +8,20 @@ const Cart_Line_Item = db.define('cart_line_item', {
     allowNull: false,
     validate: { notEmpty: true }
   }
-})
+
+  // Might need class / instance method to updateWhereUser()  
+},{
+	classMethods:{
+		reassignUser(prevUserId, nextUserId){
+			return Cart_Line_Item.update({
+					user_id: nextUserId
+				},{
+					where: {
+						user_id: prevUserId
+					}
+				}).then(console.log)
+		}
+	}
+});
 
 module.exports = Cart_Line_Item;
