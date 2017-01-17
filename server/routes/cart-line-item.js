@@ -28,13 +28,12 @@ module.exports = express.Router()
 	})
 
 	.post('/', (req, res, next) => {
-		CartLineItem.find({ where:
-			{ product_id: req.body.id }
+		CartLineItem.findOne({
+			where: { product_id: req.body.id }
 		})
 		.then(item => {
 			if (item) {
-				const currentQuantity = item.quantity;
-				return item.update({ quantity: currentQuantity + 1 });
+				return item.update({ quantity: item.quantity + 1 });
 			}
 			else {
 				CartLineItem.create({
@@ -42,7 +41,13 @@ module.exports = express.Router()
 					product_id: req.body.id
 				})
 				.then(createdLineItem => {
-					res.status(201).json(createdLineItem);
+					// console.log(createdLineItem);
+					// createdLineItem.getProduct().then(console.log)
+					CartLineItem.findOne({
+						where: { id: createdLineItem.id },
+						include: [{ model: Product }]
+					})
+					.then(itemWithProduct => res.status(201).json(itemWithProduct));
 				});
 			}
 		})

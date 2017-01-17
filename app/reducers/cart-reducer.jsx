@@ -7,8 +7,8 @@ export default (cartItems = [], action) => {
     case RECEIVE_CART:
       return action.cart;
 
-    // case ADD_TO_CART:
-    //   return action.product;
+    case ADD_TO_CART:
+      return [action.product, ...cartItems];
 
     case REMOVE_FROM_CART:
       return cartItems.filter(item => item.id !== action.id);
