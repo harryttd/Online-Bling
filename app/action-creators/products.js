@@ -18,5 +18,6 @@ export const getProducts = () => dispatch =>
 
 export const getProductById = productId => dispatch =>
   axios.get(`/api/product/${productId}`)
-  .then(response => dispatch(receiveProduct(response.data)))
+  .then(res => res.data )
+  .then(product => dispatch(receiveProduct(product)))
   .catch(error => console.error("Could Not Retrieve Product", error));
