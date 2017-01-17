@@ -34,6 +34,6 @@ describe('Products Component', () => {
 
   it('has three products', () => {
     expect(component.is('div')).to.be.equal(true);
-    expect(component.find(".col-xs-4").length).to.be.equal(3);
+    expect(component.find(".product-item").length).to.be.equal(3);
   });
 });

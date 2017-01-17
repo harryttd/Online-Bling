@@ -6,6 +6,12 @@ export const REMOVE = 'REMOVE_CURRENT_USER';
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
 
+// Cart
+export const RECEIVE_CART = 'RECEIVE_CART';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+
 //Reviews
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';

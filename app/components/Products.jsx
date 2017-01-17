@@ -18,13 +18,13 @@ export default ({ products }) => (
                 </div>
                 <div className="product-info">
                   <span><strong>{ product.name }</strong></span>
-                  <span>{ product.price }</span>                  
+                  <span>{ product.price }</span>
                 </div>
               </Link>
-            </div>            
+            </div>
           ))
         }
-      </div>    
+      </div>
     </section>
   </div>
 );

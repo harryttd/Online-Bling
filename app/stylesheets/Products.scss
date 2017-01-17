@@ -3,18 +3,18 @@
 		img {
 			width: 100%
 		}
-	}	
+	}
 	.product-info {
 		text-align: center;
 
 		span {
 			font-size: 1.1em
-		}		
+		}
 	}
 }
 
 .product-detail{
-	
+
 	.product-info {
 		.row {
 			margin: 10px 0;
@@ -39,8 +39,8 @@
 	.product-image {
 		.image-slide {
 			height: 100vh;
-			background-image: url('/images/products/StLouis-Audubon-Blue-Website-Quarters_1024x1024.png');		
-			background-position: center; 
+			background-image: url('http://cdn.shopify.com/s/files/1/0236/9929/products/StLouis-MatteBlack-Website-Front_1024x1024.png?v=1480979437');
+			background-position: center;
 			background-size: auto 100%;
 			background-repeat: no-repeat;
 		}
@@ -61,7 +61,7 @@
     overflow: hidden;
     background-color: #fff;
 		width: 105px;
-		height: 34px;		
+		height: 34px;
     color: #FD3F7B;
     border: 2px solid #FD3F7B;
     padding: 4px 10px;
@@ -73,4 +73,3 @@
 
 	}
 }
-
