@@ -25,7 +25,7 @@ module.exports = express.Router()
 
 	.post('/', (req, res, next) => {
 		CartLineItem.find({ where:
-			{ product_id: +req.body.id }
+			{ product_id: req.body.id }
 		})
 		.then(item => {
 			if (item) {
