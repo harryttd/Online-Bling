@@ -3,12 +3,11 @@ import { Link } from 'react-router';
 import CartItem from './CartItem';
 
 export default class Cart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    // console.log("PROPSPSPPSP", this.props);
-		const cartItems = this.props.cartItems, removeItem = this.props.removeItem, updateQuantity = this.props.updateQuantity;
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		const { cartItems, removeItem, updateQuantity } = this.props;
 		return (
 			<div id="CartContainer" className="shopping-cart">
 
@@ -39,12 +38,13 @@ export default class Cart extends React.Component {
 										)
 									}
 								</table>
-								<button onClick="" className="submit">check out</button>
+								<button onClick="" className="submit">check out
+								</button>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
 		);
-  }
+	}
 }
