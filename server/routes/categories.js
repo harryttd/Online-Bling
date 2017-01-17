@@ -3,26 +3,33 @@ const express = require('express');
 const router = module.exports = express.Router()
 const Category = require('APP/db/models/category');
 
-router.get('/', (req, res, next) => 
+router.get('/', (req, res, next) =>
 	Category.findAll()
 	.then(categories => res.status(200).json(categories))
 	.catch(next))
 
+	router.get('/rootcategories', (req, res, next) =>
+	Category.findAll({
+			where: { parentCategory: null }
+		})
+		.then(categories => res.status(200).json(categories))
+		.catch(next))
 
-router.get('/:id', (req, res, next) =>
+
+router.get('/singlecategory/:id', (req, res, next) =>
 	Category.findById(req.params.id)
 	.then(category => res.json(category))
 	.catch(next))
 
 
-router.post('/', (req, res, next) => 
+router.post('/', (req, res, next) =>
 	Category.create(req.body)
 	.then(category => res.status(201).json(category))
 	.catch(next))
 
 
 router.put('/:id', (req, res, next) =>
-    Category.update( req.body, 
+    Category.update( req.body,
     {
       where: {
         id: req.params.id

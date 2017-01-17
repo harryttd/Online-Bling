@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 // import { logout } from '../action-creators/auth';
 import { logout } from '../reducers/auth';
+import Categories from './Categories';
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -20,13 +21,7 @@ class Navbar extends React.Component {
           <ul className="left-align">
             <li>
               <Link to="/products">SHOP</Link>
-              <div className="submenu-wrapper">
-                <ul>
-                  <li><Link>Category 1</Link></li>
-                  <li><Link>Category 2</Link></li>
-                  <li><Link>Category 3</Link></li>
-                </ul>
-              </div>
+              <Categories/>
             </li>
             <li>
               <Link>ABOUT</Link>
@@ -34,30 +29,30 @@ class Navbar extends React.Component {
             <li>
               <Link>PRESS</Link>
             </li>
-          </ul>         
+          </ul>
         </div>
         <div className="logo">Online Bling</div>
         <div className="iconmenu-wrapper">
-          <ul className="right-align">          
+          <ul className="right-align">
             <li>
-              <Link><i className="fa fa-user" aria-hidden="true"></i></Link>             
-            </li>           
+              <Link><i className="fa fa-user" aria-hidden="true"></i></Link>
+            </li>
             <li>
-              <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>             
-            </li>           
-            <li className="search-wrapper">             
+              <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+            </li>
+            <li className="search-wrapper">
               <div className="form-wrapper">
-                <form action="/api/search" method="get" role="search">                
+                <form action="/api/search" method="get" role="search">
                   <input name="search" type="text" placeholder="SEARCH..." className="search-box-form hint text" />
                   <button type="submit" className="fa fa-search"></button>
-                </form>               
+                </form>
               </div>
-              <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>        
-              <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>                    
-            </li>           
-          </ul>                 
+              <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>
+              <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>
+            </li>
+          </ul>
         </div>
-      </div>      
+      </div>
     );
   }
 
@@ -89,7 +84,7 @@ class Navbar extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapProps = ({ auth }) => ({ currentUser: auth });
+const mapProps = ({ auth, categories }) => ({ currentUser: auth });
 
 const mapDispatch = dispatch => ({
   logout: () => {
