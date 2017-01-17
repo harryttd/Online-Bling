@@ -7,17 +7,17 @@ export const receiveCart = (cart) => ({
   type: RECEIVE_CART,
   cart
 });
-//
-// export const add = product => ({
-//   type: ADD_TO_CART,
-//   product
-// });
-//
-// export const remove = product => ({
-//   type: REMOVE_FROM_CART,
-//   product
-// });
-//
+
+export const add = product => ({
+  type: ADD_TO_CART,
+  product
+});
+
+export const remove = id => ({
+  type: REMOVE_FROM_CART,
+  id
+});
+
 // export const update = quantity => ({
 //   type: UPDATE_QUANTITY,
 //   quantity
@@ -38,9 +38,10 @@ export const addToCart = product => () =>
   .then(() => getCart())
   .catch(error => console.error(`Could Not add item ${product}`, error));
 
-export const removeItem = id => () => {
+export const removeItem = id => dispatch => {
+  dispatch(remove(id));
   axios.delete(`/api/cart/${id}`)
-  .then(() => getCart())
+  .then(() => console.log('successfully deleted'))
  .catch(err => console.error(`Removing item: ${id} unsuccessful`, err));
 };
 

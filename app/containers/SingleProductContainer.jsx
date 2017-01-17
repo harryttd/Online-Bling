@@ -11,6 +11,6 @@ import { addToCart } from '../action-creators/cart';
 
 const mapState = ({ products }) => ({ product: products.selectedProduct });
 
-const mapDispatch = () => ({ addToCart: addToCart });
+const mapDispatch = { addToCart };
 
 export default connect(mapState, mapDispatch)(SingleProduct);
