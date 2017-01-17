@@ -12,11 +12,13 @@ const AUTHENTICATED = 'AUTHENTICATED';
 export const authenticated = user => ({
   type: AUTHENTICATED, user
 });
+export const signup = credential => dispatch =>
+  axios.put('/api/auth/signup', credential)
+    .then(()=>dispatch(whoami()))
+    .catch(()=>dispatch(whoami()));
 
-export const login = (username, password) =>
-  dispatch =>
-    axios.post('/api/auth/local/login',
-      {username, password})
+export const login = credential => dispatch =>
+    axios.put('/api/auth/login', credential)
       .then(() => dispatch(whoami()))
       .catch(() => dispatch(whoami()));
 
