@@ -13,7 +13,7 @@ module.exports = express.Router()
 		.catch(next);
 	})
 
-	.param('id', (req, res, next, id)=>{
+	.param('id', (req, res, next, id) => {
 		CartLineItem.findById(id)
 			.then(cartLineItem => {
 				req.cartLineItem = cartLineItem;
@@ -23,8 +23,8 @@ module.exports = express.Router()
 	})
 
 
-	.get('/:id', (req, res, next)=>{
-		res.json(req.cartLineItem)
+	.get('/:id', (req, res, next) => {
+		res.json(req.cartLineItem);
 	})
 
 	.post('/', (req, res, next) => {
@@ -49,14 +49,14 @@ module.exports = express.Router()
 		.catch(next);
 	})
 
-	.put('/:id', (req, res, next)=>{
+	.put('/:id', (req, res, next) => {
 		req.cartLineItem.update(req.body)
 			.then(updated => {
-					 res.status(202).send(updated)
-			}).catch(next)
+					 res.status(202).send(updated);
+			}).catch(next);
 	})
 
-	.delete('/:id', (req, res, next)=>{
+	.delete('/:id', (req, res, next) => {
 		req.cartLineItem.destroy()
-			.then(()=>res.status(204).end())
-	})
+		.then(() => res.sendStatus(204));
+	});
