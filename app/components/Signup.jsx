@@ -52,7 +52,7 @@ export default class Signup extends React.Component {
           <p>
             <a
               target="_self"
-              href="/api/auth/google"
+              href="/api/auth/google/login"
               className="btn btn-social btn-google">
               <i className="fa fa-google" />
               <span>{message} with Google</span>

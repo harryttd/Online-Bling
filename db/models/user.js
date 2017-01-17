@@ -8,14 +8,14 @@ const User = db.define('users', {
   name: Sequelize.STRING,
   email: {
     type: Sequelize.STRING,
+    allowNull: true,
     validate: {
 			isEmail: true,
-			notEmpty: true,
+			//notEmpty: true,
 		}
   },
-  sessionId: {
-    type: Sequelize.STRING,
-    allowNull: false
+  session_id: {
+    type: Sequelize.STRING
   },
   googleKey: Sequelize.STRING,
   facebookKey: Sequelize.STRING,
