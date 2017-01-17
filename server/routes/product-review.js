@@ -30,6 +30,19 @@ router.put('/:id', (req, res, next) =>
 	)
 	.catch(next))
 
+// router.put('/:id', (req, res, next) => 
+// 	productReview.update(req.body,
+// 	{
+// 		where: {
+// 			id: req.params.id
+// 		}
+// 	})
+// 	.then(updated => {
+// 		res.status(202).send(updated)
+// 	}).catch(next)
+// )
+
+
 router.delete('/:id', (req, res, next) => 
 	productReview.destroy({
 		where: {

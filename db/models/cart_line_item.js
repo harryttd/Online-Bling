@@ -1,14 +1,14 @@
 'use strict'
 const Sequelize = require('sequelize');
 const db = require('APP/db');
+const Product = db.Product;
 
 const Cart_Line_Item = db.define('cart_line_item', {
-  quantity:{
+  quantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: { notEmpty: true }
   }
-
   // Might need class / instance method to updateWhereUser()  
 },{
 	classMethods:{

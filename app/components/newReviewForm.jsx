@@ -1,3 +1,5 @@
+//DUMMY FROM NOT GOING TO USE
+
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
@@ -8,7 +10,7 @@ export default class NewReviewForm extends Component {
 		super(props);
 		this.state = {
 			rating: 0,
-			content: ''
+			body: ''
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +19,7 @@ export default class NewReviewForm extends Component {
 	handleSubmit(event) {
 		axios.post('/api/reviews', {
 			rating: this.state.rating,
-			content: this.state.content,
+			body: this.state.body,
 			productId: this.props.product.id
 		})
 	}
@@ -35,9 +37,9 @@ export default class NewReviewForm extends Component {
 					</div>
 
 					<div className="form-group">
-		                <label className="col-xs-2 control-label">Content</label>
+		                <label className="col-xs-2 control-label">body</label>
 		                <div className="col-xs-10">
-		                 	<input className="form-control" type="text" onChange={e => this.setState({ content: e.target.value })}/>
+		                 	<input className="form-control" type="text" onChange={e => this.setState({ body: e.target.value })}/>
 		                </div>
 		            </div>
 

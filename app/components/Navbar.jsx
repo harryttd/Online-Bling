@@ -13,6 +13,7 @@ class AppBar extends React.Component {
     };
     this.onClickLogout = this.onClickLogout.bind(this);    
   }
+
   componentWillReceiveProps(nextProps) {
     this.setState({auth:nextProps.auth})
   }
