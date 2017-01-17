@@ -4,6 +4,7 @@ import ProductDescription from './ProductDescription';
 import SingleReview from './SingleReview';
 import newReviewForm from './newReviewForm';
 import reviewAction from 'APP/app/action-creators/reviewActionCreator';
+import { Link } from 'react-router';
 
 export default class SingleProduct extends React.Component {
 	constructor(props){
@@ -35,32 +36,29 @@ export default class SingleProduct extends React.Component {
 	render(){
 		const { product, reviews, addToCart } = this.props;
 		return (
-		<div className="singleProductPage">
-			<div className="product">
-				<section className="product-detail container-fluid">
-					<div className="row">
+			<div id="ProductContainer" className="product-detail">
+
+		  	<ol className="breadcrumb">
+				  <li><Link href="#">Home</Link></li>
+				  <li><Link href="#">Product</Link></li>
+				  <li className="active">{ product.name }</li>
+				</ol>
+
+	  		<section className="product-detail container-fluid">
+	  			<div className="row">
 						<div className="product-info col-xs-12 col-lg-3">
 							<div className="container-fluid">
 								<div className="name row">{ product.name }</div>
 								<div className="price row">${ product.price }</div>
-								<div className="SKU row">SKU: {product.sku}</div>
-
-								<div className="product-image col-xs-12 col-lg-9">
-									<div className="image-slide">
-										<img src={ product.image } className="img-thumbnail" />
-									</div>
-								</div>
-
-								<div className="add-cart- row">
+								<div className="add-cart row">
 									<div className="quantity col-xs-4">
 										{/* Below input box is not rendering */}
-										<input type="number" name="quantity" onChange="reactFunction" />
+
 									</div>
 									<div className="add-cart col-xs-8">
 										<button onClick={() => addToCart(product) }>Add to cart</button>
 									</div>
 								</div>
-
 								<div className="row">
 									<div className="col-xs-12">
 										{/* This is Bootstrap we might need to consider npm install react-bootstrap */}
@@ -97,41 +95,43 @@ export default class SingleProduct extends React.Component {
 								</div>
 							</div>
 						</div>
+						<div className="product-image col-xs-12 col-lg-9">
+							<div className="image-slide" style={{backgroudImage: 'url("' + product.image + '")'}}>
+							</div>
+						</div>
 					</div>
 				</section>
-			</div>
+				<section className="product-review">
+					<div className="container-fluid">
+						<div className="name row">Product Reviews</div>
+						{
+								reviews && reviews.map(review => {
+									return (
+										<div key={review.id} className="row">
+											<p>Title: { review.title }</p>
+											<p>Rating: { review.stars }</p>
+											<p>Review: { review.body }</p>
+											<p>{/* Created by: { review.user.name } */} Created At: { review.created_at.slice(0, 10) } { review.created_at.slice(11, 16) }</p>
 
-			<div className="product-review">
-				<div className="container-fluid">
-					<div className="name row">Product Reviews</div>
-					{
-							reviews && reviews.map(review => {
-								return (
-									<div key={review.id} className="row">
-										<p>Title: { review.title }</p>
-										<p>Rating: { review.stars }</p>
-										<p>Review: { review.body }</p>
-										<p>{/* Created by: { review.user.name } */} Created At: { review.created_at.slice(0, 10) } { review.created_at.slice(11, 16) }</p>
-
-										<button onClick={(e) => this.onRemoveClick(review.id)}>Remove</button>
-									</div>
-								);
-							})
-						}
-				</div>
-
-				<div className="row">
-					<form className="review-form" onSubmit={this.onAddReviewSubmit}>
-						<div className="form-group">
-							<textarea name="title" placeholder="Please enter review"  className="form-control" />
-							<textarea name="body" placeholder="Please enter review"  className="form-control" />
-							<input type="number" name="stars" className="form-control" min="0" max="5" placeholder="Please enter rating (1 ~ 5)" />
-							<button type="submit">Submit</button>
-						</div>
-					</form>
+											<button onClick={(e) => this.onRemoveClick(review.id)}>Remove</button>
+										</div>
+									);
+								})
+							}
 					</div>
+
+					<div className="row">
+						<form className="review-form" onSubmit={this.onAddReviewSubmit}>
+							<div className="form-group">
+								<textarea name="title" placeholder="Please enter review"  className="form-control" />
+								<textarea name="body" placeholder="Please enter review"  className="form-control" />
+								<input type="number" name="stars" className="form-control" min="0" max="5" placeholder="Please enter rating (1 ~ 5)" />
+								<button type="submit">Submit</button>
+							</div>
+						</form>
+						</div>
+				</section>
 			</div>
-		</div>
 		);
 	}
 }

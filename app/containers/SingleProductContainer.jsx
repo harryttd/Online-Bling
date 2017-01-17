@@ -8,8 +8,6 @@ const mapState = ({ products }) => ({
 	reviews: products.selectedProduct.product_reviews
 });
 
-const mapState = ({ products }) => ({ product: products.selectedProduct });
-
 const mapDispatch = { removeReview, addReview, getReview, addToCart };
 
 export default connect(mapState, mapDispatch)(SingleProduct);
