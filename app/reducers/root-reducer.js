@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
   auth: require('./auth').default,
   products: require('./products-reducer').default,
-  reviews: require('./reviewReducer').default
+  reviews: require('./reviewReducer').default,
+  cart: require('./cart-reducer').default
 });
 
 export default rootReducer;

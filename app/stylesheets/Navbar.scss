@@ -1,111 +1,125 @@
-/* Navbar CSS */
+// /* Navbar CSS */
 .navbar {
 	position: fixed;
-	top: 0;
-	z-index: 100;
-	width: 100%;
-	height: $navbar-height;
-	color: black;	
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	margin: 0;
-	border-radius: 0;
-
-	
-
-	a {
-		margin: 0.5em;
-	}
-
-	>div {
-		width: 33%;
-		padding: 0 5% !important;
-		line-height: 4em;
-		display: inline-block;		
-	}
-
-	ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    &.right-align li {
-    	float: right;
-    }
-    &.left-align li {
-    	float: left;
-    }    
-	}
-
-	.iconmenu-wrapper {
-		font-size: 1.4em;
-	}	
-
-	.menu-wrapper {
-		li .submenu-wrapper {
-			display: none;
-			position: absolute;
-		}
-		li:hover{
-			.submenu-wrapper{
-				display: block;	
-			}
-		}
-	}
-
-	.search-wrapper{
-
-		.form-wrapper {						
-			
-			form input {
-				font-size: 14px;
-				border-color: #909090;
-		    border-style: solid;
-		    padding: 5px;
-	    	line-height: normal;
-
-			}
-		}
-		
-		a.close-toggle, .form-wrapper {
-			display: none;
-		}
-
-
-		&:hover {
-			a.close-toggle, .form-wrapper {
-				display: inline-block;
-				line-height: normal;
-			}
-			a.open-toggle{
-				display: none;
-			}
-		}
-	}
-
-	.logo {
-		color: black;
-		text-align: center;
-		font-size: 1.5em;
-		line-height: 2.5em;
-	}
-
-	&.main {
-		.logo {
-			color: white
-		}
-	}
-	
-	&.background {
-		background-color: white;
-		.logo {
-			color: black;
-		}
-		&.main {
-			.logo {
-				color: black
-			}
-		}
-	}	
+  top: 0;
+  width: 100%;
+  border-radius: 0;
+  background: none;
+  border: none;	  
+  box-shadow: none;
 }
+
+	
+
+// 	a {
+// 		margin: 0.5em;
+// 	}
+
+// 	>div {
+// 		width: 33%;
+// 		padding: 0 5% !important;
+// 		line-height: 4em;
+// 		display: inline-block;		
+// 	}
+
+// 	ul {
+//     list-style-type: none;
+//     margin: 0;
+//     padding: 0;
+//     overflow: hidden;
+//     &.right-align li {
+//     	float: right;
+//     }
+//     &.left-align li {
+//     	float: left;
+//     }    
+// 	}
+
+// 	.iconmenu-wrapper {
+// 		font-size: 1.4em;
+// 	}	
+
+// 	.menu-wrapper {
+// 		li .submenu-wrapper {
+// 			display: none;
+// 			position: absolute;
+// 		}
+// 		li:hover{
+// 			.submenu-wrapper{
+// 				display: block;	
+// 			}
+// 		}
+// 	}
+// 	.user-wrapper {
+// 		.dropdown {
+// 			display: none;
+// 		}
+// 		&:hover {
+// 			div.dropdown {
+// 				margin-right: 5%;
+// 		    padding-top: 10px;
+// 		    position: absolute;
+// 		    right: 0;
+// 		    margin-top: -25px;
+// 		    width: 100px;
+// 		    font-size: 16px;
+// 		    line-height: 2em;
+// 		    background-color: white;
+// 			}
+// 		}
+// 	}
+// 	.search-wrapper{
+
+// 		.form-wrapper {						
+			
+// 			form input {
+// 				font-size: 14px;
+// 				border-color: #909090;
+// 		    border-style: solid;
+// 		    padding: 5px;
+// 	    	line-height: normal;
+
+// 			}
+// 		}
+		
+// 		a.close-toggle, .form-wrapper {
+// 			display: none;
+// 		}
+
+
+// 		&:hover {
+// 			a.close-toggle, .form-wrapper {
+// 				display: inline-block;
+// 				line-height: normal;
+// 			}
+// 			a.open-toggle{
+// 				display: none;
+// 			}
+// 		}
+// 	}
+
+// 	.logo {
+// 		color: black;
+// 		text-align: center;
+// 		font-size: 1.5em;
+// 		line-height: 2.5em;
+// 	}
+
+// 	&.main {
+// 		.logo {
+// 			color: white
+// 		}
+// 	}
+	
+// 	&.background {
+// 		background-color: white;
+// 		.logo {
+// 			color: black;
+// 		}
+// 		&.main {
+// 			.logo {
+// 				color: black
+// 			}
+// 		}
+// 	}	
+// }
