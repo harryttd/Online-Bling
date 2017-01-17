@@ -80,7 +80,7 @@ export function fetchSingleOrder(orderId) {
 //Get all orders for the admin
 export function fetchAllOrdersForAdmin() {
   return function (dispatch, getState) {
-    axios.get('/api/orders/admin')
+    axios.get('/api/order/admin')
       .then(res => res.data)
       .then(foundOrders => {
         dispatch(getAllOrdersAdmin(foundOrders))
@@ -92,7 +92,7 @@ export function fetchAllOrdersForAdmin() {
 //Get one order for the admin
 export function fetchSingleOrderForAdmin(orderId) {
   return function (dispatch, getState) {
-    axios.get(`/api/orders/admin/${orderId}`)
+    axios.get(`/api/order/admin/${orderId}`)
       .then(res => res.data)
       .then(foundOrder => {
         dispatch(getSingleOrderAdmin(foundOrder))

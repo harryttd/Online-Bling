@@ -9,3 +9,14 @@ export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
 //Reviews
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';
+
+
+
+//Order Users
+export const FETCH_ALL_ORDERS = 'FETCH_ALL_ORDERS';
+export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
+
+//Order Admins
+export const FETCH_ALL_ORDERS_ADMIN = 'FETCH_ALL_ORDERS_ADMIN';
+export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_SINGLE_ORDER_ADMIN';
+
