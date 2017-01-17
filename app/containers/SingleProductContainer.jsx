@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
 import SingleProduct from '../components/SingleProduct';
 import { addToCart } from '../action-creators/cart';
+import { removeReview, addReview, getReview }from 'APP/app/action-creators/reviewActionCreator';
 
-// const mapState = ({ products }, ownProps) => {
-//   console.log('PRODUCTS', products, ownProps);
-//   const product = products.find(aProduct =>
-//     aProduct.id === +ownProps.params.productId);
-//   return { product };
-// };
+const mapState = ({ products }) => ({
+	product: products.selectedProduct,
+	reviews: products.selectedProduct.product_reviews
+});
 
 const mapState = ({ products }) => ({ product: products.selectedProduct });
 
-const mapDispatch = { addToCart };
+const mapDispatch = { removeReview, addReview, getReview, addToCart };
 
 export default connect(mapState, mapDispatch)(SingleProduct);
