@@ -8,8 +8,6 @@ import ProductsContainer from './containers/ProductsContainer';
 import ProductContainer from './containers/SingleProductContainer';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import ReviewList from './components/ReviewList';
-import SingleReview from './components/SingleReview';
 import About from './components/About';
 import Checkout from './components/Checkout';
 
@@ -24,8 +22,6 @@ export default ({ onAppEnter, onProductEnter }) => (
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="*" component={Homepage} />
-      <Route path="/reviews" component={ReviewList} />
-      <Route path="/reviews/:reviewId" component={SingleReview} />
     </Route>
   </Router>
 );
