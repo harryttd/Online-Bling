@@ -45,7 +45,7 @@ export const removeItem = id => () => {
 };
 
 export const updateQuantity = (id, quantity) => () => {
-  axios.put(`/api/cart/${id}`, { quantity: quantity })
+  axios.put(`/api/cart/${id}`, { quantity })
  .then(() => getCart())
  .catch(err => console.error(`Updating product quantity: ${quantity} change unsuccessful`, err));
 };
