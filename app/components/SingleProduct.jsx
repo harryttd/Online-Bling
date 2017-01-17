@@ -10,6 +10,6 @@ export default ({ product, addToCart }) => (
 
     <h5>SKU: {product.sku}</h5>
     <h4>${product.price}</h4>
-    <button type="submit" className="btn btn-success" onClick={ addToCart(product) }>Add</button>
+    <button type="submit" className="btn btn-success" onClick={() => addToCart(product) }>Add</button>
   </div>
 );
