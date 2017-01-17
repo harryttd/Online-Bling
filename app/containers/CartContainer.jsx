@@ -1,12 +1,8 @@
 import { connect } from 'react-redux';
-import { Cart } from '../components/Cart';
+import Cart from '../components/Cart';
 
-const mapState = state => {
+const mapState = ({ cart }) => ({ cartItems: cart });
 
-};
-
-const mapDispatch = dispatch => {
-
-};
+const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(Cart);

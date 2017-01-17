@@ -27,7 +27,10 @@ export const receiveCart = (cart) => ({
 
 export const getCart = () => dispatch =>
   axios.get('/api/cart')
-  .then(response => dispatch(receiveCart(response.data)))
+  .then(response => {
+    console.log('RESPONSE', response);
+    dispatch(receiveCart(response.data));
+  })
   .catch(error => console.error("Could Not Retrieve Cart", error));
 
 export const addToCart = product => () =>

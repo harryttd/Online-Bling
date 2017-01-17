@@ -1,21 +1,25 @@
+'use strict';
 const express = require('express');
 const CartLineItem = require('APP/db/models/cart_line_item');
-
+const Product = require('APP/db/models/product');
 
 module.exports = express.Router()
 
-	.get('/', (req, res, next)=>{
-		CartLineItem.findAll()
-			.then(res.json)
-			.catch(next)
+	.get('/', (req, res, next) => {
+		CartLineItem.findAll({
+			include: [{ model: Product }]
+		})
+		.then(products => res.json(products))
+		.catch(next);
 	})
 
 	.param('id', (req, res, next, id)=>{
 		CartLineItem.findById(id)
-			.then(cartLineItem=>{
-				req.cartLineItem = cartLineItem
-				next()
-			}).catch(next)
+			.then(cartLineItem => {
+				req.cartLineItem = cartLineItem;
+				next();
+			})
+			.catch(next);
 	})
 
 

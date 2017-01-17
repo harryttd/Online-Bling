@@ -1,13 +1,13 @@
 import { RECEIVE_CART, ADD_TO_CART, UPDATE_QUANTITY, REMOVE_FROM_CART } from '../action-types';
 
-export default (items = [], action) => {
+export default (cartItems = [], action) => {
 
   switch (action.type) {
 
     case RECEIVE_CART:
-      return items;
+      return action.cart;
 
     default:
-      return items;
+      return cartItems;
   }
 };
