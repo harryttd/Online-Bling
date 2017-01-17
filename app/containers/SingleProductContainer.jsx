@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import SingleProduct from '../components/SingleProduct';
+import { addToCart } from '../action-creators/cart';
 
 // const mapState = ({ products }, ownProps) => {
 //   console.log('PRODUCTS', products, ownProps);
@@ -10,6 +11,6 @@ import SingleProduct from '../components/SingleProduct';
 
 const mapState = ({ products }) => ({ product: products.selectedProduct });
 
-const mapDispatch = null;
+const mapDispatch = () => ({ addToCart: addToCart });
 
 export default connect(mapState, mapDispatch)(SingleProduct);

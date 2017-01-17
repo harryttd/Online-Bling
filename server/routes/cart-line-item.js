@@ -23,16 +23,31 @@ module.exports = express.Router()
 		res.json(req.cartLineItem)
 	})
 
-	.post('/', (req, res, next)=>{
-		CartLineItem.create(req.body)
-			.then(createdLineItem=>{
-				res.status(201).json(createdLineItem)
-			}).chatch(next)
+	.post('/', (req, res, next) => {
+		CartLineItem.find({ where:
+			{ product_id: +req.body.id }
+		})
+		.then(item => {
+			if (item) {
+				const currentQuantity = item.quantity;
+				return item.update({ quantity: currentQuantity + 1 });
+			}
+			else {
+				CartLineItem.create({
+					quantity: 1,
+					product_id: req.body.id
+				})
+				.then(createdLineItem => {
+					res.status(201).json(createdLineItem);
+				});
+			}
+		})
+		.catch(next);
 	})
 
 	.put('/:id', (req, res, next)=>{
 		req.cartLineItem.update(req.body)
-			.then(updated=>{
+			.then(updated => {
 					 res.status(202).send(updated)
 			}).catch(next)
 	})
