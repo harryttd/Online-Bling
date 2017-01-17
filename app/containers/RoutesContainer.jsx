@@ -14,10 +14,7 @@ const mapDispatch = dispatch => ({
   },
   onProductEnter: (nextRouterState) =>
   dispatch(getProductById(nextRouterState.params.productId)),
-  onCartEnter: (nextRouterState) => {
-    console.log('nextRouterState', nextRouterState);
-    dispatch(getCart())
-  }
+  onCartEnter: (nextRouterState) => dispatch(getCart())
 });
 
 export default connect(mapState, mapDispatch)(Routes);

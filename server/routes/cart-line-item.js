@@ -41,7 +41,6 @@ module.exports = express.Router()
 					product_id: req.body.id
 				})
 				.then(createdLineItem => {
-					// console.log(createdLineItem);
 					// createdLineItem.getProduct().then(console.log)
 					CartLineItem.findOne({
 						where: { id: createdLineItem.id },

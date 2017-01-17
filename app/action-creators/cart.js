@@ -28,16 +28,14 @@ export const remove = id => ({
 export const getCart = () => dispatch =>
   axios.get('/api/cart')
   .then(response => {
-    console.log('RESPONSE', response);
+    // console.log('RESPONSE', response);
     dispatch(receiveCart(response.data));
   })
   .catch(error => console.error("Could Not Retrieve Cart", error));
 
 export const addToCart = product => dispatch =>
   axios.post('/api/cart', product)
-
-  // .then(x => console.log("FDGS", x.data))
-  .then(x => dispatch(add(x.data)))
+  .then(response => dispatch(add(response.data)))
   .catch(error => console.error(`Could Not add item ${product}`, error));
 
 export const removeItem = id => dispatch => {

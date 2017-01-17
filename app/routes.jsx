@@ -18,7 +18,7 @@ export default ({ onAppEnter, onProductEnter, onCartEnter }) => (
     <IndexRoute component={Homepage} />
       <Route path="/about" component={About} />
       <Route path="/checkout" component={Checkout} />
-      <Route path="/cart" component={Cart} onEnter={ onCartEnter } />
+      <Route path="/cart" component={Cart} onEnter={onCartEnter} />
       <Route path="/products" component={ProductsContainer} />
       <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
       <Route path="/login" component={Login} />

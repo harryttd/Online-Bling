@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default class CartItem extends React.Component {
 	constructor(props){
 		super(props);
-		console.log("CARTITEM", this.props.item);
+		// console.log("CARTITEM", this.props.item);
 		this.state = {
 			price: this.props.item.product.price * this.props.item.quantity,
 			quantity: this.props.item.quantity

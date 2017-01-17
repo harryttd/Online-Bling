@@ -7,7 +7,7 @@ export default class Cart extends React.Component {
     super(props);
   }
   render() {
-    console.log("PROPSPSPPSP", this.props);
+    // console.log("PROPSPSPPSP", this.props);
 		const cartItems = this.props.cartItems, removeItem = this.props.removeItem, updateQuantity = this.props.updateQuantity;
 		return (
 			<div id="CartContainer" className="shopping-cart">
