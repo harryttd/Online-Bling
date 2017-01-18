@@ -2,11 +2,27 @@ const db = require('APP/db');
 const express = require('express');
 const router = module.exports = express.Router();
 const Order = require('APP/db/models/order');
+const OrderProduct = require('APP/db/models/order_product');
 
 router.get('/', function(req, res, next) {
 	Order.findAll()
 		.then(function(orders) {
 			res.status(200).json(orders)
+		})
+		.catch(next)
+});
+
+router.get('/user/:userId', (req, res, next)=>{
+	console.log('Route is entered')
+	Order.findAll({
+		where:{
+			user_id: req.params.userId
+		},
+		includes: [ OrderProduct ]
+		})
+		.then(function(orders) {
+			console.log(orders)
+			res.json(orders)
 		})
 		.catch(next)
 });

@@ -52,7 +52,7 @@ export function fetchAllOrders() {
   	//get userId from auth
     const userId = getState().auth.id
 
-    axios.get(`/api/order/${userId}`)
+    axios.get(`/api/order/user/${userId}`)
       .then(res => res.data)
       .then(foundOrders => {
         dispatch(getAllOrders(foundOrders))
@@ -64,9 +64,9 @@ export function fetchAllOrders() {
 //Get One order for the user
 export function fetchSingleOrder(orderId) {
   return function (dispatch, getState) {
-    // const userId = getState().auth.id
+    const userId = getState().auth.id
 
-    axios.get(`/api/order/${userId}/${orderId}`)
+    axios.get(`/api/order/user/${userId}/${orderId}`)
       .then(res => res.data)
       .then(foundOrder => {
         dispatch(getSingleOrder(foundOrder))
@@ -78,28 +78,28 @@ export function fetchSingleOrder(orderId) {
 //Admins
 
 //Get all orders for the admin
-export function fetchAllOrdersForAdmin() {
-  return function (dispatch, getState) {
-    axios.get('/api/order/admin')
-      .then(res => res.data)
-      .then(foundOrders => {
-        dispatch(getAllOrdersAdmin(foundOrders))
-      })
-      .catch(console.error)
-    }
-}
+// export function fetchAllOrdersForAdmin() {
+//   return function (dispatch, getState) {
+//     axios.get('/api/order/admin')
+//       .then(res => res.data)
+//       .then(foundOrders => {
+//         dispatch(getAllOrdersAdmin(foundOrders))
+//       })
+//       .catch(console.error)
+//     }
+// }
 
-//Get one order for the admin
-export function fetchSingleOrderForAdmin(orderId) {
-  return function (dispatch, getState) {
-    axios.get(`/api/order/admin/${orderId}`)
-      .then(res => res.data)
-      .then(foundOrder => {
-        dispatch(getSingleOrderAdmin(foundOrder))
-      })
-      .catch(console.error)
-    }
-}
+// //Get one order for the admin
+// export function fetchSingleOrderForAdmin(orderId) {
+//   return function (dispatch, getState) {
+//     axios.get(`/api/order/admin/${orderId}`)
+//       .then(res => res.data)
+//       .then(foundOrder => {
+//         dispatch(getSingleOrderAdmin(foundOrder))
+//       })
+//       .catch(console.error)
+//     }
+// }
 
 
 

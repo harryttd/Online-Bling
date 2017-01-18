@@ -1,8 +1,8 @@
-import {FETCH_ALL_ORDERS, FETCH_SINGLE_ORDER, FETCH_ALL_ORDERS_ADMIN, FETCH_SINGLE_ORDER_ADMIN} from '../action-types';
+import { FETCH_ALL_ORDERS, FETCH_SINGLE_ORDER } from '../action-types';
 
 const initialState = {
   allOrders: [],
-  currentOrder: []
+  currentOrder: {}
 }
 
 
@@ -17,15 +17,15 @@ const orderReducer = function(state = initialState, action) {
 	    case FETCH_SINGLE_ORDER: // USER
 	    	return newState.currentOrder = action.currentOrder;
 	    	break;
-	    
-	    case FETCH_ALL_ORDERS_ADMIN: // ADMIN
-	    	return newState.allOrders = action.orders;
-	    	break;
-	    
-	    case FETCH_SINGLE_ORDER_ADMIN: // ADMIN
-	    	return newState.currentOrder = action.currentOrder;
-	    	break;
 	}
 }
 
 export default orderReducer;
+
+// case FETCH_ALL_ORDERS_ADMIN: // ADMIN
+// 	    	return newState.allOrders = action.orders;
+// 	    	break;
+	    
+// 	    case FETCH_SINGLE_ORDER_ADMIN: // ADMIN
+// 	    	return newState.currentOrder = action.currentOrder;
+// 	    	break;
