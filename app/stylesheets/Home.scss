@@ -2,7 +2,7 @@
 	width: 100;
 
 	> section {
-		margin-bottom: 50px;
+		margin-top: 50px;
 	}
 
 	.image-slide {
@@ -21,7 +21,8 @@
 		.row>div {
 			height: 350px;
 			background-position: center; 
-			background-size: 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
 			display: flex;
 			justify-content: center;
 			align-items:center;
@@ -31,7 +32,7 @@
 				background-image: url('/images/ourstory.jpg');			
 			},
 			&.new-arrival{
-				background-image: url('/images/newarrival.jpg');				
+				background-image: url('https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/11/09/16/Drake-Hotline-Bling.jpg');				
 			}
 
 			span {

@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const Root = ({ children }) => (
+const Root = ({ children, location }) => (
   <div>
     <Navbar />
     { children }

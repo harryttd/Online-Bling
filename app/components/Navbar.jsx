@@ -43,7 +43,7 @@ class AppBar extends React.Component {
             <NavItem eventKey={4} href="#">
               <i className="fa fa-search" aria-hidden="true"></i>
             </NavItem>
-            <NavItem eventKey={5} onClick={() => browserHistory.push("/cart")}>
+            <NavItem eventKey={5} onClick={(e)=>{browserHistory.push('/cart')}}>
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </NavItem>
             { auth && auth.email && auth.password_digest ?
@@ -63,95 +63,7 @@ class AppBar extends React.Component {
       </Navbar>
     );
   }
-  /*
-   * This is previous navbar, left this for possible use
-   *
-  // render() {
-  //   const { auth } = this.props;
-  //   return (
-  //     <div className="navbar main">
-  //       <div className="menu-wrapper">
-  //         <ul className="left-align">
-  //           <li>
-  //             <Link to="/products">SHOP</Link>
-  //             <div className="submenu-wrapper">
-  //               <ul>
-  //                 <li><Link>Category 1</Link></li>
-  //                 <li><Link>Category 2</Link></li>
-  //                 <li><Link>Category 3</Link></li>
-  //               </ul>
-  //             </div>
-  //           </li>
-  //           <li>
-  //             <Link>ABOUT</Link>
-  //           </li>
-  //           <li>
-  //             <Link>PRESS</Link>
-  //           </li>
-  //         </ul>
-  //       </div>
-  //       <div className="logo">Online Bling</div>
-  //       <div className="iconmenu-wrapper">
-  //         <ul className="right-align">
-  //           <li className="user-wrapper">
-  //             <Link><i className="fa fa-user" aria-hidden="true"></i></Link>
-
-  //               { auth && auth.email && auth.password_digest ?
-  //                 ( <ul className="dropdown-menu">
-  //                     <li><Link to="/profile">Profile</Link></li>
-  //                     <li role="separator" class="divider"></li>
-  //                     <li><div onClick={this.onClickLogout}>Logout</div></li>
-  //                   </ul> ) :
-  //                 ( <ul className="dropdown-menu">
-  //                     <li><Link to="/signup">Register</Link></li>
-  //                     <li><Link to="/login">Login</Link></li>
-  //                   </ul> )
-  //               }
-  //           </li>
-  //           <li>
-  //             <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
-  //           </li>
-  //           <li className="search-wrapper">
-  //             <div className="form-wrapper">
-  //               <form action="/api/search" method="get" role="search">
-  //                 <input name="search" type="text" placeholder="SEARCH..." className="search-box-form hint text" />
-  //                 <button type="submit" className="fa fa-search"></button>
-  //               </form>
-  //             </div>
-  //             <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>
-  //             <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>
-  //           </li>
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // renderLoginSignup() {
-  //   return (
-  //     <ul className="nav navbar-nav navbar-right">
-  //       <li>
-  //        <Link to="/signup" activeClassName="active">signup</Link>
-  //       </li>
-  //       <li>
-  //         <Link to="/login" activeClassName="active">login</Link>
-  //       </li>
-  //     </ul>
-  //   );
-  // }
-
-  // renderLogout() {
-  //   return (
-  //     <ul className="nav navbar-nav navbar-right">
-  //       <li>
-  //       <button
-  //         className="navbar-btn btn btn-default"
-  //         onClick={this.props.logout}>logout</button>
-  //       </li>
-  //     </ul>
-  //   );
-  // }
-  */
+  
 }
 
 /* -----------------    CONTAINER     ------------------ */

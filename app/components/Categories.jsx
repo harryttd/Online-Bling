@@ -5,10 +5,13 @@ import { receiveCategories } from '../action-creators/categories'
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap'
 
 export class Categories extends Component {
+	constructor(props) {
+		super(props);
 
+	}
 
 	render () {
-
+		console.log('Categories props', this.props);
 		return (
 			<NavDropdown eventKey={1} title="SHOP" id="categories-dropdown">
 				{this.props.categories.rootList.map(category => {
@@ -30,9 +33,11 @@ export class Categories extends Component {
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+	console.log(ownProps)
 	 return {
-    categories: state.categories
+    categories: state.categories,
+    location: ownProps.location
   }
 };
 

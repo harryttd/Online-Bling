@@ -29,16 +29,16 @@ module.exports = express.Router()
 
 	.post('/', (req, res, next) => {
 		CartLineItem.findOne({
-			where: { product_id: req.body.id }
+			where: { product_id: req.body.product_id }
 		})
 		.then(item => {
 			if (item) {
-				return item.update({ quantity: item.quantity + 1 });
+				return item.update({ quantity: item.quantity + req.body.orderQty });
 			}
 			else {
 				CartLineItem.create({
-					quantity: 1,
-					product_id: req.body.id
+					quantity: req.body.orderQty,
+					product_id: req.body.product_id
 				})
 				.then(createdLineItem => {
 					// createdLineItem.getProduct().then(console.log)
