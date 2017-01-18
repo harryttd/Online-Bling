@@ -17,7 +17,7 @@ class AppBar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({auth:nextProps.auth})
+    this.setState({ auth: nextProps.auth});
   }
   onClickLogout(){
     this.props.logout();
@@ -36,21 +36,21 @@ class AppBar extends React.Component {
         <Navbar.Collapse>
           <Nav>
             <Categories/>
-            <NavItem eventKey={2} href="#">ABOUT</NavItem>
-            <NavItem eventKey={3} href="#">PRESS</NavItem>
+            <NavItem eventKey={2} onClick={() => browserHistory.push("/about")}>ABOUT</NavItem>
+            <NavItem eventKey={3} onClick={() => browserHistory.push("/press")}>PRESS</NavItem>
           </Nav>
           <Nav pullRight>
             <NavItem eventKey={4} href="#">
               <i className="fa fa-search" aria-hidden="true"></i>
             </NavItem>
-            <NavItem eventKey={5} href="/cart">
+            <NavItem eventKey={5} onClick={() => browserHistory.push("/cart")}>
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </NavItem>
             { auth && auth.email && auth.password_digest ?
               ( <NavDropdown eventKey={6} title="USER" id="users">
                   <MenuItem href="/profile"></MenuItem>
                   <MenuItem href="/address">Address Book</MenuItem>
-                  <MenuItem role="separator" class="divider"></MenuItem>
+                  <MenuItem role="separator" className="divider"></MenuItem>
                   <MenuItem onClick={this.onClickLogout}>Logout</MenuItem>
                 </NavDropdown> ) :
               ( <NavDropdown eventKey={6} title="USER" id="users">
@@ -61,7 +61,7 @@ class AppBar extends React.Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    )
+    );
   }
   /*
    * This is previous navbar, left this for possible use

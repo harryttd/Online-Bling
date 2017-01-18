@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { connect } from 'react-redux';
 import Routes from '../routes';
 import { getProducts, getProductById } from '../action-creators/products';
@@ -13,7 +14,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     // dispatch(retrieveLoggedInUser());
     dispatch(getCart());
     dispatch(getProducts());
-    dispatch(loadRootCategories());    
+    dispatch(loadRootCategories());
   },
   onProductEnter: (nextRouterState) => dispatch(getProductById(nextRouterState.params.productId)),
   onCartEnter: (nextRouterState) => dispatch(getCart()),

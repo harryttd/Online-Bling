@@ -16,7 +16,7 @@ export default class CartItem extends React.Component {
 		this.props.updateQuantity(item.id, event.target.value);
 		this.setState({
 			price: item.product.price * +event.target.value,
-			quantity: item.quantity
+			quantity: event.target.value
 		});
 	}
 
