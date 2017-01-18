@@ -27,7 +27,7 @@ const onProductCategoryEnter = function (nextRouterState){
 }
 
 const onProductsEnter = function (nextRouterState){
-  console.log('onProductCategoryEnter')
+  // console.log('onProductCategoryEnter')
   store.dispatch(getProducts());
   store.dispatch(loadSingleCategory(nextRouterState.params.categoryName))
 }
