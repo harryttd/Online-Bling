@@ -52,6 +52,7 @@ class OrderList extends Component {
                       <th>ID</th>
                       <th>Purchased Date</th>
                       <th>Order Total</th>
+                      <th>Order Detail</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -60,7 +61,8 @@ class OrderList extends Component {
                         <tr key={order.id}>
                           <td>{ order.id }</td>
                           <td>{ order.created_at.slice(0, 10) } { order.created_at.slice(11, 16) }</td>
-                          <td>{ order.total }</td>                      
+                          <td>{ order.total }</td>   
+                          <td><Link to="{`/order/user/${order.user_id}/${order.id}">Order Detail</Link></td>  
                         </tr>
                       ))
                     }                    
@@ -79,7 +81,7 @@ class OrderList extends Component {
 
 
 
-
+ 
 
   // <p>{(order.map(product => product.selectedProduct.quantity).reduce((a,b) => a + b))} Total Quantity: </p>
   //                   {
@@ -92,3 +94,9 @@ class OrderList extends Component {
   //                   }
   //                   <div className="price row">${order.map(product => product.price * product.selectedProduct.quantity).reduce((a, b) => a + b).toFixed(2)} Total </div>
   //                   <Link to={`/orderList/${order[0].selectedProduct.order_id}`}>Order Details</Link>
+
+
+
+
+
+

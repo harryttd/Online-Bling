@@ -12,7 +12,7 @@ class singleOrder extends Component {
 		return (
 			<div className="singleOrderContainer singleOrder-list">
 
-				<ol className="breadcumb">
+				<ol className="breadcrumb">
 					<li><Link to="/">Home</Link></li>
 					<li className="active">Single Order</li>
 				</ol>
