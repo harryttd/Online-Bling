@@ -50,7 +50,7 @@ export function getAllOrdersAdmin(orders) {
 export function fetchAllOrders() {
   return function (dispatch, getState) {
   	//get userId from auth
-    // const userId = getState().auth.id
+    const userId = getState().auth.id
 
     axios.get(`/api/order/${userId}`)
       .then(res => res.data)
