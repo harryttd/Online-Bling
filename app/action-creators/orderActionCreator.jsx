@@ -27,20 +27,20 @@ export function getSingleOrder(currentOrder) {
   }
 }
 
-//Admins
-export function getSingleOrderAdmin(currentOrder) {
-  return {
-    type: FETCH_SINGLE_ORDER_ADMIN,
-    currentOrder
-  }
-}
+// //Admins
+// export function getSingleOrderAdmin(currentOrder) {
+//   return {
+//     type: FETCH_SINGLE_ORDER_ADMIN,
+//     currentOrder
+//   }
+// }
 
-export function getAllOrdersAdmin(orders) {
-  return {
-    type: FETCH_ALL_ORDERS_ADMIN,
-    orders
-  }
-}
+// export function getAllOrdersAdmin(orders) {
+//   return {
+//     type: FETCH_ALL_ORDERS_ADMIN,
+//     orders
+//   }
+// }
 
 //******************* THUNKS
 
@@ -50,9 +50,11 @@ export function getAllOrdersAdmin(orders) {
 export function fetchAllOrders() {
   return function (dispatch, getState) {
   	//get userId from auth
-    const userId = getState().auth.id
+    console.log('fetchAllOrders');
+    // console.log(getState());
+    // const userId = getState().auth.id
 
-    axios.get(`/api/order/user/${userId}`)
+    axios.get(`/api/order`)
       .then(res => res.data)
       .then(foundOrders => {
         dispatch(getAllOrders(foundOrders))

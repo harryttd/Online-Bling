@@ -1,17 +1,10 @@
 import { connect } from 'react-redux';
 import OrderList from 'APP/app/components/orderList';
 import store from '../store';
+import {fetchAllOrders} from '../action-creators/orderActionCreator'
 
-function mapStateToProps(state) {
-  return {
-    allOrders: state.orders.allOrders
-  };
-}
+const mapStateToProps = ({ orders }) => ({orders: orders.allOrders})
 
-// function mapDispatchToProps(state) {
-// 	return {}
-// }
+const mapDispatchToProps = ({ fetchAllOrders }) => ({fetchAllOrders})
 
-const OrderListContainer = connect(mapStateToProps)(OrderList);
-
-export default OrderListContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(OrderList);

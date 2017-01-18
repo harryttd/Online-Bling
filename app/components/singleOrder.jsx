@@ -19,10 +19,11 @@ class singleOrder extends Component {
 
 				<section className="container-fluid">
 					<div className="row">
+						<div className="col-xs-12 col-md-8 col-md-offset-2"
 						{
 							this.props.currentOrder.length > 0 ?
 								<div>
-									<p> Order Placed On: { this.props.currentOrder[0].created_at.slice(0,10) this.props.currentOrder[0].created_at.slice(11, 16)}</p>
+									<p> Order Placed On: { this.props.currentOrder.created_at.slice(0,10) this.props.currentOrder.created_at.slice(11, 16)}</p>
 									<p> ${this.props.currentOrder.map(product => product.price * product.selectedProduct.quantity).reduce((a, b) => a + b).toFixed(2)}</p>
 								</div>
 							:
@@ -52,6 +53,7 @@ class singleOrder extends Component {
 							)
 							})
 						}
+						</div>
 					</div>
 				</section>
 			</div>
