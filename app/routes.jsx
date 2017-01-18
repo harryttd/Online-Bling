@@ -22,16 +22,14 @@ import { getProducts, getProductsByCategoryId } from './action-creators/products
 import {loadSingleCategory} from './action-creators/categories'
 
 const onProductCategoryEnter = function (nextRouterState){
-  console.log('onProductCategoryEnter')
   store.dispatch(getProductsByCategoryId(nextRouterState.params.categoryName));
-  console.log('onProductCategoryEnter 2', nextRouterState.params.categoryName)
   store.dispatch(loadSingleCategory(nextRouterState.params.categoryName))
 }
 
 const onProductsEnter = function (nextRouterState){
   console.log('onProductCategoryEnter')
   store.dispatch(getProducts());
-  store.dispatch(loadSingleCategory())
+  store.dispatch(loadSingleCategory(nextRouterState.params.categoryName))
 }
 
 export default ({ onAppEnter, onProductEnter, onCartEnter }) => (
