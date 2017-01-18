@@ -14,7 +14,7 @@ module.exports = express.Router()
        { model: Product_Review,
           include: [
             {model: User}
-          ]     
+          ]
        }
      ]
    })
@@ -24,7 +24,7 @@ module.exports = express.Router()
    .catch(next))
 
 
-  // .post('/:productId', (req, res, next) => 
+  // .post('/:productId', (req, res, next) =>
   //   Product.findbyId(req.params.productId)
   //   .create(Product_Review)
   //   .then(product => {
@@ -41,7 +41,7 @@ module.exports = express.Router()
   //   .catch(next)
   // )
 
-  // .delete('/:productId/:productReviewId', (req, res, next) => 
+  // .delete('/:productId/:productReviewId', (req, res, next) =>
   //   Product_Review.destory({
   //     where: {
   //       id: req.params.id
@@ -55,7 +55,16 @@ module.exports = express.Router()
     Category.findOne({
       where: { name: req.params.categoryName }
     })
-    .then(category => category.getProducts())
+    .then( category => {
+      console.log("this is the category api call", category)
+      if (category) {
+        // console.log('I am getting products')
+        return category.getProducts()
+      } else {
+        // console.log('I am getting nothing')
+        return []
+      }
+    })
     .then(products => res.json(products))
     .catch(next))
 
@@ -80,7 +89,7 @@ module.exports = express.Router()
     .catch(next))
 
   //Create delete route for specific review in a single product page
-  .delete('/:productId/', (req, res, next) => 
+  .delete('/:productId/', (req, res, next) =>
     Product.findOne({
       where: {id: req.params.productId},
       include: [
@@ -91,10 +100,3 @@ module.exports = express.Router()
     .then(() => res.sendStatus(204))
     .catch(next)
   )
-
-
-
-
-
-
-
