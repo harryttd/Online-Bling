@@ -10,26 +10,35 @@ export default class Checkout extends Component {
 	onCheckoutSubmit(event) {
 		event.preventDefault();
 		const target = event.target;
-		const information = {
-			name: target.name,
-			shippingAddress1: target.shippingAddress1,
-			shippingAddress2: target.shippingAddress2,
-			shippingCity: target.shippingCity,
-			shippingState: target.shippingState,
-			shippingCountry: target.shippingCountry,
-			cardHolderName: target.cardHolderName,
-			billingAddress1: target.billingAddress1,
-			billingAddress2: target.billingAddress2,
-			billingCity: target.billingCity,
-			billingState: target.billingState,
-			billingCountry: target.billingCountry,
-			cardType: target.cardType,
-			cardNumber: target.cardNumber
+		const shippingAddress = {
+			// name: target.name.value,
+			user_id: this.props.auth.id,
+			address1: target.shippingAddress1.value,
+			address2: target.shippingAddress2.value,
+			city: target.shippingCity.value,
+			state: target.shippingState.value,
+			country: target.shippingCountry.value,
+			zipcode: target.shippingZipcode.value
 		};
-		this.props.checkout(information);
+
+		const billingAddress = {
+			// cardHolderName: target.cardHolderName.value,
+			user_id: this.props.auth.id,
+			address1: target.billingAddress1.value,
+			address2: target.billingAddress2.value,
+			city: target.billingCity.value,
+			state: target.billingState.value,
+			country: target.billingCountry.value,
+			zipcode: target.billingZipcode.value
+		};
+			// cardType: target.cardType.value,
+			// cardNumber: target.cardNumber.value
+		this.props.confirmCheckout(shippingAddress, billingAddress);
+
 	}
 
 	render() {
+		console.log("THIS>PROPS", this.props);
 		return (
 			<section className="cart-list container-fluid">
 				<div className="row">
@@ -64,9 +73,13 @@ export default class Checkout extends Component {
 												<div className="form-group">
 													<label>Country</label>
 													<select name="shippingCountry" className="form-control">
-														<option>United State</option>
+														<option>United States</option>
 														<option>Canada</option>
 													</select>
+												</div>
+												<div className="form-group">
+													<label>Zipcode</label>
+													<input type="text" name="shippingZipcode" className="form-control" />
 												</div>
 											</div>
 											<div className="col-xs-12 col-md-6">
@@ -94,9 +107,13 @@ export default class Checkout extends Component {
 												<div className="form-group">
 													<label>Country</label>
 													<select name="billingCountry" className="form-control">
-														<option>United State</option>
+														<option>United States</option>
 														<option>Canada</option>
 													</select>
+												</div>
+												<div className="form-group">
+													<label>Zipcode</label>
+													<input type="text" name="billingZipcode" className="form-control" />
 												</div>
 												{/*<!-- we should take a look at stripe -->*/}
 												<div className="form-group">
@@ -112,10 +129,12 @@ export default class Checkout extends Component {
 													<input type="text" name="cardNumber" className="form-control" />
 												</div>
 											</div>
+											<div className="row">
+												 <Link to="/">
+													 <button type="submit" className="submit">Confirm Order</button>
+												 </Link>
+											</div>
 										</form>
-										<div className="row">
-											<button type="submit" className="submit">Confirm Order</button>
-										</div>
 									</div>
 								</div>
 							</div>

@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import Checkout from '../components/Checkout';
-// import 
+import { confirmCheckout } from '../action-creators/checkout';
 
+const mapState = ({ auth, cart }) => ({ auth, cart });
 
-const mapState = () => ({ message: 'Checkout' });
-
-const mapDispatch = { checkout };
+const mapDispatch = { confirmCheckout };
 
 export default connect(mapState, mapDispatch)(Checkout);

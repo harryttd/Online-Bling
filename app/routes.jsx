@@ -14,13 +14,13 @@ import Cart from './containers/CartContainer';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import About from './components/About';
-import Checkout from './components/Checkout';
+import Checkout from './containers/CheckoutContainer';
 import ReviewList from './components/ReviewList';
 import SingleReview from './components/SingleReview';
 import orderList from './containers/orderListContainer';
 
-import { getProducts, getProductsByCategoryId } from './action-creators/products'
-import {loadSingleCategory} from './action-creators/categories'
+import { getProducts, getProductsByCategoryId } from './action-creators/products';
+import {loadSingleCategory} from './action-creators/categories';
 
 
 const onProductCategoryEnter = function (nextRouterState){
@@ -40,7 +40,7 @@ export default ({ onAppEnter, onProductEnter, onCartEnter, onOrderEnter }) => (
     <IndexRoute component={Homepage} onEnter={onAppEnter}/>
       <Route path="/about" component={About} />
       <Route path="/checkout" component={Checkout} />
-      <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter}/>
+      <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />
       <Route path="/cart" component={Cart} onEnter={onCartEnter} />
       <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
       <Route path="/products/category/:categoryName" component={ProductsContainer} onEnter={onProductCategoryEnter} />
