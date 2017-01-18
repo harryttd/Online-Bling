@@ -22,6 +22,9 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';
 
+// Checkout
+export const CONFIRM_CHECKOUT = 'CONFIRM_CHECKOUT';
+
 //Order Users
 export const FETCH_ALL_ORDERS = 'FETCH_ALL_ORDERS';
 export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
