@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import { logout } from '../reducers/auth';
+import Categories from './Categories';
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap'
+
 /* -----------------    COMPONENT     ------------------ */
 
 class AppBar extends React.Component {
@@ -11,7 +13,7 @@ class AppBar extends React.Component {
     this.state = {
       auth: {}
     };
-    this.onClickLogout = this.onClickLogout.bind(this);    
+    this.onClickLogout = this.onClickLogout.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,28 +35,11 @@ class AppBar extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavDropdown eventKey={1} title="SHOP" id="categories-dropdown">
-              { /*
-
-                const { auth, categories } = this.props;
-
-                { categories && categories.list ?
-
-                  this.props.categories.list.filter(category=>{!category.parent}).map(category=>(
-                    <MenuItem key={category.id}>{category.name}</MenuItem>
-                  )) : null
-                }
-                */
-              }
-              <MenuItem>Category 1</MenuItem>              
-              <MenuItem>Category 2</MenuItem>
-              <MenuItem>Category 3</MenuItem>
-            </NavDropdown>
+            <Categories/>
             <NavItem eventKey={2} href="#">ABOUT</NavItem>
             <NavItem eventKey={3} href="#">PRESS</NavItem>
-            
           </Nav>
-          <Nav pullRight>   
+          <Nav pullRight>
             <NavItem eventKey={4} href="#">
               <i className="fa fa-search" aria-hidden="true"></i>
             </NavItem>
@@ -67,12 +52,12 @@ class AppBar extends React.Component {
                   <MenuItem href="/address">Address Book</MenuItem>
                   <MenuItem role="separator" class="divider"></MenuItem>
                   <MenuItem onClick={this.onClickLogout}>Logout</MenuItem>
-                </NavDropdown> ) : 
+                </NavDropdown> ) :
               ( <NavDropdown eventKey={6} title="USER" id="users">
                   <MenuItem href="/signup">Register</MenuItem>
                   <MenuItem href="/login">Login</MenuItem>
                 </NavDropdown> )
-            }            
+            }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -103,42 +88,42 @@ class AppBar extends React.Component {
   //           <li>
   //             <Link>PRESS</Link>
   //           </li>
-  //         </ul>         
+  //         </ul>
   //       </div>
   //       <div className="logo">Online Bling</div>
   //       <div className="iconmenu-wrapper">
-  //         <ul className="right-align">          
+  //         <ul className="right-align">
   //           <li className="user-wrapper">
   //             <Link><i className="fa fa-user" aria-hidden="true"></i></Link>
-              
+
   //               { auth && auth.email && auth.password_digest ?
   //                 ( <ul className="dropdown-menu">
   //                     <li><Link to="/profile">Profile</Link></li>
   //                     <li role="separator" class="divider"></li>
   //                     <li><div onClick={this.onClickLogout}>Logout</div></li>
-  //                   </ul> ) : 
+  //                   </ul> ) :
   //                 ( <ul className="dropdown-menu">
   //                     <li><Link to="/signup">Register</Link></li>
   //                     <li><Link to="/login">Login</Link></li>
   //                   </ul> )
   //               }
-  //           </li>           
+  //           </li>
   //           <li>
-  //             <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>             
-  //           </li>           
-  //           <li className="search-wrapper">             
+  //             <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+  //           </li>
+  //           <li className="search-wrapper">
   //             <div className="form-wrapper">
-  //               <form action="/api/search" method="get" role="search">                
+  //               <form action="/api/search" method="get" role="search">
   //                 <input name="search" type="text" placeholder="SEARCH..." className="search-box-form hint text" />
   //                 <button type="submit" className="fa fa-search"></button>
   //               </form>
   //             </div>
-  //             <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>        
-  //             <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>                    
-  //           </li>           
-  //         </ul>                 
+  //             <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>
+  //             <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>
+  //           </li>
+  //         </ul>
   //       </div>
-  //     </div>      
+  //     </div>
   //   );
   // }
 
@@ -171,7 +156,8 @@ class AppBar extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapProps = ({ auth }) => ({ auth });
+const mapProps = ({ auth, categories }) => ({ auth, categories });
+
 
 const mapDispatch = dispatch => ({
   logout: () => {

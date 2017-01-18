@@ -1,12 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default ({ products }) => (
+export default ({ products, category }) => (
   <div className="product-grid">
-    <ol className="breadcrumb">
-      <li><Link to="/">Home</Link></li>
-      <li className="active">Product</li>
-    </ol>
+    {
+      category && category.name ?
+      (<ol className="breadcrumb">
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/products">Product</Link></li>
+        <li className="active">{category.name}</li>
+      </ol>) :
+      (<ol className="breadcrumb">
+        <li><Link to="/">Home</Link></li>
+        <li className="active">Product</li>
+      </ol>)
+    }
+
     <section className="product-grid container-fluid">
       <div className="row">
         {
