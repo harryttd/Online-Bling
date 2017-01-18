@@ -5,10 +5,16 @@
 
 		}
 
+		.lineitem-actions {
+			.fa-times:hover{
+				color: red;
+			}
+		}
+
 		tbody tr td {
 			vertical-align: middle;
 		}
-		
+
 	}
 	button {
 		overflow: hidden;
@@ -24,6 +30,3 @@
     text-transform: capitalize;
 	}
 }
-
-
-

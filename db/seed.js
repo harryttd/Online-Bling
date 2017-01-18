@@ -55,10 +55,10 @@ const seedProductCategories = () => db.Promise.map([
 ], productCategory => db.model('product_category').create(productCategory));
 
 const seedProductReviews = () => db.Promise.map([
-  {body: 'super dope product!!!', stars: '5', product_id: 2, user_id: 2},
-  {body: 'Beautiful Ring!!', stars: '4', product_id: 4, user_id: 4},
-  {body: 'aweful', stars: '1', product_id: 3, user_id: 12},
-  {body: 'Amazing!', stars: '5', product_id: 5, user_id: 8}
+  {title: 'This product is awesome', body: 'super dope product!!! something something something', stars: '5', product_id: 2, user_id: 2},
+  {title: 'This product is awesome', body: 'Beautiful Ring!! something something somethingsomething something ', stars: '4', product_id: 4, user_id: 4},
+  {title: 'This product is awesome', body: 'aweful worst product ever something something somethingsomething', stars: '1', product_id: 3, user_id: 12},
+  {title: 'This product is awesome', body: 'Amazing! something somethingsomethingsomething something something something something something ', stars: '5', product_id: 5, user_id: 8}
 ], reviews => db.model('product_review').create(reviews));
 
 const seedAddresses = () => db.Promise.map([

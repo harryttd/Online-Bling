@@ -21,6 +21,8 @@ Category.belongsToMany(Product, {through: 'product_category'});
 
 Product_Review.belongsTo(User)
 Product_Review.belongsTo(Product)
+Product.hasMany(Product_Review)
+
 
 Cart_Line_Item.belongsTo(User)
 Cart_Line_Item.belongsTo(Product)

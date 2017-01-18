@@ -95,31 +95,85 @@ passport.deserializeUser(
   }
 )
 
-passport.use(new (require('passport-local').Strategy) (
-  (email, password, done) => {
-    debug('will authenticate user(email: "%s")', email)
-    User.findOne({where: {email}})
-      .then(user => {
-        if (!user) {
-          debug('authenticate user(email: "%s") did fail: no such user', email)
-          return done(null, false, { message: 'Login incorrect' })
-        }
-        return user.authenticate(password)
-          .then(ok => {
-            if (!ok) {
-              debug('authenticate user(email: "%s") did fail: bad password')              
-              return done(null, false, { message: 'Login incorrect' })
-            }
-            debug('authenticate user(email: "%s") did ok: user.id=%d', user.id)
-            done(null, user)              
-          })
-      })
-      .catch(done)
-  }
-))
+// passport-local is updated 1 year ago
+// passport.use(new (require('passport-local').Strategy) (
+//   (email, password, done) => {
+//     debug('will authenticate user(email: "%s")', email)
+//     User.findOne({where: {email}})
+//       .then(user => {
+//         if (!user) {
+//           debug('authenticate user(email: "%s") did fail: no such user', email)
+//           return done(null, false, { message: 'Login incorrect' })
+//         }
+//         return user.authenticate(password)
+//           .then(ok => {
+//             if (!ok) {
+//               debug('authenticate user(email: "%s") did fail: bad password')              
+//               return done(null, false, { message: 'Login incorrect' })
+//             }
+//             debug('authenticate user(email: "%s") did ok: user.id=%d', user.id)
+//             done(null, user)              
+//           })
+//       })
+//       .catch(done)
+//   }
+// ))
 
-auth.get('/whoami', (req, res) => res.send(req.user))
+auth.get('/whoami', (req, res) => {
+  console.log(env.GOOGLE_CONSUMER_KEY)
+  console.log(req.user)
+  User.findOrCreate({
+    where:{ session_id : req.sessionID}
+  })
+  .then(returnedUser => res.send(returnedUser[0]))
+})
 
+// login, i.e. "you remember `me`, right?"
+auth.put('/login', (req, res, next)=>{
+  console.log('sessionID',req.sessionID)
+  User.findOne({
+    where:{
+      email:req.body.email
+    }
+  }).then(user=>{
+      if(!user) {
+        res.sendState(401)
+      }else{
+        return user.update({
+          email: req.body.email,
+          password: req.body.password,
+          session_id: req.sessionID
+        })        
+      }
+    }).then(updated=>{
+      req.logIn(updated, err=>{
+          if(err) return next(err);
+          res.json(updated)
+        })
+    })
+    .catch(next)
+})
+
+
+auth.put('/signup', (req, res, next)=>{
+  console.log('sessionID',req.sessionID)
+  console.log('body',req.body)
+  User.findOrCreate({
+    where: {
+      session_id: req.sessionID
+    }
+  }).spread((user, created)=>{
+    console.log(user)
+    return user.update(req.body)
+  }).then(updated=>{
+    req.logIn(updated, err=>{
+      if(err) return next(err)
+      res.json(updated)
+    })
+  })
+})
+
+//this route is probably out dated
 auth.post('/:strategy/login', (req, res, next) =>
   passport.authenticate(req.params.strategy, {
     successRedirect: '/'
@@ -127,8 +181,13 @@ auth.post('/:strategy/login', (req, res, next) =>
 )
 
 auth.post('/logout', (req, res, next) => {
-  req.logout()
-  res.redirect('/api/auth/whoami')
+  console.log(req.user)
+  User.emptySessionId(req.user.id)
+    .then(()=>{
+      req.session.destroy();
+      req.logout()
+      res.redirect('/api/auth/whoami')    
+    })
 })
 
 module.exports = auth
