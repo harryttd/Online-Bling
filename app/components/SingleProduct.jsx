@@ -39,10 +39,10 @@ export default class SingleProduct extends React.Component {
 			<div id="ProductContainer" className="product-detail">
 
 		  	<ol className="breadcrumb">
-				  <li><Link to='/'>Home</Link></li>
-				  <li><Link to="/products">Product</Link></li>
-				  <li className="active">{ product.name }</li>
-				</ol>
+				<li><Link href="#">Home</Link></li>
+				<li><Link href="#">Product</Link></li>
+			 	<li className="active">{ product.name }</li>
+			</ol>
 
 	  		<section className="product-detail container-fluid">
 	  			<div className="row">
