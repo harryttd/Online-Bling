@@ -24,3 +24,11 @@ export const REMOVE_REVIEW = 'REMOVE_REVIEW';
 
 // Checkout
 export const CONFIRM_CHECKOUT = 'CONFIRM_CHECKOUT';
+
+//Order Users
+export const FETCH_ALL_ORDERS = 'FETCH_ALL_ORDERS';
+export const FETCH_SINGLE_ORDER = 'FETCH_SINGLE_ORDER';
+
+//Order Admins
+// export const FETCH_ALL_ORDERS_ADMIN = 'FETCH_ALL_ORDERS_ADMIN';
+// export const FETCH_SINGLE_ORDER_ADMIN = 'FETCH_SINGLE_ORDER_ADMIN';

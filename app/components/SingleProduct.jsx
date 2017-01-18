@@ -39,10 +39,10 @@ export default class SingleProduct extends React.Component {
 			<div id="ProductContainer" className="product-detail">
 
 		  	<ol className="breadcrumb">
-				  <li><Link href="#">Home</Link></li>
-				  <li><Link href="#">Product</Link></li>
-				  <li className="active">{ product.name }</li>
-				</ol>
+				<li><Link href="#">Home</Link></li>
+				<li><Link href="#">Product</Link></li>
+			 	<li className="active">{ product.name }</li>
+			</ol>
 
 	  		<section className="product-detail container-fluid">
 	  			<div className="row">
@@ -87,7 +87,7 @@ export default class SingleProduct extends React.Component {
 
 											<div role="tabpanel" className="tab-pane" id="description">
 												<p>
-													St. Louis derives inspiration from the French Quarter’s iconic 1800's cast iron balconies. Architectural in design, the brushed metal bridge is a bold and structurally significant feature. St. Louis’ adventurous style works best on bold personalities.
+													St. Louis derives inspiration from the French Quarter’s iconic cast iron balconies. Architectural in design, the brushed metal bridge is a bold and structurally significant feature. St. Louis’ adventurous style works best on bold personalities.
 												</p>
 											</div>
 									</div>
