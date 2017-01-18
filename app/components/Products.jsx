@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default ({ products, category }) => (
+export default ({ products, category, location }) => (
   <div className="product-grid">
     {
       category && category.name ?

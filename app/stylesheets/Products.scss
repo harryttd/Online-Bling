@@ -6,7 +6,7 @@
 	}
 	.product-info {
 		text-align: center;
-
+    margin-top: -35px;
 		span {
 			font-size: 1.1em
 		}
@@ -26,6 +26,8 @@
 			font-size: 2.5em;
 		}
 
+
+
 		.tab-content {
 			ul {
 				padding: 20px 0 20px 20px;
@@ -38,10 +40,11 @@
 	}
 	.product-image {
 		.image-slide {
-			height: 100vh;
+			z-index: 100;
+			height: 500px;
 			background-image: url('http://cdn.shopify.com/s/files/1/0236/9929/products/StLouis-MatteBlack-Website-Front_1024x1024.png?v=1480979437');
 			background-position: center;
-			background-size: auto 100%;
+			background-size: 100% auto;
 			background-repeat: no-repeat;
 		}
 	}
@@ -71,5 +74,32 @@
     text-transform: capitalize;
     /* transition: all 0.8s ease; */
 
+	}
+}
+
+#product-review-tab{
+	.review{	
+		.dv-star-rating {
+			display: inline-block;
+	    position: relative;
+	    top: -13px;
+	    float: right;
+		}
+		.createdAt {
+	    font-size: 10px;
+	    float: left;
+	    width: 40%;
+		}
+		.body{
+	    width: 90%;
+	    float: left;
+	    p {
+	    	padding: 5px;
+    		font-size: 1.3rem;
+	    }
+		}
+	}
+	a.removeIcon {
+		float: right;
 	}
 }

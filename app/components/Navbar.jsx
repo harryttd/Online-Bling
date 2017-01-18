@@ -43,7 +43,7 @@ class AppBar extends React.Component {
             <NavItem eventKey={4} href="#">
               <i className="fa fa-search" aria-hidden="true"></i>
             </NavItem>
-            <NavItem eventKey={5} href="/cart">
+            <NavItem eventKey={5} onClick={(e)=>{browserHistory.push('/cart')}}>
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </NavItem>
             { auth && auth.email && auth.password_digest ?
