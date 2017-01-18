@@ -40,8 +40,9 @@ export default class Cart extends React.Component {
 											)
 										}
 									</table>
-									<button onClick="" className="submit">check out
-									</button>
+									<Link to="/checkout">
+										<button className="submit">check out</button>
+									</Link>
 								</div>
 							</div>
 							: <h2>Your cart is currently empty</h2>

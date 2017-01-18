@@ -15,3 +15,6 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 //Reviews
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';
+
+// Checkout
+export const CONFIRM_CHECKOUT = 'CONFIRM_CHECKOUT';
