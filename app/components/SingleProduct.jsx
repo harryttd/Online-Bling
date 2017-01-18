@@ -10,11 +10,15 @@ export default class SingleProduct extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			product: {}
+			product: {},
+			orderQty: 1,
+			reviews: []
 		}
 		this.onRemoveClick = this.onRemoveClick.bind(this);
 		this.onAddReviewSubmit = this.onAddReviewSubmit.bind(this);
 		this.onStarClick = this.onStarClick.bind(this);
+		this.onChangeQty = this.onChangeQty.bind(this);
+		this.onClickAddCart = this.onClickAddCart.bind(this);
 	}
 	onRemoveClick (id) {
 		this.props.removeReview(id);
@@ -40,24 +44,33 @@ export default class SingleProduct extends React.Component {
 		e.target.title.value = '';
 	}
 
+	onChangeQty(e){
+		this.setState({orderQty: e.target.value});
+	}
+
+	onClickAddCart(product){		
+		let cartLineItem = {
+			product_id: product.id,
+			orderQty: parseInt(this.state.orderQty)
+		};
+		this.props.addToCart(cartLineItem);
+	}
+
 	render(){
-		const { product, reviews, addToCart } = this.props;
-		const productImageStyle = {
-			backgroudImage: 'url(' + product.image + ')'
-		}
+		const { product, reviews } = this.props;
 		return (
 			<div id="ProductContainer">
 
 		  	<ol className="breadcrumb">
-				<li><Link href="#">Home</Link></li>
-				<li><Link href="#">Product</Link></li>
-			 	<li className="active">{ product.name }</li>
-			</ol>
+					<li><Link to="/">Home</Link></li>
+					<li><Link to="/products">Product</Link></li>
+				 	<li className="active">{ product.name }</li>
+				</ol>
 
 	  		<section className="product-detail container-fluid">
 	  			<div className="row">
 	  				<div className="product-image col-xs-12 col-lg-8 pull-right">
-							<div className="image-slide" style={productImageStyle}></div>
+							<div className="image-slide" style ={ { backgroundImage: `url('${product.image}')` } }></div>
 						</div>
 						<div className="product-info col-xs-12 col-lg-4 pull-right">
 							<div className="container-fluid">
@@ -66,10 +79,10 @@ export default class SingleProduct extends React.Component {
 								<div className="add-cart row">
 									<div className="quantity col-xs-4">
 										{/* Below input box is not rendering */}
-										<input type="number" name="quantity" />
+										<input type="number" name="quantity" onChange={(e)=>(this.onChangeQty(e))} defaultValue={this.state.orderQty} />
 									</div>
 									<div className="add-cart col-xs-8">
-										<button onClick={() => addToCart(product) }>Add to cart</button>
+										<button onClick={(e) => this.onClickAddCart(product, this.state.orderQty) }>Add to cart</button>
 									</div>
 								</div>
 								<div className="row">
@@ -107,7 +120,7 @@ export default class SingleProduct extends React.Component {
 																		<StarRatingComponent name="stars" 
 									                    starCount={5}
 									                    editing={false}
-									                    value={review.stars}
+									                    value={parseInt(review.stars)}
 									                    onStarClick={this.onStarClick.bind(this)} />
 								                    <div className="createdAt">{ new Date(review.created_at).toDateString() }</div>
 								                    <div className="body"><p>{ review.body }</p></div>
@@ -120,7 +133,7 @@ export default class SingleProduct extends React.Component {
 															);
 														})
 													}
-													<form className="row" onSubmit={this.onAddReviewSubmit}>
+													<form className="row" onSubmit={(e)=>(this.onAddReviewSubmit(e))}>
 														<div className="form-group col-xs-12 col-md-8" >
 															<input name="title" type="text" placeholder="Subject" className="form-control" />
 															<textarea name="body" placeholder="Write a review"  className="form-control" />

@@ -36,6 +36,7 @@ export const getCart = () => dispatch =>
 export const addToCart = product => dispatch =>
   axios.post('/api/cart', product)
   .then(response => dispatch(add(response.data)))
+  .then(()=>dispatch(getCart()))
   .catch(error => console.error(`Could Not add item ${product}`, error));
 
 export const removeItem = id => dispatch => {

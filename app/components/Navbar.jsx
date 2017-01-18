@@ -36,7 +36,7 @@ class AppBar extends React.Component {
         <Navbar.Collapse>
           <Nav>
             <Categories/>
-            <NavItem eventKey={2} href="#">ABOUT</NavItem>
+            <NavItem eventKey={2} onClick={(e)=>{browserHistory.push('/about')}}>ABOUT</NavItem>
             <NavItem eventKey={3} href="#">PRESS</NavItem>
           </Nav>
           <Nav pullRight>
