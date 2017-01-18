@@ -26,7 +26,7 @@ export default ({ products, category }) => (
                   <img src={ product.image || 'http://placehold.it/350x150' } />
                 </div>
                 <div className="product-info">
-                  <span><strong>{ product.name }</strong></span>
+                  <span><strong>{ product.name } | $</strong></span>
                   <span>{ product.price }</span>
                 </div>
               </Link>

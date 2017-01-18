@@ -37,7 +37,7 @@ const onProductsEnter = function (nextRouterState){
 export default ({ onAppEnter, onProductEnter, onCartEnter, onOrderEnter }) => (
   <Router history={browserHistory}>
     <Route path="/" component={Root} onEnter={onAppEnter}>
-    <IndexRoute component={Homepage} />
+    <IndexRoute component={Homepage} onEnter={onAppEnter}/>
       <Route path="/about" component={About} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter}/>
