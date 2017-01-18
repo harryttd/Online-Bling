@@ -11,7 +11,7 @@ class AppBar extends React.Component {
     this.state = {
       auth: {}
     };
-    this.onClickLogout = this.onClickLogout.bind(this);    
+    this.onClickLogout = this.onClickLogout.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,37 +46,37 @@ class AppBar extends React.Component {
                 }
                 */
               }
-              <MenuItem>Category 1</MenuItem>              
+              <MenuItem>Category 1</MenuItem>
               <MenuItem>Category 2</MenuItem>
               <MenuItem>Category 3</MenuItem>
             </NavDropdown>
-            <NavItem eventKey={2} href="#">ABOUT</NavItem>
-            <NavItem eventKey={3} href="#">PRESS</NavItem>
-            
+            <NavItem eventKey={2} onClick={() => browserHistory.push("/about")}>ABOUT</NavItem>
+            <NavItem eventKey={3} onClick={() => browserHistory.push("/press")}>PRESS</NavItem>
+
           </Nav>
-          <Nav pullRight>   
+          <Nav pullRight>
             <NavItem eventKey={4} href="#">
               <i className="fa fa-search" aria-hidden="true"></i>
             </NavItem>
-            <NavItem eventKey={5} href="/cart">
+            <NavItem eventKey={5} onClick={() => browserHistory.push("/cart")}>
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </NavItem>
             { auth && auth.email && auth.password_digest ?
               ( <NavDropdown eventKey={6} title="USER" id="users">
                   <MenuItem href="/profile"></MenuItem>
                   <MenuItem href="/address">Address Book</MenuItem>
-                  <MenuItem role="separator" class="divider"></MenuItem>
+                  <MenuItem role="separator" className="divider"></MenuItem>
                   <MenuItem onClick={this.onClickLogout}>Logout</MenuItem>
-                </NavDropdown> ) : 
+                </NavDropdown> ) :
               ( <NavDropdown eventKey={6} title="USER" id="users">
                   <MenuItem href="/signup">Register</MenuItem>
                   <MenuItem href="/login">Login</MenuItem>
                 </NavDropdown> )
-            }            
+            }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    )
+    );
   }
   /*
    * This is previous navbar, left this for possible use
@@ -103,42 +103,42 @@ class AppBar extends React.Component {
   //           <li>
   //             <Link>PRESS</Link>
   //           </li>
-  //         </ul>         
+  //         </ul>
   //       </div>
   //       <div className="logo">Online Bling</div>
   //       <div className="iconmenu-wrapper">
-  //         <ul className="right-align">          
+  //         <ul className="right-align">
   //           <li className="user-wrapper">
   //             <Link><i className="fa fa-user" aria-hidden="true"></i></Link>
-              
+
   //               { auth && auth.email && auth.password_digest ?
   //                 ( <ul className="dropdown-menu">
   //                     <li><Link to="/profile">Profile</Link></li>
   //                     <li role="separator" class="divider"></li>
   //                     <li><div onClick={this.onClickLogout}>Logout</div></li>
-  //                   </ul> ) : 
+  //                   </ul> ) :
   //                 ( <ul className="dropdown-menu">
   //                     <li><Link to="/signup">Register</Link></li>
   //                     <li><Link to="/login">Login</Link></li>
   //                   </ul> )
   //               }
-  //           </li>           
+  //           </li>
   //           <li>
-  //             <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>             
-  //           </li>           
-  //           <li className="search-wrapper">             
+  //             <Link><i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
+  //           </li>
+  //           <li className="search-wrapper">
   //             <div className="form-wrapper">
-  //               <form action="/api/search" method="get" role="search">                
+  //               <form action="/api/search" method="get" role="search">
   //                 <input name="search" type="text" placeholder="SEARCH..." className="search-box-form hint text" />
   //                 <button type="submit" className="fa fa-search"></button>
   //               </form>
   //             </div>
-  //             <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>        
-  //             <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>                    
-  //           </li>           
-  //         </ul>                 
+  //             <Link className="open-toggle"><i className="fa fa-search" aria-hidden="true"></i></Link>
+  //             <Link className="close-toggle"><i className="fa fa-times" aria-hidden="true"></i></Link>
+  //           </li>
+  //         </ul>
   //       </div>
-  //     </div>      
+  //     </div>
   //   );
   // }
 
