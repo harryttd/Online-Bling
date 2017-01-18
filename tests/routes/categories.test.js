@@ -33,7 +33,7 @@ describe('category route', () => {
 
 		it('GET /:id should return one category with corresponding id', () =>
 			request(app)
-				.get(`/api/category/1`)
+				.get(`/api/category/singlecategory/1`)
 				.expect(200)
 				.then(res => {
 					expect(res.body.parentCategory).to.equal(1)

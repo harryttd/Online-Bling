@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import { logout } from '../reducers/auth';
+import Categories from './Categories';
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap'
+
 /* -----------------    COMPONENT     ------------------ */
 
 class AppBar extends React.Component {
@@ -15,7 +17,7 @@ class AppBar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({auth:nextProps.auth})
+    this.setState({ auth: nextProps.auth});
   }
   onClickLogout(){
     this.props.logout();
@@ -33,26 +35,9 @@ class AppBar extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavDropdown eventKey={1} title="SHOP" id="categories-dropdown">
-              { /*
-
-                const { auth, categories } = this.props;
-
-                { categories && categories.list ?
-
-                  this.props.categories.list.filter(category=>{!category.parent}).map(category=>(
-                    <MenuItem key={category.id}>{category.name}</MenuItem>
-                  )) : null
-                }
-                */
-              }
-              <MenuItem>Category 1</MenuItem>
-              <MenuItem>Category 2</MenuItem>
-              <MenuItem>Category 3</MenuItem>
-            </NavDropdown>
+            <Categories/>
             <NavItem eventKey={2} onClick={() => browserHistory.push("/about")}>ABOUT</NavItem>
             <NavItem eventKey={3} onClick={() => browserHistory.push("/press")}>PRESS</NavItem>
-
           </Nav>
           <Nav pullRight>
             <NavItem eventKey={4} href="#">
@@ -171,7 +156,8 @@ class AppBar extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapProps = ({ auth }) => ({ auth });
+const mapProps = ({ auth, categories }) => ({ auth, categories });
+
 
 const mapDispatch = dispatch => ({
   logout: () => {
