@@ -89,7 +89,8 @@ let data = {
           {name: 'Mens'},
           {name: 'Womens'},
           {name: 'Mirrored'},
-          {name: 'Gold Hardware'}
+          {name: 'Gold Hardware'},
+          {name: 'New Arrivals'}
       ],
       orderData: [
         {total: 10, user_id: 1, shipping_address_id: 1, billing_address_id: 1},
@@ -140,14 +141,17 @@ let data = {
       {product_id: 1, category_id: 1},
       {product_id: 1, category_id: 3},
       {product_id: 1, category_id: 4},
+      {product_id: 1, category_id: 5},
       {product_id: 2, category_id: 2},
       {product_id: 3, category_id: 2},
       {product_id: 3, category_id: 3},
       {product_id: 3, category_id: 4},
       {product_id: 4, category_id: 1},
       {product_id: 4, category_id: 2},
+      {product_id: 4, category_id: 5},
       {product_id: 5, category_id: 1},
       {product_id: 5, category_id: 2},
+      {product_id: 5, category_id: 5},
       {product_id: 6, category_id: 2}
     ], productCategory => db.model('product_category').create(productCategory));
 
