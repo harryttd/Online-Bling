@@ -11,7 +11,7 @@ const SingleReview = ({ selectedReview }) => {
 				name="rate1"
 				editing={false}
 				starCount={5}
-				value={selectedReview.rating}
+				defaultValue={selectedReview.rating}
 				renderStarIcon={() => <span>*</span>}
 			/>
 			<prev>{ selectedReview }</prev>

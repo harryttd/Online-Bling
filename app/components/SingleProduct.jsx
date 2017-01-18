@@ -48,7 +48,7 @@ export default class SingleProduct extends React.Component {
 		this.setState({orderQty: e.target.value});
 	}
 
-	onClickAddCart(product){		
+	onClickAddCart(product){
 		let cartLineItem = {
 			product_id: product.id,
 			orderQty: parseInt(this.state.orderQty)
@@ -95,7 +95,7 @@ export default class SingleProduct extends React.Component {
 										</ul>
 
 										{/* Tab panes */}
-										<div className="tab-content">										
+										<div className="tab-content">
 											<div role="tabpanel" className="tab-pane active" id="detail">
 												<ul>
 													{
@@ -103,11 +103,11 @@ export default class SingleProduct extends React.Component {
 										          <li key={key}>{ product.description[key] }</li>
 										        )
 										      }
-												</ul>											
+												</ul>
 											</div>
 
 											<div role="tabpanel" className="tab-pane" id="product-review-tab">
-												<div className="container-fluid">								
+												<div className="container-fluid">
 													{
 														reviews && reviews.map(review => {
 															return (
@@ -115,20 +115,20 @@ export default class SingleProduct extends React.Component {
 																	<div className="form-group">
 																		<div className="title">
 																			{ review.title }
-																			<input type="text" name="title" className="form-control hide" value={ review.title } />
+																			<input type="text" name="title" className="form-control hide" defaultValue={ review.title } />
 																		</div>
-																		<StarRatingComponent name="stars" 
+																		<StarRatingComponent name="stars"
 									                    starCount={5}
 									                    editing={false}
-									                    value={parseInt(review.stars)}
+									                    defaultValue={parseInt(review.stars)}
 									                    onStarClick={this.onStarClick.bind(this)} />
 								                    <div className="createdAt">{ new Date(review.created_at).toDateString() }</div>
 								                    <div className="body"><p>{ review.body }</p></div>
 								                    <Link className="removeIcon" onClick={(e) => this.onRemoveClick(review.id)}>
 								                    	<i className="fa fa-times"></i>
 							                    	</Link>
-								                    <textarea className="form-control hide" name="body" value={ review.body } disabled />
-																	</div>																	
+								                    <textarea className="form-control hide" name="body" defaultValue={ review.body } disabled />
+																	</div>
 																</form>
 															);
 														})
@@ -148,11 +148,11 @@ export default class SingleProduct extends React.Component {
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
-			
+
 				</section>
-				
+
 			</div>
 		);
 	}
