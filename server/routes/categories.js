@@ -16,8 +16,10 @@ router.get('/', (req, res, next) =>
 		.catch(next))
 
 
-router.get('/singlecategory/:id', (req, res, next) =>
-	Category.findById(req.params.id)
+router.get('/singlecategory/:name', (req, res, next) =>
+	Category.findOne({
+		where: {name: req.params.name}
+	})
 	.then(category => res.json(category))
 	.catch(next))
 

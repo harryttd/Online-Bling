@@ -24,7 +24,7 @@ export const loadRootCategories = function ()  {
 
 	return function(dispatch) {
 
-		axios.get('api/category/rootcategories')
+		axios.get('/api/category/rootcategories')
 		.then(res => res.data)
 		.then(rootCategories => dispatch(receiveRootCategories(rootCategories)))
 		.catch(err => console.error(err))
@@ -35,17 +35,22 @@ export const loadAllCategories = function ()  {
 
 	return function(dispatch) {
 
-		axios.get('api/category')
+		axios.get('/api/category')
 		.then(res => res.data)
 		.then(allCategories => dispatch(receiveAllCategories(allCategories)))
 		.catch(err => console.error(err))
 	}
 }
 
-export const loadSingleCategory = function (categoryId)  {
+export const loadSingleCategory = function (categoryName)  {
 
-  axios.get(`api/category/singlecategory/${categoryId}`)
+  return function(dispatch) {
+
+  if (!categoryName) return dispatch(receiveSingleCategory({}))
+
+  axios.get(`/api/category/singlecategory/${categoryName}`)
   .then(res => res.data)
   .then(selectedCategory => dispatch(receiveSingleCategory(selectedCategory)))
   .catch(err => console.error(err))
+  }
 }

@@ -14,7 +14,16 @@ module.exports = express.Router()
     Category.findOne({
       where: { name: req.params.categoryName }
     })
-    .then(category => category.getProducts())
+    .then( category => {
+      console.log("this is the category api call", category)
+      if (category) {
+        console.log('I am getting products')
+        return category.getProducts()
+      } else {
+        console.log('I am getting nothing')
+        return []
+      }
+    })
     .then(products => res.json(products))
     .catch(next))
   .post('/', (req, res, next) =>

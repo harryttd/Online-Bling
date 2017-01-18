@@ -18,11 +18,20 @@ import About from './components/About';
 import Checkout from './components/Checkout';
 
 
-import { getProductsByCategoryId } from './action-creators/products'
+import { getProducts, getProductsByCategoryId } from './action-creators/products'
+import {loadSingleCategory} from './action-creators/categories'
 
 const onProductCategoryEnter = function (nextRouterState){
   console.log('onProductCategoryEnter')
   store.dispatch(getProductsByCategoryId(nextRouterState.params.categoryName));
+  console.log('onProductCategoryEnter 2', nextRouterState.params.categoryName)
+  store.dispatch(loadSingleCategory(nextRouterState.params.categoryName))
+}
+
+const onProductsEnter = function (nextRouterState){
+  console.log('onProductCategoryEnter')
+  store.dispatch(getProducts());
+  store.dispatch(loadSingleCategory())
 }
 
 export default ({ onAppEnter, onProductEnter }) => (
@@ -31,23 +40,14 @@ export default ({ onAppEnter, onProductEnter }) => (
     <IndexRoute component={Homepage} />
       <Route path="/about" component={About} />
       <Route path="/checkout" component={Checkout} />
-      <Route path="/products" component={ProductsContainer} />
+      <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter}/>
       <Route path="/products/:productId" component={ProductContainer} onEnter={onProductEnter} />
       <Route path="/products/category/:categoryName" component={ProductsContainer} onEnter={onProductCategoryEnter} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="*" component={Homepage} />
       <Route path="/reviews" component={ReviewList} />
       <Route path="/reviews/:reviewId" component={SingleReview} />
+      <Route path="*" component={Homepage} />
     </Route>
   </Router>
 );
-
-// set up route for product/category/:categoryName  √
-// set up a function that I call on enter into this product category √
-// in that function dispatch the getProductsByCategoryId function √
-// connector needs to be able to recieve that state updated √
-// make sure that the reducer is updating the list on the appropriate case √
-// map selected category to state on products // this is happening on the onProductCategoryEnter component
-// products dummy component √
-// if selected is populated show a title that indicates it is a category view √
