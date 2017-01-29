@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import SingleReview from 'APP/app/components/SingleReview';
 

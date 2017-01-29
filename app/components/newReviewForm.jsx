@@ -21,7 +21,7 @@ export default class NewReviewForm extends Component {
 			rating: this.state.rating,
 			body: this.state.body,
 			productId: this.props.product.id
-		})
+		});
 	}
 
 	render() {
@@ -37,20 +37,20 @@ export default class NewReviewForm extends Component {
 					</div>
 
 					<div className="form-group">
-		                <label className="col-xs-2 control-label">body</label>
-		                <div className="col-xs-10">
-		                 	<input className="form-control" type="text" onChange={e => this.setState({ body: e.target.value })}/>
-		                </div>
-		            </div>
+						<label className="col-xs-2 control-label">body</label>
+						<div className="col-xs-10">
+							<input className="form-control" type="text" onChange={e => this.setState({ body: e.target.value })} />
+						</div>
+					</div>
 
-	              <div className="form-group">
-	              	<div className="col-xs-10 col-xs-offset-2">
-	                	<button type="submit" className="btn btn-success">Add Review</button>
-	                </div>
-	              </div>
+					<div className="form-group">
+						<div className="col-xs-10 col-xs-offset-2">
+							<button type="submit" className="btn btn-success">Add Review</button>
+						</div>
+					</div>
 
 				</fieldSet>
 			</form>
-		)
+		);
 	}
 }

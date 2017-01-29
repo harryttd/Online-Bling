@@ -9,26 +9,26 @@ const auth = require('express').Router()
 
 /*************************
  * Auth strategies
- * 
+ *
  * The OAuth model knows how to configure Passport middleware.
  * To enable an auth strategy, ensure that the appropriate
  * environment variables are set.
- * 
+ *
  * You can do it on the command line:
- * 
+ *
  *   FACEBOOK_CLIENT_ID=abcd FACEBOOK_CLIENT_SECRET=1234 npm start
- * 
+ *
  * Or, better, you can create a ~/.$your_app_name.env.json file in
  * your home directory, and set them in there:
- * 
+ *
  * {
  *   FACEBOOK_CLIENT_ID: 'abcd',
  *   FACEBOOK_CLIENT_SECRET: '1234',
  * }
- * 
+ *
  * Concentrating your secrets this way will make it less likely that you
  * accidentally push them to Github, for example.
- * 
+ *
  * When you deploy to production, you'll need to set up these environment
  * variables with your hosting provider.
  **/
@@ -44,7 +44,7 @@ OAuth.setupStrategy({
     callbackURL: `${app.rootUrl}/api/auth/login/facebook`,
   },
   passport
-})
+});
 
 // Google needs the GOOGLE_CONSUMER_SECRET AND GOOGLE_CONSUMER_KEY
 // environment variables.
@@ -57,7 +57,7 @@ OAuth.setupStrategy({
     callbackURL: `${app.rootUrl}/api/auth/login/google`,
   },
   passport
-})
+});
 
 // Github needs the GITHUB_CLIENT_ID AND GITHUB_CLIENT_SECRET
 // environment variables.
@@ -70,7 +70,7 @@ OAuth.setupStrategy({
     callbackURL: `${app.rootUrl}/api/auth/login/github`,
   },
   passport
-})
+});
 
 // Other passport configuration:
 
@@ -78,7 +78,7 @@ passport.serializeUser((user, done) => {
   debug('will serialize user.id=%d', user.id)
   done(null, user.id)
   debug('did serialize user.id=%d', user.id)
-})
+});
 
 passport.deserializeUser(
   (id, done) => {
@@ -108,11 +108,11 @@ passport.deserializeUser(
 //         return user.authenticate(password)
 //           .then(ok => {
 //             if (!ok) {
-//               debug('authenticate user(email: "%s") did fail: bad password')              
+//               debug('authenticate user(email: "%s") did fail: bad password')
 //               return done(null, false, { message: 'Login incorrect' })
 //             }
 //             debug('authenticate user(email: "%s") did ok: user.id=%d', user.id)
-//             done(null, user)              
+//             done(null, user)
 //           })
 //       })
 //       .catch(done)
@@ -143,7 +143,7 @@ auth.put('/login', (req, res, next)=>{
           email: req.body.email,
           password: req.body.password,
           session_id: req.sessionID
-        })        
+        })
       }
     }).then(updated=>{
       req.logIn(updated, err=>{
@@ -186,9 +186,8 @@ auth.post('/logout', (req, res, next) => {
     .then(()=>{
       req.session.destroy();
       req.logout()
-      res.redirect('/api/auth/whoami')    
+      res.redirect('/api/auth/whoami')
     })
 })
 
 module.exports = auth
-

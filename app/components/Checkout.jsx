@@ -31,8 +31,8 @@ export default class Checkout extends Component {
 			country: target.billingCountry.value,
 			zipcode: target.billingZipcode.value
 		};
-			// cardType: target.cardType.value,
-			// cardNumber: target.cardNumber.value
+		// cardType: target.cardType.value,
+		// cardNumber: target.cardNumber.value
 		this.props.confirmCheckout(shippingAddress, billingAddress);
 
 	}
@@ -41,11 +41,11 @@ export default class Checkout extends Component {
 		console.log("THIS>PROPS", this.props);
 		return (
 			<div className="order-confirmation">
-		    <ol className="breadcrumb">
-		      <li><Link to="/">Home</Link></li>
-		      <li className="active">Order Confirmation</li>
-		    </ol>	    
-		    <section className="cart-list container-fluid">
+				<ol className="breadcrumb">
+					<li><Link to="/">Home</Link></li>
+					<li className="active">Order Confirmation</li>
+				</ol>
+				<section className="cart-list container-fluid">
 					<div className="row">
 						<div className="col-xs-12">
 							<div className="container-fluid">
@@ -135,9 +135,9 @@ export default class Checkout extends Component {
 													</div>
 												</div>
 												<div className="row">
-													 <Link to="/">
-														 <button type="submit" className="submit">Confirm Order</button>
-													 </Link>
+													<Link to="/">
+														<button type="submit" className="submit">Confirm Order</button>
+													</Link>
 												</div>
 											</form>
 										</div>
@@ -147,9 +147,9 @@ export default class Checkout extends Component {
 						</div>
 					</div>
 				</section>
-		  </div>	
+			</div>
 
-			
+
 		);
 	}
 }

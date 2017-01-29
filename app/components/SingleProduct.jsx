@@ -61,16 +61,16 @@ export default class SingleProduct extends React.Component {
 		return (
 			<div id="ProductContainer">
 
-		  	<ol className="breadcrumb">
+				<ol className="breadcrumb">
 					<li><Link to="/">Home</Link></li>
 					<li><Link to="/products">Product</Link></li>
-				 	<li className="active">{ product.name }</li>
+					<li className="active">{ product.name }</li>
 				</ol>
 
-	  		<section className="product-detail container-fluid">
-	  			<div className="row">
-	  				<div className="product-image col-xs-12 col-lg-8 pull-right">
-							<div className="image-slide" style ={ { backgroundImage: `url('${product.image}')` } }></div>
+				<section className="product-detail container-fluid">
+					<div className="row">
+						<div className="product-image col-xs-12 col-lg-8 pull-right">
+							<div className="image-slide" style ={ { backgroundImage: `url('${product.image}')` } } />
 						</div>
 						<div className="product-info col-xs-12 col-lg-4 pull-right">
 							<div className="container-fluid">
@@ -79,7 +79,7 @@ export default class SingleProduct extends React.Component {
 								<div className="add-cart row">
 									<div className="quantity col-xs-4">
 										{/* Below input box is not rendering */}
-										<input type="number" name="quantity" onChange={(e)=>(this.onChangeQty(e))} defaultValue={this.state.orderQty} />
+										<input type="number" name="quantity" min="0" max={product.quantity} onChange={(e) => (this.onChangeQty(e))} defaultValue={this.state.orderQty} />
 									</div>
 									<div className="add-cart col-xs-8">
 										<button onClick={(e) => this.onClickAddCart(product, this.state.orderQty) }>Add to cart</button>
@@ -99,10 +99,10 @@ export default class SingleProduct extends React.Component {
 											<div role="tabpanel" className="tab-pane active" id="detail">
 												<ul>
 													{
-										        product.description && Object.keys(product.description).map(key =>
-										          <li key={key}>{ product.description[key] }</li>
-										        )
-										      }
+														product.description && Object.keys(product.description).map(key =>
+															<li key={key}>{ product.description[key] }</li>
+														)
+													}
 												</ul>
 											</div>
 
@@ -117,23 +117,24 @@ export default class SingleProduct extends React.Component {
 																			{ review.title }
 																			<input type="text" name="title" className="form-control hide" defaultValue={ review.title } />
 																		</div>
-																		<StarRatingComponent name="stars"
-									                    starCount={5}
-									                    editing={false}
-									                    defaultValue={parseInt(review.stars)}
-									                    onStarClick={this.onStarClick.bind(this)} />
-								                    <div className="createdAt">{ new Date(review.created_at).toDateString() }</div>
-								                    <div className="body"><p>{ review.body }</p></div>
-								                    <Link className="removeIcon" onClick={(e) => this.onRemoveClick(review.id)}>
-								                    	<i className="fa fa-times"></i>
-							                    	</Link>
-								                    <textarea className="form-control hide" name="body" defaultValue={ review.body } disabled />
+																		<StarRatingComponent
+																			name="stars"
+																			starCount={5}
+																			editing={false}
+																			defaultValue={parseInt(review.stars)}
+																			onStarClick={this.onStarClick.bind(this)} />
+																		<div className="createdAt">{ new Date(review.created_at).toDateString() }</div>
+																		<div className="body"><p>{ review.body }</p></div>
+																		<Link className="removeIcon" onClick={(e) => this.onRemoveClick(review.id)}>
+																			<i className="fa fa-times"></i>
+																		</Link>
+																		<textarea className="form-control hide" name="body" defaultValue={ review.body } disabled />
 																	</div>
 																</form>
 															);
 														})
 													}
-													<form className="row" onSubmit={(e)=>(this.onAddReviewSubmit(e))}>
+													<form className="row" onSubmit={(e) => (this.onAddReviewSubmit(e))}>
 														<div className="form-group col-xs-12 col-md-8" >
 															<input name="title" type="text" placeholder="Subject" className="form-control" />
 															<textarea name="body" placeholder="Write a review"  className="form-control" />
