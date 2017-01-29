@@ -13,7 +13,7 @@ export default class SingleProduct extends React.Component {
 			product: {},
 			orderQty: 1,
 			reviews: []
-		}
+		};
 		this.onRemoveClick = this.onRemoveClick.bind(this);
 		this.onAddReviewSubmit = this.onAddReviewSubmit.bind(this);
 		this.onStarClick = this.onStarClick.bind(this);
