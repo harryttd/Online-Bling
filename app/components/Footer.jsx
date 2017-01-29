@@ -77,6 +77,6 @@ export default class Footer extends Component {
 					<div className="col-xs-12 text-center">ONLINE BLING® is registered trademarks of Drake LLC</div>
 				</div>
 			</div>
-		);
+		)
 	}
 }
