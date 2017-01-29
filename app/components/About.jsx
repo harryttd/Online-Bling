@@ -9,7 +9,6 @@ export default class About extends Component {
 					<li><Link to="/">Home</Link></li>
 					<li className="active">About</li>
 				</ol>
-
 				<section className="container-fluid">
 					<div className="row">
 						<div className="col-xs-12 col-md-8 col-md-offset-2">
