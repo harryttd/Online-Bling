@@ -4,7 +4,6 @@ const CartLineItem = require('APP/db/models/cart_line_item');
 const Product = require('APP/db/models/product');
 
 module.exports = express.Router()
-
 	.get('/', (req, res, next) => {
 		CartLineItem.findAll({
 			include: [{ model: Product }]
@@ -15,13 +14,12 @@ module.exports = express.Router()
 
 	.param('id', (req, res, next, id) => {
 		CartLineItem.findById(id)
-			.then(cartLineItem => {
-				req.cartLineItem = cartLineItem;
-				next();
-			})
-			.catch(next);
+		.then(cartLineItem => {
+			req.cartLineItem = cartLineItem;
+			next();
+		})
+		.catch(next);
 	})
-
 
 	.get('/:id', (req, res, next) => {
 		res.json(req.cartLineItem);
@@ -55,9 +53,9 @@ module.exports = express.Router()
 
 	.put('/:id', (req, res, next) => {
 		req.cartLineItem.update(req.body)
-			.then(updated => {
-					 res.status(202).send(updated);
-			}).catch(next);
+		.then(updated => {
+			res.status(202).send(updated);
+		}).catch(next);
 	})
 
 	.delete('/:id', (req, res, next) => {

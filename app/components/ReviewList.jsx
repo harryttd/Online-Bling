@@ -7,13 +7,14 @@ const ReviewList = ({ reviews }) => {
 		<div>
 			{ reviews && reviews.map(review => {
 				return (
-					<Link to={`/reviews/${review.id}`}>
-						<SingleReview key={review.id} rating={reviews.rating} content={reviews.content} />
+					<Link key={review.id} to={`/reviews/${review.id}`}>
+						<SingleReview rating={reviews.rating} content={reviews.content} />
 					</Link>
-				)
-			})}
+				);
+			})
+		}
 		</div>
-	)
-}
+	);
+};
 
 export default ReviewList;

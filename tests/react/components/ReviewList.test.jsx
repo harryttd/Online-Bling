@@ -14,7 +14,7 @@ describe('Review List Component', () => {
 		{id: 3, rating: 4, content: 'great'},
 	]
 
-	let reviewList; 
+	let reviewList;
 	beforeEach('Create reviewList', () => {
 		reviewList = shallow(<ReviewList reviews={reviewListSample} />)
 	})

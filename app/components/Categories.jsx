@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router'
-import {render} from 'react-dom'
-import { receiveCategories } from '../action-creators/categories'
-import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap'
+import { Router, Route, Link, browserHistory } from 'react-router';
+import { render } from 'react-dom';
+import { receiveCategories } from '../action-creators/categories';
+import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 
 export class Categories extends Component {
 	constructor(props) {
@@ -16,16 +16,14 @@ export class Categories extends Component {
 			<NavDropdown eventKey={1} title="SHOP" id="categories-dropdown">
 				{this.props.categories.rootList.map(category => {
 						return (
-
-								<MenuItem key={category.id} onClick={(e)=>(browserHistory.push(`/products/category/${category.name}`))}>
+							<MenuItem key={category.id} onClick={(e) => (browserHistory.push(`/products/category/${category.name}`))}>
 									{ category.name }
 								</MenuItem>
-
-						)
+						);
 					})
 				}
 			</NavDropdown>
-		)
+		);
 	}
 }
 
@@ -34,11 +32,10 @@ export class Categories extends Component {
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
-	console.log(ownProps)
 	 return {
-    categories: state.categories,
-    location: ownProps.location
-  }
+		categories: state.categories,
+		location: ownProps.location
+	};
 };
 
 export default connect(

@@ -23,7 +23,7 @@ const Product = db.define('product', {
   },
   quantity: {
     type: Sequelize.INTEGER,
-    defaultValue: 0 // Create a function that increases quantity.
+    defaultValue: 0
   },
   image: {
     type: Sequelize.STRING,

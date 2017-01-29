@@ -4,7 +4,7 @@ import {Router, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-ro
 import Root from './components/Root';
 
 //import store
-import store from './store'
+import store from './store';
 
 //import components and containers
 import Homepage from './components/Homepage';
@@ -25,19 +25,19 @@ import {loadSingleCategory} from './action-creators/categories';
 
 const onProductCategoryEnter = function (nextRouterState){
   store.dispatch(getProductsByCategoryId(nextRouterState.params.categoryName));
-  store.dispatch(loadSingleCategory(nextRouterState.params.categoryName))
-}
+  store.dispatch(loadSingleCategory(nextRouterState.params.categoryName));
+};
 
 const onProductsEnter = function (nextRouterState){
   // console.log('onProductCategoryEnter')
   store.dispatch(getProducts());
-  store.dispatch(loadSingleCategory(nextRouterState.params.categoryName))
-}
+  store.dispatch(loadSingleCategory(nextRouterState.params.categoryName));
+};
 
 export default ({ onAppEnter, onProductEnter, onCartEnter, onOrderEnter }) => (
   <Router history={browserHistory}>
     <Route path="/" component={Root} onEnter={onAppEnter}>
-    <IndexRoute component={Homepage} onEnter={onAppEnter}/>
+    <IndexRoute component={Homepage} onEnter={onAppEnter} />
       <Route path="/about" component={About} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/products" component={ProductsContainer} onEnter={onProductsEnter} />

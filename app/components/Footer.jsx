@@ -4,37 +4,38 @@ import Categories from './Categories';
 
 export default class Footer extends Component {
   constructor(props){
-    super(props);
+  super(props);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
-	onFormSubmit(event) {
-		event.preventDefault();
 
-		// var subscriptionEmail = this.refs.subscriptionEmail.value;
-    // Need to build subscription database model and link it to user database model
-    // So that inputted email will be saved in our database.
-    var subscriptionEmail = event.target.subscriptionEmail.value
-		if(subscriptionEmail.length > 0) {
-      console.log('Entering')
-      console.log(typeof(subscriptionEmail));
-      if(!subscriptionEmail.includes("@")) {
+  onFormSubmit(event) {
+    event.preventDefault();
+
+  // var subscriptionEmail = this.refs.subscriptionEmail.value;
+  // Need to build subscription database model and link it to user database model
+  // So that inputted email will be saved in our database.
+    var subscriptionEmail = event.target.subscriptionEmail.value;
+    if (subscriptionEmail.length > 0) {
+      // console.log('Entering');
+      // console.log(typeof subscriptionEmail);
+      if (!subscriptionEmail.includes("@")) {
         window.alert('Please enter valid email address')
         event.target.subscriptionEmail.value = '';
       } else {
         window.alert('Thank you for your subscription ' + subscriptionEmail + '!');
         event.target.subscriptionEmail.value = '';
       }
-	  }
+    }
   }
 
-	render() {
-		console.log('Footer props', this.props);
-		return (
+  render() {
+    console.log('Footer props', this.props);
+    return (
       <div className="footer container-fluid">
         <div className="row">
           <div className="col-xs-6 col-lg-4">
             <h4><strong>SHOP</strong></h4>
-            <Categories/>
+            <Categories />
           </div>
           <div className="col-xs-6 col-lg-4">
             <h4><strong>NEED HELP?</strong></h4>
@@ -70,13 +71,12 @@ export default class Footer extends Component {
               <Link><i className="fa fa-instagram" aria-hidden="true"></i></Link>
               <Link><i className="fa fa-pinterest-p" aria-hidden="true"></i></Link>
             </div>
-
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 text-center">ONLINE BLING® is registered trademarks of , Drake Shits Gold LLC</div>
+          <div className="col-xs-12 text-center">ONLINE BLING® is registered trademarks of Drake LLC</div>
         </div>
       </div>
-		);
-	}
+    );
+  }
 }
