@@ -11,19 +11,18 @@ export class Categories extends Component {
 	}
 
 	render () {
-		console.log('Categories props', this.props);
 		return (
 			<NavDropdown eventKey={1} title="SHOP" id="categories-dropdown">
 				{this.props.categories.rootList.map(category => {
-						return (
-							<MenuItem key={category.id} onClick={(e) => (browserHistory.push(`/products/category/${category.name}`))}>
-									{ category.name }
-								</MenuItem>
-						);
-					})
-				}
-			</NavDropdown>
-		);
+					return (
+						<MenuItem key={category.id} onClick={(e) => (browserHistory.push(`/products/category/${category.name}`))}>
+							{ category.name }
+						</MenuItem>
+					);
+				})
+			}
+		</NavDropdown>
+	);
 	}
 }
 
@@ -32,16 +31,13 @@ export class Categories extends Component {
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
-	 return {
+	return {
 		categories: state.categories,
 		location: ownProps.location
 	};
 };
 
-export default connect(
-	mapStateToProps
-)(Categories);
-
+export default connect(mapStateToProps)(Categories);
 
 //old code might be useful
 // 			<div className="submenu-wrapper">

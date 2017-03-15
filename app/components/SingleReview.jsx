@@ -13,11 +13,11 @@ const SingleReview = ({ selectedReview }) => {
 				starCount={5}
 				defaultValue={selectedReview.rating}
 				renderStarIcon={() => <span>*</span>}
-			/>
+				/>
 			<prev>{ selectedReview }</prev>
 			<p>{ selectedReview.body }</p>
 		</div>
-	)
-}
+	);
+};
 
 export default SingleReview;

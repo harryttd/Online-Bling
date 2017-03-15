@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Products from './Products';
 
-const Home = (props) => {
+const Home = ({ products }) => {
 	return (
 		<div className="home">
 
@@ -12,7 +12,7 @@ const Home = (props) => {
 				</div>
 			</div>
 
-			<Products products={props.products} />
+			<Products products={products} />
 
 			<section className="container-fluid promo-wrapper">
 				<div className="row">

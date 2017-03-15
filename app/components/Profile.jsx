@@ -47,6 +47,4 @@ class UserProfile extends React.Component {
 
 const mapState = ({ auth }) => ({ auth });
 
-const mapDispatch = {};
-
-export default connect(mapState, mapDispatch)(UserProfile);
+export default connect(mapState)(UserProfile);
