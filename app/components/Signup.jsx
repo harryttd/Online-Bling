@@ -7,7 +7,7 @@ import { Link, browserHistory } from 'react-router';
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.onSignupSubmit = this.onSignupSubmit.bind(this);    
+    this.onSignupSubmit = this.onSignupSubmit.bind(this);
   }
 
   onSignupSubmit(e){
@@ -22,7 +22,7 @@ class Signup extends React.Component {
       console.log('credentials', credentials);
       this.props.signup(credentials);
       browserHistory.push('/');
-    }    
+    }
   }
 
   render() {
@@ -35,37 +35,37 @@ class Signup extends React.Component {
         <section className="container-fluid">
           <div className="row">
             <div className="col-xs-12 col-md-6 col-md-offset-3">
-              <form 
+              <form
                 className="login-form"
                 onSubmit={this.onSignupSubmit}>
                 <div className="form-group">
                   <label>Email</label>
-                  <input className="form-control" name="email" type="email" />  
+                  <input className="form-control" name="email" type="email" />
                 </div>
                 <div className="form-group">
                   <label>Name</label>
-                  <input className="form-control" name="name" type="text" />  
+                  <input className="form-control" name="name" type="text" />
                 </div>
                 <div className="form-group">
                   <label>Password</label>
-                  <input className="form-control" name="password" type="password" placeholder="type your password" />  
+                  <input className="form-control" name="password" type="password" placeholder="type your password" />
                 </div>
                 <div className="form-group">
                   <label>Password Confirmation</label>
-                  <input className="form-control" name="passwordConfirm" type="password" placeholder="re-type your password" />  
+                  <input className="form-control" name="passwordConfirm" type="password" placeholder="re-type your password" />
                 </div>
-                <button type="submit" name="submit">Register</button>      
-              </form> 
+                <button type="submit" name="submit">Register</button>
+                </form>
+              </div>
             </div>
-          </div>          
-        </section>
-      </div>
-    )
+          </section>
+        </div>
+      );
+    }
+
   }
- 
-};
 
-const mapState = null;
-const mapDispatch = { signup }
+  const mapState = null;
+  const mapDispatch = { signup };
 
-export default connect (mapState, mapDispatch) (Signup);
+  export default connect(mapState, mapDispatch)(Signup);

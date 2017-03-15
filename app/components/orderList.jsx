@@ -25,10 +25,10 @@ class OrderList extends Component {
 
   render() {
     console.log("THIS.PROPS", this.props);
-  	const {orders} = this.props;
+    const {orders} = this.props;
     console.log('OrderList', orders);
 
-  	return (
+    return (
       <div className="OrderContainer order-list">
 
         <ol className="breadcrumb">
@@ -36,65 +36,54 @@ class OrderList extends Component {
           <li className="active">Order</li>
         </ol>
 
-    		<section className="container-fluid">
+        <section className="container-fluid">
           <div className="row">
             <div className="col-xs-12 col-md-8 col-md-offset-2">
               <div>
-    				    <h3 className="title">Your Orders</h3>                
-        				<div className="numberOfOrders row">
+                <h3 className="title">Your Orders</h3>
+                <div className="numberOfOrders row">
                   {orders && orders.length ?
-                    'Orders Placed' : 
+                    'Orders Placed' :
                     'No Orders'}
+                  </div>
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Purchased Date</th>
+                        <th>Order Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        orders && orders.map(order => (
+                          <tr key={order.id}>
+                            <td>{ order.id }</td>
+                            <td>{ order.created_at.slice(0, 10) } { order.created_at.slice(11, 16) }</td>
+                            <td>{ order.total }</td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
                 </div>
-                <table className="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Purchased Date</th>
-                      <th>Order Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      orders && orders.map(order => (
-                        <tr key={order.id}>
-                          <td>{ order.id }</td>
-                          <td>{ order.created_at.slice(0, 10) } { order.created_at.slice(11, 16) }</td>
-                          <td>{ order.total }</td> 
-                        </tr>
-                      ))
-                    }                    
-                  </tbody>
-                </table>
               </div>
             </div>
-          </div>    			
-    		</section>
-      </div>
-  	)
+          </section>
+        </div>
+      );
+    }
   }
-}
-  export default OrderList;
+export default OrderList;
 
-
-
-
- 
-
-  // <p>{(order.map(product => product.selectedProduct.quantity).reduce((a,b) => a + b))} Total Quantity: </p>
-  //                   {
-  //                     order.map(product => (
-  //                       <div key={product.id} className="col-xs-2 col-md-2 col-lg-2">
-  //                         <p>{ product.name }</p>
-  //                       <img style={{ "height": "150px" }}src={ product.imageUrl } />
-  //                       </div>
-  //                     ))
-  //                   }
-  //                   <div className="price row">${order.map(product => product.price * product.selectedProduct.quantity).reduce((a, b) => a + b).toFixed(2)} Total </div>
-  //                   <Link to={`/orderList/${order[0].selectedProduct.order_id}`}>Order Details</Link>
-
-
-
-
-
-
+      // <p>{(order.map(product => product.selectedProduct.quantity).reduce((a,b) => a + b))} Total Quantity: </p>
+      //                   {
+      //                     order.map(product => (
+      //                       <div key={product.id} className="col-xs-2 col-md-2 col-lg-2">
+      //                         <p>{ product.name }</p>
+      //                       <img style={{ "height": "150px" }}src={ product.imageUrl } />
+      //                       </div>
+      //                     ))
+      //                   }
+      //                   <div className="price row">${order.map(product => product.price * product.selectedProduct.quantity).reduce((a, b) => a + b).toFixed(2)} Total </div>
+      //                   <Link to={`/orderList/${order[0].selectedProduct.order_id}`}>Order Details</Link>

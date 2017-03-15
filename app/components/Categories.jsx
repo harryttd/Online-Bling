@@ -5,25 +5,25 @@ import { receiveCategories } from '../action-creators/categories';
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 
 export class Categories extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-	}
+  }
 
-	render () {
-		return (
-			<NavDropdown eventKey={1} title="SHOP" id="categories-dropdown">
-				{this.props.categories.rootList.map(category => {
-					return (
-						<MenuItem key={category.id} onClick={(e) => (browserHistory.push(`/products/category/${category.name}`))}>
-							{ category.name }
-						</MenuItem>
-					);
-				})
-			}
-		</NavDropdown>
-	);
-	}
+  render () {
+    return (
+      <NavDropdown eventKey={1} title="SHOP" id="categories-dropdown">
+        {this.props.categories.rootList.map(category => {
+          return (
+            <MenuItem key={category.id} onClick={(e) => (browserHistory.push(`/products/category/${category.name}`))}>
+              { category.name }
+            </MenuItem>
+          );
+        })
+      }
+    </NavDropdown>
+  );
+}
 }
 
 //////////////////// Connector /////////////////////////
@@ -31,10 +31,10 @@ export class Categories extends Component {
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
-	return {
-		categories: state.categories,
-		location: ownProps.location
-	};
+  return {
+    categories: state.categories,
+    location: ownProps.location
+  };
 };
 
 export default connect(mapStateToProps)(Categories);
